@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTitleElement = document.getElementById('page-title');
     let currentPageIndex = 0;
 
+    // Determine the base URL
+    const baseUrl = getBaseUrl();
+
     const pages = [
         { id: 'home', file: 'content/home.md', title: 'Home' },
         { id: 'about', file: 'content/about.md', title: 'About' },
@@ -16,13 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'digital-media', file: 'content/digital-media.md', title: 'Digital Media' }
     ];
 
+    function getBaseUrl() {
+        const githubRepoName = 'your-repo-name'; // Replace with your actual repository name
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            return '';
+        } else {
+            return `/${githubRepoName}`;
+        }
+    }
+
     function resolveImagePaths(html) {
-        return html.replace(/src="\.\.\/images\//g, 'src="/images/');
+        return html.replace(/src="\.\.\/images\//g, `src="${baseUrl}/images/`);
     }
 
     async function loadContent(file, title) {
         try {
-            const response = await fetch(file);
+            const response = await fetch(`${baseUrl}/${file}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
