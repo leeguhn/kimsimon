@@ -6,68 +6,107 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTitleElement = document.getElementById('page-title');
     let currentPageIndex = 0;
 
-    // Determine the base URL
-    const baseUrl = getBaseUrl();
-
     const pages = [
         { id: 'home', file: 'content/home.md', title: 'Home' },
         { id: 'about', file: 'content/about.md', title: 'About' },
         { id: 'contact', file: 'content/contact.md', title: 'Contact' },
-        { id: 'ceramics', file: 'content/ceramics.md', title: 'Ceramics' },
-        { id: 'drawing', file: 'content/drawing.md', title: 'Drawing' },
-        { id: 'photography', file: 'content/photography.md', title: 'Photography' },
-        { id: 'digital-media', file: 'content/digital-media.md', title: 'Digital Media' }
+        { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics' },
+        { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing' },
+        { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
+        { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
+        { id: 'digital-media', file: 'content/digital-media/index.md', title: 'Digital Media' }
     ];
-
-    function getBaseUrl() {
-        const githubRepoName = 'kimsimon'; // Replace with your actual repository name
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            return '';
-        } else {
-            return `/${githubRepoName}`;
-        }
-    }
-
-    function resolveImagePaths(html) {
-        return html.replace(/src="\.\.\/images\//g, `src="${baseUrl}/images/`);
-    }
 
     async function loadContent(file, title) {
         try {
-            const response = await fetch(`${baseUrl}/${file}`);
+            const response = await fetch(file);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             let text = await response.text();
+            
+            // Use marked to parse the Markdown
             let parsedHtml = marked.parse(text);
-            parsedHtml = resolveImagePaths(parsedHtml);
+            
             if (contentDiv) {
                 contentDiv.innerHTML = parsedHtml;
+                setupProjectLinks();
             }
             if (pageTitleElement) {
                 pageTitleElement.textContent = title !== 'Home' ? title : '';
             }
-
-            // Add event listeners to images after content is loaded
-            document.querySelectorAll('#content img').forEach(img => {
-                img.addEventListener('error', (e) => {
-                    console.error(`Failed to load image: ${e.target.src}`);
-                    e.target.style.display = 'none';
-                    const errorMsg = document.createElement('p');
-                    errorMsg.textContent = `Error loading image: ${e.target.src}`;
-                    e.target.parentNode.insertBefore(errorMsg, e.target);
-                });
-            });
         } catch (error) {
             console.error('Error loading content:', error);
             if (contentDiv) {
-                contentDiv.innerHTML = `
-                    <p>Error loading content. Please check the console for details.</p>
-                    <p>Error message: ${error.message}</p>
-                `;
+                contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
             }
         }
     }
+
+    function setupProjectLinks() {
+        const projectItems = document.querySelectorAll('.project-grid > div');
+        projectItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const link = item.querySelector('a');
+                if (link) {
+                    const projectFile = link.getAttribute('href');
+                    loadContent(projectFile, link.textContent);
+                }
+            });
+        });
+    }
+
+    function createImagePreview() {
+        const overlay = document.createElement('div');
+        overlay.id = 'image-preview-overlay';
+        overlay.innerHTML = `
+            <div class="preview-container">
+                <img id="preview-image" src="" alt="Preview">
+                <button id="prev-button">&lt;</button>
+                <button id="next-button">&gt;</button>
+                <button id="close-button">X</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        document.getElementById('prev-button').addEventListener('click', showPreviousImage);
+        document.getElementById('next-button').addEventListener('click', showNextImage);
+        document.getElementById('close-button').addEventListener('click', closePreview);
+    }
+
+    function showImagePreview(event) {
+        if (event.target.tagName === 'IMG' && !event.target.closest('.project-grid')) {
+            const clickedImage = event.target;
+            images = Array.from(document.querySelectorAll('#content img:not(.project-grid img)'));
+            currentImageIndex = images.indexOf(clickedImage);
+            updatePreviewImage();
+            document.getElementById('image-preview-overlay').style.display = 'flex';
+        }
+    }
+
+    function updatePreviewImage() {
+        const previewImage = document.getElementById('preview-image');
+        previewImage.src = images[currentImageIndex].src;
+        previewImage.alt = images[currentImageIndex].alt;
+    }
+
+    function showPreviousImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updatePreviewImage();
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updatePreviewImage();
+    }
+
+    function closePreview() {
+        document.getElementById('image-preview-overlay').style.display = 'none';
+    }
+
+    createImagePreview();
+    document.getElementById('content').addEventListener('click', showImagePreview);
 
     function updateNavigation() {
         if (prevButton) prevButton.style.visibility = currentPageIndex > 0 ? 'visible' : 'hidden';

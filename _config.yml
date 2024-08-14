@@ -1,0 +1,20 @@
+# _config.yml
+   title: Simon Kim
+   baseurl: "/simonkim" # the subpath of your site, e.g. /blog
+   url: "https://leeguhn.github.io/kimsimon/" # the base hostname & protocol for your site, e.g. http://example.com
+
+   # Build settings
+   markdown: kramdown
+   theme: minima
+   plugins:
+     - jekyll-feed
+
+   # Exclude from processing
+   exclude:
+     - Gemfile
+     - Gemfile.lock
+     - node_modules
+     - vendor/bundle/
+     - vendor/cache/
+     - vendor/gems/
+     - vendor/ruby/

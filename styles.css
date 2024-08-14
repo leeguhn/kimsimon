@@ -126,6 +126,56 @@ body, html {
     display: block; /* Ensure images are block-level for consistent spacing */
 }
 
+#image-preview-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.preview-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#prev-button, #next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#prev-button { left: 10px; }
+#next-button { right: 10px; }
+
+#close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -160,5 +210,53 @@ body, html {
 @media (min-width: 1200px) {
     .content-wrapper {
         max-width: 1000px;
+    }
+}
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2em;
+    padding: 1.5em;
+}
+
+.project-grid > div {
+    flex: 0 0 auto;
+    width: calc(33.333% - 1em);
+    margin-bottom: 1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.project-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.project-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Prevent thumbnails from being previewed */
+.project-grid img {
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .project-grid > div {
+        width: calc(50% - 1em);
+    }
+}
+
+@media (max-width: 600px) {
+    .project-grid > div {
+        width: 100%;
     }
 }
