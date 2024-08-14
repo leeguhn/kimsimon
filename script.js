@@ -7,23 +7,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPageIndex = 0;
 
     const pages = [
-        { id: 'home', file: 'content/home.md', title: 'Home' },
-        { id: 'about', file: 'content/about.md', title: 'About' },
-        { id: 'contact', file: 'content/contact.md', title: 'Contact' },
-        { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics' },
-        { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing' },
-        { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
-        { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
-        { id: 'digital-media', file: 'content/digital-media/index.md', title: 'Digital Media' }
+        { id: 'home', file: '/content/home.md', title: 'Home' },
+        { id: 'about', file: '/content/about.md', title: 'About' },
+        { id: 'contact', file: '/content/contact.md', title: 'Contact' },
+        { id: 'ceramics', file: '/content/ceramics/index.md', title: 'Ceramics' },
+        { id: 'drawing', file: '/content/drawing/index.md', title: 'Drawing' },
+        { id: 'painting', file: '/content/painting/index.md', title: 'Painting' },
+        { id: 'photography', file: '/content/photography/index.md', title: 'Photography' },
+        { id: 'digital-media', file: '/content/digital-media/index.md', title: 'Digital Media' }
     ];
 
     async function loadContent(file, title) {
         try {
-            const response = await fetch(file);
+            const adjustedFile = adjustPath(file);
+            const response = await fetch(adjustedFile);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             let text = await response.text();
+            
+            // Adjust image paths in the Markdown content
+            text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
+                return p1 + adjustPath(p2) + p3;
+            });
             
             // Use marked to parse the Markdown
             let parsedHtml = marked.parse(text);
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const link = item.querySelector('a');
                 if (link) {
-                    const projectFile = link.getAttribute('href');
+                    const projectFile = adjustPath(link.getAttribute('href'));
                     loadContent(projectFile, link.textContent);
                 }
             });
@@ -74,6 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('next-button').addEventListener('click', showNextImage);
         document.getElementById('close-button').addEventListener('click', closePreview);
     }
+
+    function isGitHubPages() {
+        return window.location.hostname.toLowerCase().endsWith('github.io');
+    }
+
+    function adjustPath(path) {
+        if (isGitHubPages()) {
+            // Assuming your repo name is 'your-repo-name'. Replace this with your actual repo name.
+            return `/your-repo-name${path.startsWith('/') ? '' : '/'}${path}`;
+        }
+        return path;
+    }
+
 
     function showImagePreview(event) {
         if (event.target.tagName === 'IMG' && !event.target.closest('.project-grid')) {
