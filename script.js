@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pageTitleElement.textContent = title !== 'Home' ? title : '';
             }
         } catch (error) {
-            console.error('Error loading content:', error);
             if (contentDiv) {
                 contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
             }
@@ -81,17 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('close-button').addEventListener('click', closePreview);
     }
 
-    function isGitHubPages() {
-        return window.location.hostname.toLowerCase().endsWith('github.io');
-    }
-
-    function adjustPath(path) {
-        if (isGitHubPages()) {
-            // Assuming your repo name is 'your-repo-name'. Replace this with your actual repo name.
-            return `/kimsimon${path.startsWith('/') ? '' : '/'}${path}`;
+        function isGitHubPages() {
+            return window.location.hostname.toLowerCase().endsWith('github.io');
         }
-        return path;
-    }
+
+        function adjustPath(path) {
+            if (isGitHubPages()) {
+                return `/kimsimon${path.startsWith('/') ? '' : '/'}${path}`;
+            }
+            return path;
+        }   
 
 
     function showImagePreview(event) {

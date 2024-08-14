@@ -2,15 +2,15 @@ I dissect abstract elements of my existence and reassemble them within the conte
 
 <div class="project-grid">
   <div>
-    <img src="../../images/ceramics/artifact_thumb.jpg" alt="Artifact">
+    <img src="/images/ceramics/artifact_thumb.jpg" alt="Artifact">
     <a href="artifact.md">Artifact</a>
   </div>
   <div>
-    <img src="../../images/ceramics/habitat_thumb.jpg" alt="Habitat">
+    <img src="/images/ceramics/habitat_thumb.jpg" alt="Habitat">
     <a href="habitat.md">Habitat</a>
   </div>
   <div>
-    <img src="../../images/ceramics/trip_thumb.jpg" alt="trip">
+    <img src="/images/ceramics/trip_thumb.jpg" alt="trip">
     <a href="trip.md">Trip</a>
   </div>
 </div>
