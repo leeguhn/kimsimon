@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function adjustPath(path) {
         if (isGitHubPages()) {
             // Assuming your repo name is 'your-repo-name'. Replace this with your actual repo name.
-            return `/your-repo-name${path.startsWith('/') ? '' : '/'}${path}`;
+            return `/kimsimon${path.startsWith('/') ? '' : '/'}${path}`;
         }
         return path;
     }
