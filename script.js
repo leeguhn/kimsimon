@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function getBaseUrl() {
-        const githubRepoName = 'simonkim'; // Replace with your actual repository name
+        const githubRepoName = 'kimsimon'; // Replace with your actual repository name
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return '';
         } else {
