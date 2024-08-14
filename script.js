@@ -86,10 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function adjustPath(path) {
             if (isGitHubPages()) {
-                return `/kimsimon${path.startsWith('/') ? '' : '/'}${path}`;
+                // Remove leading slash if present
+                path = path.replace(/^\//, '');
+                return `/kimsimon/${path}`;
             }
             return path;
-        }   
+        }
 
 
     function showImagePreview(event) {
