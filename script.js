@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function adjustPath(path) {
         if (isGitHubPages()) {
-            return `/kimsimon${path}`;
+            const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+            return `/kimsimon/${cleanPath}`;
         }
         return path;
     }
