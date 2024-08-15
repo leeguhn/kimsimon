@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function adjustPath(path) {
         if (isGitHubPages()) {
-            return `kimsimon/${path}`;
+            return `/kimsimon${path}`;
         }
         return path;
     }
@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Adjust image paths in the Markdown content
             text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
+                return p1 + adjustPath(p2) + p3;
+            });
+
+            // Adjust image paths in HTML content (for project grid)
+            text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
                 return p1 + adjustPath(p2) + p3;
             });
             
@@ -64,12 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const link = item.querySelector('a');
                 if (link) {
-                    const projectFile = adjustPath(link.getAttribute('href'));
-                    loadContent(projectFile, link.textContent);
+                    const projectFile = link.getAttribute('href');
+                    const projectPath = `content/ceramics/${projectFile}`;
+                    loadContent(projectPath, link.textContent);
                 }
             });
         });
     }
+
 
     function createImagePreview() {
         const overlay = document.createElement('div');
