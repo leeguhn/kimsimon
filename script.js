@@ -24,7 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function adjustPath(path) {
         if (isGitHubPages()) {
             const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-            return `/kimsimon/${cleanPath}`;
+            const adjustedPath = `/kimsimon/${cleanPath}`;
+            // Append ?raw=true for image files
+            if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+                return adjustedPath + '?raw=true';
+            }
+            return adjustedPath;
         }
         return path;
     }
@@ -38,19 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             let text = await response.text();
             
-            // If the file is HTML, load it directly
             if (file.endsWith('.html')) {
                 if (contentDiv) {
                     contentDiv.innerHTML = text;
                 }
             } else {
-                // For Markdown files, parse and process as before
+                // For Markdown files, adjust image paths and append ?raw=true
                 text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
-                    return p1 + adjustPath(p2) + p3;
+                    const adjustedImagePath = adjustPath(p2);
+                    return p1 + adjustedImagePath + p3;
                 });
+                
+                // Also adjust paths for HTML img tags
                 text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
-                    return p1 + adjustPath(p2) + p3;
+                    const adjustedImagePath = adjustPath(p2);
+                    return p1 + adjustedImagePath + p3;
                 });
+                
                 let parsedHtml = marked.parse(text);
                 if (contentDiv) {
                     contentDiv.innerHTML = parsedHtml;
