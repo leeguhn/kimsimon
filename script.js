@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics' },
         { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing' },
         { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
-        { id: 'photography', file: 'content/photography/index.md', title: 'Photography' }
-    ];
+        { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
+        { id: 'test-image', file: 'test-image.html', title: 'Test Image' }
+    ]
 
     function isGitHubPages() {
         return window.location.hostname.endsWith('github.io');
@@ -37,21 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             let text = await response.text();
             
-            // Adjust image paths in the Markdown content
-            text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
-                return p1 + adjustPath(p2) + p3;
-            });
-
-            // Adjust image paths in HTML content (for project grid)
-            text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
-                return p1 + adjustPath(p2) + p3;
-            });
-            
-            let parsedHtml = marked.parse(text);
-            
-            if (contentDiv) {
-                contentDiv.innerHTML = parsedHtml;
-                setupProjectLinks();
+            // If the file is HTML, load it directly
+            if (file.endsWith('.html')) {
+                if (contentDiv) {
+                    contentDiv.innerHTML = text;
+                }
+            } else {
+                // For Markdown files, parse and process as before
+                text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
+                    return p1 + adjustPath(p2) + p3;
+                });
+                text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
+                    return p1 + adjustPath(p2) + p3;
+                });
+                let parsedHtml = marked.parse(text);
+                if (contentDiv) {
+                    contentDiv.innerHTML = parsedHtml;
+                    setupProjectLinks();
+                }
             }
             if (pageTitleElement) {
                 pageTitleElement.textContent = title !== 'Home' ? title : '';
