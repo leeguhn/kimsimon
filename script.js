@@ -23,8 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function adjustPath(path) {
         if (isGitHubPages()) {
-            const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+            // Remove leading '../' or '../../'
+            let cleanPath = path.replace(/^\.\.\/\.\.\//, '');
+            cleanPath = cleanPath.replace(/^\.\.\//, '');
+            
+            // Prepend the repository name for GitHub Pages
             const adjustedPath = `/kimsimon/${cleanPath}`;
+            
             // Append ?raw=true for image files
             if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
                 return adjustedPath + '?raw=true';
