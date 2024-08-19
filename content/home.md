@@ -1,2 +1,1 @@
-<video src="/Users/leeguhn/Desktop/simonkim/simonkim/videos/algohand.mp4"></video>
-
+![aigo2](../images/aigo2.gif)

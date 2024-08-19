@@ -22,26 +22,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function adjustPath(path) {
+        console.log('Original path:', path);
         if (isGitHubPages()) {
             // Remove leading '../' or '../../'
-            let cleanPath = path.replace(/^\.\.\/\.\.\//, '');
-            cleanPath = cleanPath.replace(/^\.\.\//, '');
+            let cleanPath = path.replace(/^(?:\.\.\/)+/, '');
             
             // Prepend the repository name for GitHub Pages
             const adjustedPath = `/kimsimon/${cleanPath}`;
             
-            // Append ?raw=true for media files
-            if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg|mp4|webm|ogg)$/i)) {
-                return adjustedPath + '?raw=true';
+            // Append ?raw=true for image files
+            if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+                const finalPath = adjustedPath + '?raw=true';
+                console.log('Adjusted path for GitHub Pages:', finalPath);
+                return finalPath;
             }
+            console.log('Adjusted path for GitHub Pages:', adjustedPath);
             return adjustedPath;
+        } else {
+            // For local development, just remove any leading '../'
+            const localPath = path.replace(/^(?:\.\.\/)+/, '');
+            console.log('Adjusted path for local:', localPath);
+            return localPath;
         }
-        return path;
     }
 
     async function loadContent(file, title) {
         try {
             const adjustedFile = adjustPath(file);
+            console.log('Loading content from:', adjustedFile);
             const response = await fetch(adjustedFile);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -53,16 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     contentDiv.innerHTML = text;
                 }
             } else {
-                // For Markdown files, adjust image and video paths and append ?raw=true
-                text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
-                    const adjustedPath = adjustPath(p2);
-                    return p1 + adjustedPath + p3;
-                });
-                
-                // Adjust paths for HTML img and video tags
-                text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
-                    const adjustedPath = adjustPath(p2);
-                    return p1 + adjustedPath + p3;
+                // For Markdown files, adjust image paths
+                text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
+                    const adjustedImagePath = adjustPath(imagePath);
+                    return `<div class="image-wrapper"><img src="${adjustedImagePath}" alt="${altText}"></div>`;
                 });
                 
                 let parsedHtml = marked.parse(text);
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 pageTitleElement.textContent = title !== 'Home' ? title : '';
             }
         } catch (error) {
+            console.error('Error loading content:', error);
             if (contentDiv) {
                 contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
             }
@@ -177,5 +180,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextButton) nextButton.addEventListener('click', () => loadPage(currentPageIndex + 1));
 
     // Load default content
-    loadPage(0);
+    loadPage(pages.findIndex(page => page.id === 'home'));
 });

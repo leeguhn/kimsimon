@@ -1,4 +1,4 @@
-I dissect abstract elements of my existence and reassemble them within the context of three-dimensional space for others to see, touch, and experience in a different format. The soft, malleable nature of clay allows me to articulate the curves and nuances that would otherwise be difficult to communicate. 
+abstract elements of my existence and reassemble them within the context of three-dimensional space for others to see, touch, and experience in a different format. The soft, malleable nature of clay allows me to articulate the curves and nuances that would otherwise be difficult to communicate. 
 
 <div class="project-grid">
   <div>
