@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Prepend the repository name for GitHub Pages
             const adjustedPath = `/kimsimon/${cleanPath}`;
             
-            // Append ?raw=true for image files
-            if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+            // Append ?raw=true for media files
+            if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg|mp4|webm|ogg)$/i)) {
                 return adjustedPath + '?raw=true';
             }
             return adjustedPath;
@@ -53,16 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     contentDiv.innerHTML = text;
                 }
             } else {
-                // For Markdown files, adjust image paths and append ?raw=true
+                // For Markdown files, adjust image and video paths and append ?raw=true
                 text = text.replace(/(\!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
-                    const adjustedImagePath = adjustPath(p2);
-                    return p1 + adjustedImagePath + p3;
+                    const adjustedPath = adjustPath(p2);
+                    return p1 + adjustedPath + p3;
                 });
                 
-                // Also adjust paths for HTML img tags
+                // Adjust paths for HTML img and video tags
                 text = text.replace(/(src=")(.+?)(")/g, (match, p1, p2, p3) => {
-                    const adjustedImagePath = adjustPath(p2);
-                    return p1 + adjustedImagePath + p3;
+                    const adjustedPath = adjustPath(p2);
+                    return p1 + adjustedPath + p3;
                 });
                 
                 let parsedHtml = marked.parse(text);
