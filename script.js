@@ -5,24 +5,24 @@ function isGitHubPages() {
 
 function adjustPath(path) {
     console.log('Original path:', path);
+    
+    // Check if we're on GitHub Pages
     if (isGitHubPages()) {
-        // Remove leading '../' or '../../'
-        let cleanPath = path.replace(/^(?:\.\.\/)+/, '');
+        // Remove any leading slashes
+        let cleanPath = path.replace(/^\/+/, '');
         
-        // Prepend the repository name for GitHub Pages
-        const adjustedPath = `/kimsimon/${cleanPath}`;
+        // Construct the full GitHub Pages URL
+        const githubPagesUrl = `https://${window.location.hostname}`;
+        const repoName = 'kimsimon'; // Replace with your actual repository name
         
-        // Append ?raw=true for image files
-        if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
-            const finalPath = adjustedPath + '?raw=true';
-            console.log('Adjusted path for GitHub Pages:', finalPath);
-            return finalPath;
-        }
+        // Construct the adjusted path
+        const adjustedPath = `${githubPagesUrl}/${repoName}/${cleanPath}`;
+        
         console.log('Adjusted path for GitHub Pages:', adjustedPath);
         return adjustedPath;
     } else {
-        // For local development, just remove any leading '../'
-        const localPath = path.replace(/^(?:\.\.\/)+/, '');
+        // For local development, just ensure there's no leading slash
+        const localPath = path.replace(/^\/+/, '');
         console.log('Adjusted path for local:', localPath);
         return localPath;
     }
