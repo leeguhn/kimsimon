@@ -60,7 +60,7 @@ body, html {
 
 .content {
     flex-grow: 1;
-    padding: 2rem 1.5rem;
+    padding: 0rem 1.5rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -70,9 +70,9 @@ body, html {
 .content-wrapper {
     max-width: 2000px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 0 1.25rem 0;
     margin-left: -2rem;
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
 .content-wrapper > * {
@@ -342,3 +342,91 @@ video {
         width: 100%;
     }
 }
+
+.project-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: -20px;
+  }
+  
+  .project-nav {
+    display: flex;
+    align-items: center;
+    margin: 0 0 1.25rem 1rem;
+  }
+  
+  .project-link {
+    color: #888;
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+    font-size: 1.5625rem;
+    font-weight: bold;
+    line-height: 1;
+  } 
+
+  .project-link:hover {
+    color: blue;
+  }
+
+  .project-link.active {
+    color: red;
+  }
+
+  #page-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5625rem;
+    font-weight: bold;
+    color: #000;
+    line-height: 1;
+  }
+
+  .separator {
+    margin: 0 0 1.25rem 0.75rem;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5625rem;
+    line-height: 1;
+  }
+
+  #page-title.project-link {
+    color: #000;
+  }
+    
+  #project-content {
+    width: 100%;
+    margin-top: 2rem; /* Add margin-top to create space between the line and gallery */ 
+  }
+  
+  .project-gallery {
+    width: 100%;
+    position: relative;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Reduce font size for a more lowkey appearance */
+    padding: 0.5rem; /* Reduce padding for a more compact button */
+    cursor: pointer;
+    z-index: 1; /* Ensure the buttons are above the image */
+  }
+  
+  .gallery-prev {
+    left: 2rem; /* Move the left arrow outside the gallery */
+  }
+  
+  .gallery-next {
+    right: 2rem; /* Move the right arrow outside the gallery */
+  }
+
+  

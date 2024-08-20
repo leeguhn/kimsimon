@@ -1,3 +1,43 @@
+function setupGallery() {
+    const projectContent = document.getElementById('project-content');
+    if (projectContent) {
+        const images = document.querySelectorAll('#project-content img');
+        if (images.length > 0) {
+        const gallery = document.createElement('div');
+        gallery.className = 'project-gallery';
+        const img = document.createElement('img');
+        img.className = 'gallery-image';
+        img.src = images[0].src;
+        gallery.appendChild(img);
+    
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'gallery-nav gallery-prev';
+        prevBtn.textContent = '←';
+        gallery.appendChild(prevBtn);
+    
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'gallery-nav gallery-next';
+        nextBtn.textContent = '→';
+        gallery.appendChild(nextBtn);
+    
+        let currentIndex = 0;
+    
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            img.src = images[currentIndex].src;
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            img.src = images[currentIndex].src;
+        });
+    
+        projectContent.innerHTML = '';
+        projectContent.appendChild(gallery);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('content');
     const navLinks = document.querySelectorAll('nav a, h1 a');
@@ -7,15 +47,92 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPageIndex = 0;
 
     const pages = [
-        { id: 'home', file: 'content/home.md', title: 'Home' },
+        { id: 'home', file: 'content/home.md', title: '' },
         { id: 'about', file: 'content/about.md', title: 'About' },
         { id: 'contact', file: 'content/contact.md', title: 'Contact' },
-        { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics' },
+        { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics', 
+            projects: [
+                { id: 'artifact', file: 'content/ceramics/artifact.md', title: 'Artifact' },
+                { id: 'Habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
+                { id: 'Trip', file: 'content/ceramics/trip.md', title: 'Trip' },
+            ]
+        },
         { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing' },
         { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
         { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
         { id: 'test-image', file: 'test-image.html', title: 'Test Image' }
     ]
+
+    let currentPage = null; 
+
+    function setupProjectLinks(pageTitle) {
+        const page = pages.find(p => p.title === pageTitle);
+        if (!page) return;
+       
+        currentPage = page;
+        const projectHeader = document.querySelector('.project-header');
+       
+        if (projectHeader) {
+            projectHeader.innerHTML = ''; // Clear existing content
+       
+            // Add page title
+            const pageTitleElement = document.createElement('h2');
+            pageTitleElement.id = 'page-title';
+            pageTitleElement.textContent = page.title;
+            projectHeader.appendChild(pageTitleElement);
+       
+            // Add separator only if there are projects
+            if (page.projects && page.projects.length > 0) {
+                const separator = document.createElement('span');
+                separator.className = 'separator';
+                separator.textContent = ' / ';
+                projectHeader.appendChild(separator);
+            }
+       
+            // Add project nav
+            const projectNav = document.createElement('nav');
+            projectNav.className = 'project-nav';
+       
+            if (page.projects && page.projects.length > 0) {
+                page.projects.forEach(project => {
+                    const link = document.createElement('a');
+                    link.href = `#${project.id.toLowerCase()}`; // Use the 'id' property
+                    link.className = 'project-link';
+                    link.textContent = project.title; // Use the 'title' property
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        loadProject(project.file);
+                        document.querySelectorAll('.project-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    });
+                    projectNav.appendChild(link);
+                });
+            }
+       
+            projectHeader.appendChild(projectNav);
+        }
+    }           
+
+    async function loadProject(projectFile) {
+        if (!currentPage) return;
+    
+        const projectContent = document.getElementById('project-content');
+        if (!projectContent) {
+            console.error('Project content div not found');
+            return;
+        }
+    
+        try {
+            const response = await fetch(projectFile);
+            const markdown = await response.text();
+            const html = marked.parse(markdown);
+            projectContent.innerHTML = html;
+            setupGallery();
+        } catch (error) {
+            console.error('Error loading project:', error);
+            projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
+        }
+    }
 
     function isGitHubPages() {
         return window.location.hostname.endsWith('github.io');
@@ -56,49 +173,91 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             let text = await response.text();
             
-            if (file.endsWith('.html')) {
-                if (contentDiv) {
-                    contentDiv.innerHTML = text;
-                }
-            } else {
-                // For Markdown files, adjust image paths
-                text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
-                    const adjustedImagePath = adjustPath(imagePath);
-                    return `<div class="image-wrapper"><img src="${adjustedImagePath}" alt="${altText}"></div>`;
-                });
+            // For Markdown files, adjust image paths
+            text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
+                const adjustedImagePath = adjustPath(imagePath);
+                return `<div class="image-wrapper"><img src="${adjustedImagePath}" alt="${altText}"></div>`;
+            });
+            
+            let parsedHtml = marked.parse(text);
+            const contentDiv = document.getElementById('content');
+            if (contentDiv) {
+                // Clear the existing content
+                contentDiv.innerHTML = '';
+
+                // Create project header
+                const projectHeader = document.createElement('div');
+                projectHeader.className = 'project-header';
                 
-                let parsedHtml = marked.parse(text);
-                if (contentDiv) {
-                    contentDiv.innerHTML = parsedHtml;
-                    setupProjectLinks();
-                }
-            }
-            if (pageTitleElement) {
-                pageTitleElement.textContent = title !== 'Home' ? title : '';
+                // Add page title
+                const pageTitle = document.createElement('h2');
+                pageTitle.id = 'page-title';
+                pageTitle.className = 'project-link active';
+                pageTitle.textContent = title;
+                projectHeader.appendChild(pageTitle);
+
+                // Add separator
+                const separator = document.createElement('span');
+                separator.className = 'separator';
+                separator.textContent = ' / ';
+                projectHeader.appendChild(separator);
+
+                // Add project nav
+                const projectNav = document.createElement('nav');
+                projectNav.id = 'project-nav';
+                projectNav.className = 'project-nav';
+                projectHeader.appendChild(projectNav);
+
+                // Add project header to content
+                contentDiv.appendChild(projectHeader);
+
+                // Create project content div
+                const projectContent = document.createElement('div');
+                projectContent.id = 'project-content';
+                projectContent.innerHTML = parsedHtml;
+                contentDiv.appendChild(projectContent);
+
+                // Set up project links
+                setupProjectLinks(title);
             }
         } catch (error) {
             console.error('Error loading content:', error);
+            const contentDiv = document.getElementById('content');
             if (contentDiv) {
                 contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
             }
         }
     }
 
-    function setupProjectLinks() {
-        const projectItems = document.querySelectorAll('.project-grid > div');
-        projectItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const link = item.querySelector('a');
-                if (link) {
-                    const projectFile = link.getAttribute('href');
-                    const projectPath = `content/ceramics/${projectFile}`;
-                    loadContent(projectPath, link.textContent);
-                }
-            });
-        });
-    }
+    function setupPageHeader(pageTitle) {
+        const page = pages.find(p => p.title === pageTitle);
+        if (!page) return;
 
+        const pageHeader = document.querySelector('.page-header');
+        const mainTitle = pageHeader.querySelector('.main-title');
+        const subPages = pageHeader.querySelector('.sub-pages');
+
+        // Set main title
+        mainTitle.textContent = page.title;
+
+        // Clear and set sub-pages
+        subPages.innerHTML = '';
+        if (page.projects && page.projects.length > 0) {
+            page.projects.forEach(project => {
+                const link = document.createElement('a');
+                link.href = `#${project.toLowerCase()}`;
+                link.className = 'sub-page-link';
+                link.textContent = project;
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loadProject(project.toLowerCase());
+                    document.querySelectorAll('.sub-page-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+                subPages.appendChild(link);
+            });
+        }
+    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
@@ -156,11 +315,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextButton) nextButton.style.visibility = currentPageIndex < pages.length - 1 ? 'visible' : 'hidden';
     }
 
-    function loadPage(index) {
+    function loadPage(pageIdOrIndex) {
+        let index;
+        if (typeof pageIdOrIndex === 'number') {
+            index = pageIdOrIndex;
+        } else {
+            index = pages.findIndex(page => page.id === pageIdOrIndex);
+        }
+    
         if (index >= 0 && index < pages.length) {
             currentPageIndex = index;
-            loadContent(pages[index].file, pages[index].title);
+            const page = pages[index];
+            
+            // Load the main content
+            loadContent(page.file, page.title);
+            
             updateNavigation();
+        } else {
+            console.error('Invalid page index or ID');
         }
     }
 
@@ -169,12 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const href = link.getAttribute('href');
             const pageId = href.replace('.html', '');
-            const pageIndex = pages.findIndex(page => page.id === pageId);
-            if (pageIndex !== -1) {
-                loadPage(pageIndex);
-            }
+            loadPage(pageId);
         });
     });
+        
 
     if (prevButton) prevButton.addEventListener('click', () => loadPage(currentPageIndex - 1));
     if (nextButton) nextButton.addEventListener('click', () => loadPage(currentPageIndex + 1));
