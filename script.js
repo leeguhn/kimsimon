@@ -5,24 +5,24 @@ function isGitHubPages() {
 
 function adjustPath(path) {
     console.log('Original path:', path);
-    
-    // Check if we're on GitHub Pages
     if (isGitHubPages()) {
-        // Remove any leading slashes
-        let cleanPath = path.replace(/^\/+/, '');
+        // Remove leading '../' or '../../'
+        let cleanPath = path.replace(/^(?:\.\.\/)+/, '');
         
-        // Construct the full GitHub Pages URL
-        const githubPagesUrl = `https://${window.location.hostname}`;
-        const repoName = 'kimsimon'; // Replace with your actual repository name
+        // Prepend the repository name for GitHub Pages
+        const adjustedPath = `/kimsimon/${cleanPath}`;
         
-        // Construct the adjusted path
-        const adjustedPath = `${githubPagesUrl}/${repoName}/${cleanPath}`;
-        
+        // Append ?raw=true for image files
+        if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+            const finalPath = adjustedPath + '?raw=true';
+            console.log('Adjusted path for GitHub Pages:', finalPath);
+            return finalPath;
+        }
         console.log('Adjusted path for GitHub Pages:', adjustedPath);
         return adjustedPath;
     } else {
-        // For local development, just ensure there's no leading slash
-        const localPath = path.replace(/^\/+/, '');
+        // For local development, just remove any leading '../'
+        const localPath = path.replace(/^(?:\.\.\/)+/, '');
         console.log('Adjusted path for local:', localPath);
         return localPath;
     }
@@ -193,8 +193,18 @@ async function loadProject(projectFile) {
     }
 
     try {
-        const response = await fetch(projectFile);
-        const markdown = await response.text();
+        const adjustedProjectFile = adjustPath(projectFile);
+        console.log('Loading project from:', adjustedProjectFile);
+        const response = await fetch(adjustedProjectFile);
+        let markdown = await response.text();
+
+        // Adjust image paths in the Markdown content
+        markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
+            const adjustedImagePath = adjustPath(imagePath);
+            console.log('Image path:', adjustedImagePath);
+            return `![${altText}](${adjustedImagePath})`;
+        });
+
         const html = marked.parse(markdown);
         projectContent.innerHTML = html;
         setupGallery();
