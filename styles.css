@@ -406,7 +406,9 @@ video {
   
   .gallery-image {
     width: 100%;
-    height: auto;
+    height: 100%; /* Force the image to fill the container */
+    aspect-ratio: 3/2; 
+    object-fit: cover; /* Ensures the image covers the entire area without stretching */
   }
   
   .gallery-nav {
@@ -429,4 +431,67 @@ video {
     right: 2rem; /* Move the right arrow outside the gallery */
   }
 
-  
+  /* Justify row class for equal spacing */
+.justify-row {
+    display: flex;
+    justify-content: flex-start; /* Distributes space evenly */
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    margin: 0 -0.5rem; /* Adjusts margin for spacing */
+}
+
+.image-frame {
+    position: relative;
+    overflow: hidden; /* Hides overflow for zoom effect */
+    margin: 0.5rem; /* Space around each image */
+    max-width: calc(25% - 1em); /* Set max width to 1/4 of the content-wrapper */
+    height: auto; /* Maintain aspect ratio */
+    transition: box-shadow 0.3s ease, opacity 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.image-frame img {
+    display: block;
+    width: 100%; /* Ensures image fills the frame */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+}
+
+/* Subtle hover effect */
+.image-frame:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    opacity: 0.9; /* Slightly reduce opacity on hover */
+}
+
+/* GALLERY */
+
+#gallery-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.gallery-nav {
+    display: flex;
+    align-items: center;
+}
+
+#gallery-image {
+    max-width: 90%; /* Limit the size of the image */
+    max-height: 90%; /* Limit the height of the image */
+    margin: 0 1em; /* Space between the image and arrows */
+}
+
+#prev-button, #next-button, #close-button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}

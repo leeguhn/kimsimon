@@ -173,6 +173,7 @@ async function loadContent(file, title) {
 
             // Set up project links
             setupProjectLinks(title);
+
         }
     } catch (error) {
         console.error('Error loading content:', error);
@@ -181,6 +182,24 @@ async function loadContent(file, title) {
             contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
         }
     }
+}
+
+function setupFrames(projectContent) {
+    const images = projectContent.querySelectorAll('img'); // Get all images in the project content
+
+    // Create a new container for the frames
+    const framesContainer = document.createElement('div');
+    framesContainer.className = 'justify-row';
+
+    images.forEach(img => {
+        const imageFrame = document.createElement('div');
+        imageFrame.className = 'image-frame';
+        imageFrame.appendChild(img.cloneNode(true)); // Clone the image to keep the original in place
+        framesContainer.appendChild(imageFrame);
+    });
+
+    projectContent.innerHTML = ''; // Clear existing content in the project content
+    projectContent.appendChild(framesContainer); // Append the new frames container
 }
 
 async function loadProject(projectFile) {
@@ -197,6 +216,13 @@ async function loadProject(projectFile) {
         console.log('Loading project from:', adjustedProjectFile);
         const response = await fetch(adjustedProjectFile);
         let markdown = await response.text();
+        
+        // Check for the frames keyword
+        const hasFrames = markdown.includes('frames');
+        if (hasFrames) {
+            // Remove the frames keyword from the text
+            markdown = markdown.replace(/frames/g, '');
+        }
 
         // Adjust image paths in the Markdown content
         markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
@@ -207,7 +233,13 @@ async function loadProject(projectFile) {
 
         const html = marked.parse(markdown);
         projectContent.innerHTML = html;
-        setupGallery();
+
+        // Set up either the frames or the gallery based on the presence of the keyword
+        if (hasFrames) {
+            setupFrames(projectContent); // Set up the frames
+        } else {
+            setupGallery(); // Set up the gallery
+        }
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
@@ -226,11 +258,17 @@ const pages = [
     { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics', 
         projects: [
             { id: 'artifact', file: 'content/ceramics/artifact.md', title: 'Artifact' },
-            { id: 'Habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
-            { id: 'Trip', file: 'content/ceramics/trip.md', title: 'Trip' },
+            { id: 'habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
+            { id: 'trip', file: 'content/ceramics/trip.md', title: 'Trip' },
         ]
     },
-    { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing' },
+    { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
+        projects: [ 
+            { id: '108', file: 'content/drawing/108.md', title: '108' },
+            { id: '2022', file: 'content/drawing/2022.md', title: '2022' },
+            { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
+        ]
+    },
     { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
     { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
     { id: 'test-image', file: 'test-image.html', title: 'Test Image' }
@@ -294,19 +332,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showImagePreview(event) {
-        if (event.target.tagName === 'IMG' && !event.target.closest('.project-grid')) {
+        if (event.target.tagName === 'IMG') {
             const clickedImage = event.target;
-            images = Array.from(document.querySelectorAll('#content img:not(.project-grid img)'));
+            images = Array.from(document.querySelectorAll('.justify-row img')); // Get all images in the justify-row
             currentImageIndex = images.indexOf(clickedImage);
-            updatePreviewImage();
-            document.getElementById('image-preview-overlay').style.display = 'flex';
+            updateGalleryImage();
+            document.getElementById('gallery-overlay').style.display = 'flex'; // Show the gallery overlay
         }
     }
 
-    function updatePreviewImage() {
-        const previewImage = document.getElementById('preview-image');
-        previewImage.src = images[currentImageIndex].src;
-        previewImage.alt = images[currentImageIndex].alt;
+    function updateGalleryImage() {
+        const galleryImage = document.getElementById('gallery-image');
+        galleryImage.src = images[currentImageIndex].src; // Set the source of the gallery image
     }
 
     function showPreviousImage() {
