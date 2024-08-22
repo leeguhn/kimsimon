@@ -28,44 +28,69 @@ function adjustPath(path) {
     }
 }
 
-function setupGallery() {
+function setupGallery(startIndex, images) {
     const projectContent = document.getElementById('project-content');
-    if (projectContent) {
-        const images = document.querySelectorAll('#project-content img');
-        if (images.length > 0) {
-            const gallery = document.createElement('div');
-            gallery.className = 'project-gallery';
-            const img = document.createElement('img');
-            img.className = 'gallery-image';
-            img.src = images[0].src;
-            gallery.appendChild(img);
-        
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'gallery-nav gallery-prev';
-            prevBtn.textContent = '←';
-            gallery.appendChild(prevBtn);
-        
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'gallery-nav gallery-next';
-            nextBtn.textContent = '→';
-            gallery.appendChild(nextBtn);
-        
-            let currentIndex = 0;
-        
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                img.src = images[currentIndex].src;
-            });
-        
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % images.length;
-                img.src = images[currentIndex].src;
-            });
-        
-            projectContent.innerHTML = '';
-            projectContent.appendChild(gallery);
-        }
-    }
+    const originalContent = projectContent.innerHTML; // Store the original content
+
+    const gallery = document.createElement('div');
+    gallery.className = 'project-gallery';
+    
+    const img = document.createElement('img');
+    img.className = 'gallery-image';
+    img.src = images[startIndex].src;
+    gallery.appendChild(img);
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'gallery-nav gallery-prev btn btn-primary';
+    prevBtn.innerHTML = '<i class="bi bi-arrow-left"></i>';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'gallery-nav gallery-next btn btn-primary';
+    nextBtn.innerHTML = '<i class="bi bi-arrow-right"></i>';
+
+    /*
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'gallery-nav gallery-close btn btn-danger';
+    closeBtn.innerHTML = '<i class="bi bi-x"></i>';
+    */
+
+    gallery.appendChild(prevBtn);
+    gallery.appendChild(nextBtn);
+    // gallery.appendChild(closeBtn);
+
+    let currentIndex = startIndex;
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        img.src = images[currentIndex].src;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        img.src = images[currentIndex].src;
+    });
+
+    img.addEventListener('click', () => {
+        projectContent.innerHTML = originalContent; // Restore the original content
+        setupFrames(projectContent); // Re-setup the frames
+    });
+
+    /*
+    closeBtn.addEventListener('click', () => {
+        projectContent.innerHTML = originalContent; // Restore the original content
+        setupFrames(projectContent); // Re-setup the frames
+    });
+    */
+
+    projectContent.innerHTML = '';
+    projectContent.appendChild(gallery);
+}
+
+function createButton(text, className) {
+    const button = document.createElement('button');
+    button.className = className;
+    button.textContent = text;
+    return button;
 }
 
 // Functions that need to be accessible globally
@@ -185,21 +210,24 @@ async function loadContent(file, title) {
 }
 
 function setupFrames(projectContent) {
-    const images = projectContent.querySelectorAll('img'); // Get all images in the project content
-
-    // Create a new container for the frames
+    const images = projectContent.querySelectorAll('img');
     const framesContainer = document.createElement('div');
     framesContainer.className = 'justify-row';
 
-    images.forEach(img => {
+    images.forEach((img, index) => {
         const imageFrame = document.createElement('div');
         imageFrame.className = 'image-frame';
-        imageFrame.appendChild(img.cloneNode(true)); // Clone the image to keep the original in place
+        imageFrame.appendChild(img.cloneNode(true));
         framesContainer.appendChild(imageFrame);
+
+        imageFrame.addEventListener('click', () => {
+            setupGallery(index, Array.from(images));
+            showImagePreview({ target: img });
+        });
     });
 
-    projectContent.innerHTML = ''; // Clear existing content in the project content
-    projectContent.appendChild(framesContainer); // Append the new frames container
+    projectContent.innerHTML = '';
+    projectContent.appendChild(framesContainer);
 }
 
 async function loadProject(projectFile) {
@@ -216,7 +244,7 @@ async function loadProject(projectFile) {
         console.log('Loading project from:', adjustedProjectFile);
         const response = await fetch(adjustedProjectFile);
         let markdown = await response.text();
-        
+
         // Check for the frames keyword
         const hasFrames = markdown.includes('frames');
         if (hasFrames) {
@@ -234,11 +262,11 @@ async function loadProject(projectFile) {
         const html = marked.parse(markdown);
         projectContent.innerHTML = html;
 
-        // Set up either the frames or the gallery based on the presence of the keyword
         if (hasFrames) {
-            setupFrames(projectContent); // Set up the frames
+            setupFrames(projectContent);
         } else {
-            setupGallery(); // Set up the gallery
+            const images = Array.from(projectContent.querySelectorAll('img'));
+            setupGallery(0, images);
         }
     } catch (error) {
         console.error('Error loading project:', error);
@@ -278,8 +306,7 @@ const pages = [
 document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('content');
     const navLinks = document.querySelectorAll('nav a, h1 a');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
+
     const pageTitleElement = document.getElementById('page-title');
     let currentPageIndex = 0;
 
@@ -334,10 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function showImagePreview(event) {
         if (event.target.tagName === 'IMG') {
             const clickedImage = event.target;
-            images = Array.from(document.querySelectorAll('.justify-row img')); // Get all images in the justify-row
+            images = Array.from(document.querySelectorAll('.justify-row img'));
             currentImageIndex = images.indexOf(clickedImage);
-            updateGalleryImage();
-            document.getElementById('gallery-overlay').style.display = 'flex'; // Show the gallery overlay
+            setupGallery(currentImageIndex, images);
         }
     }
 
@@ -395,9 +421,6 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(pageId);
         });
     });
-
-    if (prevButton) prevButton.addEventListener('click', () => loadPage(currentPageIndex - 1));
-    if (nextButton) nextButton.addEventListener('click', () => loadPage(currentPageIndex + 1));
 
     // Initialize
     createImagePreview();
