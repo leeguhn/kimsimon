@@ -276,8 +276,8 @@ function setupTripFrames(projectContent) {
                 framesContainer.appendChild(portraitContainer);
                 projectContent.innerHTML = '';
                 projectContent.appendChild(framesContainer);
-                document.querySelector('.content-wrapper').classList.add('trip');
-                document.querySelector('.content').classList.add('loaded');
+                //document.querySelector('.content-wrapper').classList.add('trip');
+                //document.querySelector('.content').classList.add('loaded');
             }
         };
 

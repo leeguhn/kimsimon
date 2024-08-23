@@ -67,16 +67,6 @@ body, html {
     align-items: flex-start;
 }
 
-.content-wrapper {
-    max-width: none;
-    width: 100%;
-    padding-right: 2rem;
-    margin: 0 0 1.25rem 0;
-  
-    padding: 1rem;
-    box-sizing: border-box; 
-}
-
 .no-scrolling {
     overflow: hidden;
     height: 100vh;
@@ -552,8 +542,10 @@ video {
     opacity: 1;
 }
 
-.content-wrapper.trip {
+.content-wrapper {
     max-width: none;
     width: 100%;
     padding-right: 2rem;
+    margin: 0 0 1.25rem 0;
+    padding: 1rem;
 }
