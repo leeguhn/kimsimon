@@ -28,9 +28,9 @@ function adjustPath(path) {
     }
 }
 
-function setupGallery(startIndex, images) {
+function setupGallery(startIndex, images, isTrip = false) {
     const projectContent = document.getElementById('project-content');
-    const originalContent = projectContent.innerHTML; // Store the original content
+    const originalContent = projectContent.innerHTML;
 
     const gallery = document.createElement('div');
     gallery.className = 'project-gallery';
@@ -48,42 +48,36 @@ function setupGallery(startIndex, images) {
     nextBtn.className = 'gallery-nav gallery-next btn btn-primary';
     nextBtn.innerHTML = '<i class="bi bi-arrow-right"></i>';
 
-    /*
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'gallery-nav gallery-close btn btn-danger';
-    closeBtn.innerHTML = '<i class="bi bi-x"></i>';
-    */
-
     gallery.appendChild(prevBtn);
     gallery.appendChild(nextBtn);
-    // gallery.appendChild(closeBtn);
 
     let currentIndex = startIndex;
 
+    const updateImage = () => {
+        img.src = images[currentIndex].src;
+    };
+
     prevBtn.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
-        img.src = images[currentIndex].src;
+        updateImage();
     });
-
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % images.length;
-        img.src = images[currentIndex].src;
+        updateImage();
     });
 
     img.addEventListener('click', () => {
-        projectContent.innerHTML = originalContent; // Restore the original content
-        setupFrames(projectContent); // Re-setup the frames
+        projectContent.innerHTML = originalContent;
+        if (isTrip) {
+            setupTripFrames(projectContent);
+        } else {
+            setupFrames(projectContent);
+        }
     });
-
-    /*
-    closeBtn.addEventListener('click', () => {
-        projectContent.innerHTML = originalContent; // Restore the original content
-        setupFrames(projectContent); // Re-setup the frames
-    });
-    */
 
     projectContent.innerHTML = '';
     projectContent.appendChild(gallery);
+    updateImage();
 }
 
 function createButton(text, className) {
@@ -159,6 +153,14 @@ async function loadContent(file, title) {
         });
         
         let parsedHtml = marked.parse(text);
+
+        // Check for no-scrolling option
+        if (text.includes('no-scrolling')) {
+            document.body.classList.add('no-scrolling');
+        } else {
+            document.body.classList.remove('no-scrolling');
+        }
+
         const contentDiv = document.getElementById('content');
         if (contentDiv) {
             // Clear the existing content
@@ -221,13 +223,84 @@ function setupFrames(projectContent) {
         framesContainer.appendChild(imageFrame);
 
         imageFrame.addEventListener('click', () => {
-            setupGallery(index, Array.from(images));
+            setupGallery(index, Array.from(images), false);
             showImagePreview({ target: img });
         });
     });
 
     projectContent.innerHTML = '';
     projectContent.appendChild(framesContainer);
+}
+
+function setupTripFrames(projectContent) {
+    const images = projectContent.querySelectorAll('img');
+    const framesContainer = document.createElement('div');
+    framesContainer.className = 'trip-gallery';
+
+    const landscapeContainer = document.createElement('div');
+    landscapeContainer.className = 'trip-landscape-container';
+    const portraitContainer = document.createElement('div');
+    portraitContainer.className = 'trip-portrait-container';
+
+    const landscapeImages = [];
+    const portraitImages = [];
+
+    images.forEach((img) => {
+        const imageFrame = document.createElement('div');
+        imageFrame.className = 'trip-frame';
+        const innerFrame = document.createElement('div');
+        innerFrame.className = 'trip-inner-frame';
+        const imgClone = img.cloneNode(true);
+
+        imgClone.onload = () => {
+            const aspectRatio = imgClone.naturalWidth / imgClone.naturalHeight;
+            if (aspectRatio > 1) {
+                landscapeImages.push(imageFrame);
+                imageFrame.classList.add('landscape');
+            } else {
+                portraitImages.push(imageFrame);
+                innerFrame.classList.add('portrait');
+            }
+
+            innerFrame.appendChild(imgClone);
+            imageFrame.appendChild(innerFrame);
+
+            imageFrame.addEventListener('click', () => {
+                setupGallery(images.indexOf(img), Array.from(images), true);
+            });
+
+            if (landscapeImages.length + portraitImages.length === images.length) {
+                organizeFrames(landscapeContainer, landscapeImages);
+                organizeFrames(portraitContainer, portraitImages);
+                framesContainer.appendChild(landscapeContainer);
+                framesContainer.appendChild(portraitContainer);
+                projectContent.innerHTML = '';
+                projectContent.appendChild(framesContainer);
+                document.querySelector('.content-wrapper').classList.add('trip');
+                document.querySelector('.content').classList.add('loaded');
+            }
+        };
+
+        if (imgClone.complete) {
+            imgClone.onload();
+        }
+    });
+}
+
+function organizeFrames(container, frames) {
+    const containerHeight = window.innerHeight - 100; // Subtract some space for margins
+    const frameHeight = 170; // Height of each frame
+    const maxFramesPerColumn = Math.floor(containerHeight / frameHeight);
+    const numColumns = Math.ceil(frames.length / maxFramesPerColumn);
+
+    for (let i = 0; i < numColumns; i++) {
+        const column = document.createElement('div');
+        column.className = 'trip-column';
+        for (let j = i * maxFramesPerColumn; j < (i + 1) * maxFramesPerColumn && j < frames.length; j++) {
+            column.appendChild(frames[j]);
+        }
+        container.appendChild(column);
+    }
 }
 
 async function loadProject(projectFile) {
@@ -239,6 +312,9 @@ async function loadProject(projectFile) {
         return;
     }
 
+    // Hide content while loading
+    projectContent.style.opacity = '0';
+
     try {
         const adjustedProjectFile = adjustPath(projectFile);
         console.log('Loading project from:', adjustedProjectFile);
@@ -247,10 +323,10 @@ async function loadProject(projectFile) {
 
         // Check for the frames keyword
         const hasFrames = markdown.includes('frames');
-        if (hasFrames) {
-            // Remove the frames keyword from the text
-            markdown = markdown.replace(/frames/g, '');
-        }
+        const isTrip = markdown.includes('trip');
+
+        // Remove the keywords from the text
+        //markdown = markdown.replace(/frames|trip/g, '');
 
         // Adjust image paths in the Markdown content
         markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
@@ -263,11 +339,20 @@ async function loadProject(projectFile) {
         projectContent.innerHTML = html;
 
         if (hasFrames) {
-            setupFrames(projectContent);
+            if (isTrip) {
+                setupTripFrames(projectContent);
+            } else {
+                setupFrames(projectContent);
+            }
         } else {
             const images = Array.from(projectContent.querySelectorAll('img'));
-            setupGallery(0, images);
+            setupGallery(0, images, false);
         }
+
+        // Show content after loading
+        setTimeout(() => {
+            projectContent.style.opacity = '1';
+        }, 100);
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
@@ -359,11 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showImagePreview(event) {
-        if (event.target.tagName === 'IMG') {
-            const clickedImage = event.target;
-            images = Array.from(document.querySelectorAll('.justify-row img'));
+        if (event.target.closest('.image-frame') || event.target.closest('.trip-frame')) {
+            const clickedImage = event.target.tagName === 'IMG' ? event.target : event.target.querySelector('img');
+            const isTrip = !!event.target.closest('.trip-frame');
+            images = Array.from(document.querySelectorAll(isTrip ? '.trip-frame img' : '.image-frame img'));
             currentImageIndex = images.indexOf(clickedImage);
-            setupGallery(currentImageIndex, images);
+            setupGallery(currentImageIndex, images, isTrip);
         }
     }
 

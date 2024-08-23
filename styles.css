@@ -68,11 +68,18 @@ body, html {
 }
 
 .content-wrapper {
-    max-width: 2000px;
+    max-width: none;
     width: 100%;
+    padding-right: 2rem;
     margin: 0 0 1.25rem 0;
-    margin-left: -2rem;
+  
     padding: 1rem;
+    box-sizing: border-box; 
+}
+
+.no-scrolling {
+    overflow: hidden;
+    height: 100vh;
 }
 
 .content-wrapper > * {
@@ -118,14 +125,6 @@ body, html {
 .content p {
     font-size: 1.25rem;
     margin-bottom: 0.5em;
-}
-
-.content img,
-.content video {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 1rem;
 }
 
 .content img[src$=".gif"] {
@@ -239,7 +238,7 @@ body, html {
     font-family: "Helvetica Neue", sans-serif;
 }
 
-/* Prevent thumbnails from being previewed */
+/* Prevent thumbnails from  ing previewed */
 .project-grid img {
     pointer-events: none;
 }
@@ -378,12 +377,20 @@ video {
     align-items: center;
     position: relative;
     }
+
+    .gallery-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
   
     .gallery-image {
         max-width: 90%;
         max-height: 90%;
-        aspect-ratio: auto;
-        object-fit: cover;
+
+        object-fit: contain;
         cursor: pointer;
     }
   
@@ -403,11 +410,11 @@ video {
     
   
     .gallery-prev {
-    left: 2.5rem; /* Move the left arrow outside the gallery */
+    left: 1rem; /* Move the left arrow outside the gallery */
   }
   
   .gallery-next {
-    right: 2.5rem; /* Move the right arrow outside the gallery */
+    right: 1rem; /* Move the right arrow outside the gallery */
   }
 
   .gallery-close {
@@ -452,4 +459,101 @@ video {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
     opacity: 0.9; /* Slightly reduce opacity on hover */
     cursor: pointer;
+}
+
+/* TRIP */
+
+.trip-gallery {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    height: calc(100vh - 100px);
+    overflow-x: auto;
+    padding-right: 2rem;
+}
+
+.trip-landscape-container,
+.trip-portrait-container {
+    display: flex;
+
+    height: 100%;
+}
+
+.trip-landscape-container {
+    flex: 2;
+    gap: 1.5rem;
+}
+
+.trip-portrait-container {
+    flex: 3;
+    gap: 1.5rem;
+}
+
+.trip-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+}
+
+.trip-frame {
+    background: #000;
+    padding: 0.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.05);
+    max-width: 200px;
+    height: 135px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s ease;
+}
+
+.trip-frame:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.trip-frame.landscape {
+    width: 180px; /* Adjust this value as needed */
+}
+
+.trip-inner-frame {
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.trip-inner-frame.portrait {
+    padding: 0.5rem 0.5rem;
+    width: 100px;
+}
+
+.trip-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0;
+    box-shadow: none;
+    scale: 0.75;
+}
+
+.trip-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.trip-content.loaded {
+    opacity: 1;
+}
+
+.content-wrapper.trip {
+    max-width: none;
+    width: 100%;
+    padding-right: 2rem;
 }
