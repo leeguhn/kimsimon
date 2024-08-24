@@ -382,7 +382,11 @@ const pages = [
             { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
         ]
     },
-    { id: 'painting', file: 'content/painting/index.md', title: 'Painting' },
+    { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
+        projects: [
+            { id: 'it doesnt matter what i paint', file: 'content/painting/itdoesntmatterwhatipaint.md', title: 'Now' },
+        ]
+     },
     { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
     { id: 'test-image', file: 'test-image.html', title: 'Test Image' }
 ];
