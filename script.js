@@ -388,7 +388,17 @@ const pages = [
         ]
      },
     { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
-    { id: 'test-image', file: 'test-image.html', title: 'Test Image' }
+    { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
+        projects: [
+            { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
+            { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
+        ]
+    },
+    { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
+        projects: [
+            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' }
+        ]
+    },
 ];
 
 // Main script (inside DOMContentLoaded)

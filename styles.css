@@ -276,6 +276,7 @@ video {
     height: auto;
     display: block;
     margin-bottom: 1rem;
+    object-fit: contain;
 }
 
 /* Media query for smaller screens */
