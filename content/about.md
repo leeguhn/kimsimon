@@ -1,4 +1,4 @@
-I am an artist from Seoul, South Korea. I am currently an MFA candidate at the University of Chicago (DoVA). i am asexual. 
+I am an artist from Seoul, South Korea. I have recently completed my MFA at the University of Chicago (DoVA).
 
 My nomadic upbringing has led me to pay attention to the spatial and emotional gaps that are present within and between people and everything else. 
 

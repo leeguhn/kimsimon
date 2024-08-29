@@ -1,4 +1,4 @@
-Yo please feel free to connect with me via email: 
+Please feel free to connect with me via email: 
 
 leeguhn@uchicago.edu
 

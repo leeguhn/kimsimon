@@ -387,7 +387,12 @@ const pages = [
             { id: 'it doesnt matter what i paint', file: 'content/painting/itdoesntmatterwhatipaint.md', title: 'Now' },
         ]
      },
-    { id: 'photography', file: 'content/photography/index.md', title: 'Photography' },
+    { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 
+        projects: [
+            { id: '2020-22', file: 'content/photography/2020-22.md', title: '2020 - 22' },
+            { id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
+        ]
+    },
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
         projects: [
             { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
