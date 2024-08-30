@@ -12,9 +12,9 @@ body, html {
 }
 
 .sidebar {
-    width: 15%;
-    min-width: 100px;
-    height: 100%;
+    width: 15vw; /* Use viewport width */
+    min-width: 222px; /* Minimum width to prevent cramming */
+    height: 100vh; /* Use viewport height */
     overflow-y: auto;
     background-color: white;
     padding: 2rem 1.5rem;

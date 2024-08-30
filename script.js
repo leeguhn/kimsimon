@@ -378,7 +378,7 @@ const pages = [
     { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
         projects: [ 
             { id: '108', file: 'content/drawing/108.md', title: '108' },
-            { id: '2022', file: 'content/drawing/2022.md', title: '2022' },
+            //{ id: '2022', file: 'content/drawing/2022.md', title: '2022' },
             { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
         ]
     },
@@ -390,7 +390,7 @@ const pages = [
     { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 
         projects: [
             { id: '2020-22', file: 'content/photography/2020-22.md', title: '2020 - 22' },
-            { id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
+            //{ id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
         ]
     },
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
@@ -509,7 +509,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const page = pages[index];
             
             // Load the main content
-            loadContent(page.file, page.title);
+            loadContent(page.file, page.title).then(() => {
+                // Set the first project link to active (red)
+                const projectLinks = document.querySelectorAll('.project-link');
+                if (projectLinks.length > 0) {
+                    projectLinks.forEach(link => link.classList.remove('active'));
+                    projectLinks[0].classList.add('active');
+                }
+                
+                // If the page has projects, load the first project without triggering a reload
+                if (page.projects && page.projects.length > 0) {
+                    loadProject(page.projects[0].file, true);
+                }
+            });
             
             updateNavigation();
         } else {
@@ -530,6 +542,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     createImagePreview();
     document.getElementById('content').addEventListener('click', showImagePreview);
+
+    
 
     // Load default content
     loadPage(pages.findIndex(page => page.id === 'home'));
