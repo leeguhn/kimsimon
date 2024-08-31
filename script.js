@@ -496,6 +496,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextButton) nextButton.style.visibility = currentPageIndex < pages.length - 1 ? 'visible' : 'hidden';
     }
 
+    function updateActiveLink(pageId) {
+        navLinks.forEach(link => {
+            const linkPageId = link.getAttribute('href').replace('.html', '');
+            if (linkPageId === pageId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const pageId = href.replace('.html', '');
+            loadPage(pageId);
+            updateActiveLink(pageId);
+        });
+    });
+
     function loadPage(pageIdOrIndex) {
         let index;
         if (typeof pageIdOrIndex === 'number') {
@@ -507,6 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index >= 0 && index < pages.length) {
             currentPageIndex = index;
             const page = pages[index];
+
+            updateActiveLink(page.id);
             
             // Load the main content
             loadContent(page.file, page.title).then(() => {
@@ -528,23 +551,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Invalid page index or ID');
         }
     }
-
-    // Event listeners
-    navLinks.forEach((link) => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            const pageId = href.replace('.html', '');
-            loadPage(pageId);
-        });
-    });
-
     // Initialize
     createImagePreview();
     document.getElementById('content').addEventListener('click', showImagePreview);
 
-    
-
     // Load default content
     loadPage(pages.findIndex(page => page.id === 'home'));
+    updateActiveLink('home');
 });

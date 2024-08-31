@@ -33,13 +33,17 @@ body, html {
 .sidebar h1 {
     font-size: 1.5625rem;
     margin: 0 0 0.25rem 0;
-    color: red;
 }
 
 .sidebar h1 a {
     text-decoration: none;
-    color: inherit;
+    color: red;
     font-size: inherit;
+}
+
+.sidebar h1 a:hover,
+.sidebar h1 a.active {
+    color: red;
 }
 
 .sidebar ul {
@@ -56,6 +60,12 @@ body, html {
     text-decoration: none;
     font-size: 1.25rem;
     color: black;
+    transition: color 0.3s ease;
+}
+
+.sidebar a.active {
+    color: black;
+    font-weight: bold;
 }
 
 .content {
