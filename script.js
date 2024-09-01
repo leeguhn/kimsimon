@@ -29,6 +29,12 @@ function adjustPath(path) {
 }
 
 function setupGallery(startIndex, images, isTrip = false) {
+
+    if (window.innerWidth <= 768) {
+        setupFrames(document.getElementById('project-content'));
+        return;
+    }
+
     const projectContent = document.getElementById('project-content');
     const originalContent = projectContent.innerHTML;
 
@@ -558,4 +564,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load default content
     loadPage(pages.findIndex(page => page.id === 'home'));
     updateActiveLink('home');
+
+    function setupMobileNavigation() {
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileSidebar = document.querySelector('.mobile-sidebar');
+        const mobileNavIcon = mobileNavToggle.querySelector('i');
+    
+        if (mobileNavToggle && mobileSidebar && mobileNavIcon) {
+            mobileNavToggle.addEventListener('click', () => {
+                mobileSidebar.classList.toggle('active');
+                mobileNavIcon.classList.toggle('bi-chevron-down');
+                mobileNavIcon.classList.toggle('bi-chevron-up');
+                mobileNavIcon.classList.toggle('rotate');
+            });
+    
+            // Close mobile sidebar when a link is clicked
+            const mobileLinks = mobileSidebar.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mobileSidebar.classList.remove('active');
+                    mobileNavIcon.classList.remove('bi-chevron-up');
+                    mobileNavIcon.classList.add('bi-chevron-down');
+                    mobileNavIcon.classList.remove('rotate');
+                    
+                    // Load the page content
+                    const href = link.getAttribute('href');
+                    const pageId = href.replace('.html', '');
+                    loadPage(pageId);
+                });
+            });
+        }
+    }
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            const projectContent = document.querySelector('#content');
+            const gallery = document.querySelector('.project-gallery');
+            if (projectContent && gallery) {
+                setupFrames(projectContent);
+            }
+        }
+    });
+
+        // Ensure frames mode is default on mobile
+    document.addEventListener('DOMContentLoaded', () => {
+        const projectContent = document.querySelector('#content');
+        if (projectContent && window.innerWidth <= 768) {
+            setupFrames(projectContent);
+        }
+        setupMobileNavigation();
+    });
+    
 });
