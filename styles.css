@@ -466,15 +466,28 @@ body, html {
         padding: 1rem;
     }
 
+   .mobile-nav-header {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 0rem; 
+        background-color: white; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+    }
+
     .mobile-title {
         font-size: 1.5625rem;
         margin: 0 0 0rem 0;
+        z-index: 1001;
     }
 
     .mobile-title a {
         text-decoration: none;
         color: red;
         font-weight: bold;
+        z-index: 1001;
     }
 
     .mobile-nav-toggle {
@@ -485,14 +498,15 @@ body, html {
         font-size: 1.5rem;
         background: none;
         border: none;
-        color: #000;
+        color: black;
         display: block;
+        cursor: pointer;
     }
 
     .mobile-sidebar {
         display: none;
         position: fixed;
-        top: 0;
+        top: -1rem;
         left: 0;
         width: 100%;
         height: 100%;
@@ -528,13 +542,14 @@ body, html {
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 0.5rem; /* Reduce spacing between Ceramics and Artifact */
+        margin-top: 2.77rem;
     }
 
     .project-nav {
         display: flex;
         flex-direction: column;
         align-items: flex-start !important;
-        margin-top: 0.5rem; /* Reduce spacing between Ceramics and Artifact */
+        margin-top: -0.5rem; /* Reduce spacing between Ceramics and Artifact */
         padding-left: 1rem; /* Align project links */
     }
 
@@ -553,7 +568,7 @@ body, html {
 
     .content-wrapper {
         padding: 0 1rem; 
-        margin-top: -1rem;
+        margin-top: -3rem;
     }
 
     .project-grid > div {
