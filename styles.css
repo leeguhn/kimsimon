@@ -118,6 +118,7 @@ body, html {
 .content p {
     font-size: 1.25rem;
     margin-bottom: 0.5em;
+    
 }
 
 .content img[src$=".gif"] {
@@ -451,10 +452,30 @@ body, html {
     display: none;
 }
 
+
+/* Hide both images by default */
+.desktop-image, .mobile-image {
+    display: none;
+}
+
+.hide-paragraphs p {
+    color: white;
+}
+
+@media (min-width: 769px) {
+    .desktop-image {
+        display: none;
+    }
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+    }
+
+    .mobile-image {
+        display: none;
     }
 
     .sidebar {

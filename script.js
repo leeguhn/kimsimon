@@ -3,6 +3,54 @@ function isGitHubPages() {
     return window.location.hostname.endsWith('github.io');
 }
 
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+function showAppropriateImage() {   
+
+
+    const images = document.querySelectorAll('#content img');
+    if (images.length === 2) {
+        const [image1, image2] = images;
+
+        // Ensure images are loaded before checking aspect ratios
+        const checkAspectRatios = () => {
+            const aspectRatio1 = image1.naturalWidth / image1.naturalHeight;
+            const aspectRatio2 = image2.naturalWidth / image2.naturalHeight;
+
+            console.log('Aspect Ratios:', aspectRatio1, aspectRatio2);
+
+            if (isMobile()) {
+                if (aspectRatio1 < aspectRatio2) {
+                    image1.style.display = 'block';
+                    image2.style.display = 'none';
+                } else {
+                    image1.style.display = 'none';
+                    image2.style.display = 'block';
+                }
+            } else {
+                if (aspectRatio1 > aspectRatio2) {
+                    image1.style.display = 'block';
+                    image2.style.display = 'none';
+                } else {
+                    image1.style.display = 'none';
+                    image2.style.display = 'block';
+                }
+            }
+        };
+
+        if (image1.complete && image2.complete) {
+            checkAspectRatios();
+        } else {
+            image1.addEventListener('load', checkAspectRatios);
+            image2.addEventListener('load', checkAspectRatios);
+        }
+    } else {
+        console.log('Expected 2 images, found:', images.length);
+    }
+}
+
 function adjustPath(path) {
     console.log('Original path:', path);
     if (isGitHubPages()) {
@@ -207,6 +255,11 @@ async function loadContent(file, title) {
             // Set up project links
             setupProjectLinks(title);
 
+            // Check for the "phone" keyword
+            if (text.includes('phone')) {
+                showAppropriateImage();
+                projectContent.classList.add('hide-paragraphs');
+            }
         }
     } catch (error) {
         console.error('Error loading content:', error);
@@ -331,6 +384,7 @@ async function loadProject(projectFile) {
         const hasFrames = markdown.includes('frames');
         const isTrip = markdown.includes('trip');
 
+
         // Remove the keywords from the text
         //markdown = markdown.replace(/frames|trip/g, '');
 
@@ -419,6 +473,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pageTitleElement = document.getElementById('page-title');
     let currentPageIndex = 0;
+
+    setupMobileNavigation();
 
     function setupPageHeader(pageTitle) {
         const page = pages.find(p => p.title === pageTitle);
@@ -565,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         const mobileSidebar = document.querySelector('.mobile-sidebar');
         const mobileNavIcon = mobileNavToggle ? mobileNavToggle.querySelector('i') : null;
-    
+        
         console.log('mobileNavToggle:', mobileNavToggle);
         console.log('mobileSidebar:', mobileSidebar);
         console.log('mobileNavIcon:', mobileNavIcon);
@@ -596,22 +652,35 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const mobileLinks = mobileSidebar.querySelectorAll('a');
             mobileLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
+                link.addEventListener('click', async (e) => {
                     e.preventDefault();
-                    toggleSidebar();
                     const href = link.getAttribute('href');
                     const pageId = href.replace('.html', '');
-                    loadPage(pageId);
+                    await loadPage(pageId);
+                    toggleSidebar();
                 });
             });
+
+            // Add event listener for the "Simon Kim" link
+            const mobileTitleLink = document.querySelector('.mobile-title a');
+            if (mobileTitleLink) {
+                mobileTitleLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = mobileTitleLink.getAttribute('href');
+                    const pageId = href.replace('.html', '');
+                    loadPage(pageId);
+                    if (mobileSidebar.classList.contains('active')) {
+                        toggleSidebar();
+                    }
+                });
+            }
+        
         } else {
             console.log('One or more required elements not found');
         }
     }
 
-    function isMobile() {
-        return window.innerWidth <= 768;
-    }
+
 
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
@@ -623,6 +692,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    window.addEventListener('resize', showAppropriateImage);
+
         // Ensure frames mode is default on mobile
     document.addEventListener('DOMContentLoaded', () => {
         const projectContent = document.querySelector('#content');
@@ -630,6 +701,5 @@ document.addEventListener('DOMContentLoaded', () => {
             setupFrames(projectContent);
         }
     });
-    
-    setupMobileNavigation();
+
 });
