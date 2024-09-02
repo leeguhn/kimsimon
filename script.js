@@ -575,11 +575,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
             function toggleSidebar() {
                 mobileSidebar.classList.toggle('active');
-                mobileNavIcon.classList.toggle('bi-chevron-down');
-                mobileNavIcon.classList.toggle('bi-chevron-up');
                 mobileNavIcon.classList.toggle('rotate');
                 console.log('Sidebar active:', mobileSidebar.classList.contains('active'));
-                console.log('Arrow clicked and processed successfully');
+                console.log('Chevron rotate class:', mobileNavIcon.classList.contains('rotate'));
             }
     
             mobileNavToggle.addEventListener('click', (e) => {

@@ -504,7 +504,7 @@ body, html {
     }
 
     .mobile-sidebar {
-        display: none;
+        display: block;
         position: fixed;
         top: -1rem;
         left: 0;
@@ -513,10 +513,23 @@ body, html {
         background-color: white;
         z-index: 999;
         padding: 4rem 1rem 1rem;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
     }
     
     .mobile-sidebar.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Add transition for the chevron icon */
+    .mobile-nav-toggle i {
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-nav-toggle i.rotate {
+        transform: rotate(180deg);
     }
 
     .mobile-sidebar ul {
