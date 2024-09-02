@@ -576,6 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadPage(pageIdOrIndex) {
         let index;
+
         if (typeof pageIdOrIndex === 'number') {
             index = pageIdOrIndex;
         } else {
@@ -657,6 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const href = link.getAttribute('href');
                     const pageId = href.replace('.html', '');
                     await loadPage(pageId);
+                    await new Promise(resolve => setTimeout(resolve, 222));
                     toggleSidebar();
                 });
             });
@@ -664,11 +666,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add event listener for the "Simon Kim" link
             const mobileTitleLink = document.querySelector('.mobile-title a');
             if (mobileTitleLink) {
-                mobileTitleLink.addEventListener('click', (e) => {
+                mobileTitleLink.addEventListener('click', async (e) => {
                     e.preventDefault();
                     const href = mobileTitleLink.getAttribute('href');
                     const pageId = href.replace('.html', '');
-                    loadPage(pageId);
+                    await loadPage(pageId);
                     if (mobileSidebar.classList.contains('active')) {
                         toggleSidebar();
                     }
