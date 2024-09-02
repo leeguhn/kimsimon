@@ -513,7 +513,7 @@ body, html {
         background-color: white;
         z-index: 999;
         padding: 4rem 1rem 1rem;
-        transition: transform 0.3s ease;
+        transition: transform 0.666s ease;
         transform: translateX(-100%);
     }
     
@@ -525,7 +525,8 @@ body, html {
 
     /* Add transition for the chevron icon */
     .mobile-nav-toggle i {
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, font-size 0.3s ease;
+        font-size: 1.7rem;
     }
 
     .mobile-nav-toggle i.rotate {
@@ -618,5 +619,10 @@ body, html {
     .rotate {
         transform: rotate(180deg);
         transition: transform 0.3s ease;
+    }
+
+    /* Remove touch highlight effect on mobile devices */
+    * {
+        -webkit-tap-highlight-color: none;
     }
 }

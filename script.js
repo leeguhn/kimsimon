@@ -575,9 +575,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
             function toggleSidebar() {
                 mobileSidebar.classList.toggle('active');
-                mobileNavIcon.classList.toggle('rotate');
+                if (mobileSidebar.classList.contains('active')) {
+                    setTimeout(() => {
+                        mobileNavIcon.classList.remove('bi-list');
+                        mobileNavIcon.classList.add('bi-x');
+                    }, 111); // Match the sidebar transition duration
+                } else {
+                    mobileNavIcon.classList.remove('bi-x');
+                    mobileNavIcon.classList.add('bi-list');
+                }
                 console.log('Sidebar active:', mobileSidebar.classList.contains('active'));
-                console.log('Chevron rotate class:', mobileNavIcon.classList.contains('rotate'));
+                console.log('Icon class:', mobileNavIcon.className);
             }
     
             mobileNavToggle.addEventListener('click', (e) => {
