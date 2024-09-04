@@ -2,10 +2,10 @@
 
 ![landscape2](../../images/ceramics/habitat/landscape2.jpeg)
 
-![stairs](../../images/ceramics/habitat/stairs.jpeg)
+![purple](../../images/ceramics/habitat/purple.jpeg)
 
 ![purplegreen](../../images/ceramics/habitat/purplegreen.jpeg)
 
-![purple](../../images/ceramics/habitat/purple.jpeg)
+![stairs](../../images/ceramics/habitat/stairs.jpeg)
 
 ![blueball](../../images/ceramics/habitat/blueball.jpg)

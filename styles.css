@@ -636,7 +636,7 @@ body, html {
         margin-bottom: 0.5rem; /* Reduce spacing between Ceramics and Artifact */
         margin-top: 2.77rem;
         opacity: 1 !important;
-        transition: none !important;
+        transition: none !important; 
     }
 
     .project-nav {

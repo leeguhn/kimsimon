@@ -1,3 +1,49 @@
+// Global variables
+let currentPage = null;
+let images = [];
+let currentImageIndex = 0;
+
+const pages = [
+    { id: 'home', file: 'content/home.md', title: '' },
+    { id: 'about', file: 'content/about.md', title: 'About' },
+    { id: 'contact', file: 'content/contact.md', title: 'Contact' },
+    { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics', 
+        projects: [
+            { id: 'artifact', file: 'content/ceramics/artifact.md', title: 'Artifact' },
+            { id: 'habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
+            { id: 'trip', file: 'content/ceramics/trip.md', title: 'Trip' },
+        ]
+    },
+    { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
+        projects: [ 
+            { id: '108', file: 'content/drawing/108.md', title: '108' },
+            { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
+        ]
+    },
+    { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
+        projects: [
+            { id: 'it doesnt matter what i paint', file: 'content/painting/itdoesntmatterwhatipaint.md', title: 'Now' },
+        ]
+     },
+    { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 
+        projects: [
+            { id: '2020-22', file: 'content/photography/2020-22.md', title: '2020 - 22' },
+            //{ id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
+        ]
+    },
+    { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
+        projects: [
+            { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
+            { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
+        ]
+    },
+    { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
+        projects: [
+            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' }
+        ]
+    },
+];
+
 // Utility functions (outside DOMContentLoaded)
 function isGitHubPages() {
     return window.location.hostname.endsWith('github.io');
@@ -13,6 +59,15 @@ function showLoader() {
     loader.className = 'loader';
     contentDiv.innerHTML = '';
     contentDiv.appendChild(loader);
+}
+
+async function fileExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        return response.ok;
+    } catch (error) {
+        return false;
+    }
 }
 
 function showAppropriateImage() {   
@@ -208,6 +263,7 @@ function setupProjectLinks(pageTitle) {
 async function loadContent(file, title) {
     try {
         const adjustedFile = adjustPath(file);
+
         console.log('Loading content from:', adjustedFile);
         const response = await fetch(adjustedFile);
         if (!response.ok) {
@@ -350,10 +406,12 @@ function setupFrames(projectContent) {
                 loadNextImage();
             };
 
-            imageFrame.addEventListener('click', () => {
-                setupGallery(currentImageIndex, Array.from(images), false);
-                showImagePreview({ target: imgClone });
-            });
+            if (!isMobile()) {
+                imageFrame.addEventListener('click', () => {
+                    setupGallery(currentImageIndex, Array.from(images), false);
+                    showImagePreview({ target: imgClone });
+                });
+            }
 
             if (imgClone.complete) {
                 imgClone.onload();
@@ -379,8 +437,6 @@ function setupFrames(projectContent) {
             });
         });
     }
-
-    
 }
 
 function setupTripFrames(projectContent) {
@@ -496,66 +552,24 @@ async function loadProject(projectFile) {
                 }
             } else {
                 const images = Array.from(projectContent.querySelectorAll('img'));
-                setupGallery(0, images, false);
+                if (window.innerWidth <= 768) {
+                    // On mobile, display images directly without gallery
+                    projectContent.innerHTML = html;
+                } else {
+                    setupGallery(0, images, false);
+                }
             }
 
             // Remove fade-out class after content is loaded
             setTimeout(() => {
                 projectContent.classList.remove('fade-out');
             }, 50);
-        }, 333); // Match this delay with the CSS transition duration
+        }, 222); // Match this delay with the CSS transition duration
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
     }
 }
-
-// Global variables
-let currentPage = null;
-let images = [];
-let currentImageIndex = 0;
-
-const pages = [
-    { id: 'home', file: 'content/home.md', title: '' },
-    { id: 'about', file: 'content/about.md', title: 'About' },
-    { id: 'contact', file: 'content/contact.md', title: 'Contact' },
-    { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics', 
-        projects: [
-            { id: 'artifact', file: 'content/ceramics/artifact.md', title: 'Artifact' },
-            { id: 'habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
-            { id: 'trip', file: 'content/ceramics/trip.md', title: 'Trip' },
-        ]
-    },
-    { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
-        projects: [ 
-            { id: '108', file: 'content/drawing/108.md', title: '108' },
-            //{ id: '2022', file: 'content/drawing/2022.md', title: '2022' },
-            { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
-        ]
-    },
-    { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
-        projects: [
-            { id: 'it doesnt matter what i paint', file: 'content/painting/itdoesntmatterwhatipaint.md', title: 'Now' },
-        ]
-     },
-    { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 
-        projects: [
-            { id: '2020-22', file: 'content/photography/2020-22.md', title: '2020 - 22' },
-            //{ id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
-        ]
-    },
-    { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
-        projects: [
-            { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
-            { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
-        ]
-    },
-    { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
-        projects: [
-            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' }
-        ]
-    },
-];
 
 // Main script (inside DOMContentLoaded)
 document.addEventListener('DOMContentLoaded', () => {
@@ -616,18 +630,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showImagePreview(event) {
-        if (event.target.closest('.image-frame') || event.target.closest('.trip-frame')) {
+        if (!isMobile() && event.target.closest('.image-frame') || event.target.closest('.trip-frame')) {
             const clickedImage = event.target.tagName === 'IMG' ? event.target : event.target.querySelector('img');
             const isTrip = !!event.target.closest('.trip-frame');
             images = Array.from(document.querySelectorAll(isTrip ? '.trip-frame img' : '.image-frame img'));
             currentImageIndex = images.indexOf(clickedImage);
             setupGallery(currentImageIndex, images, isTrip);
         }
-    }
-
-    function updateGalleryImage() {
-        const galleryImage = document.getElementById('gallery-image');
-        galleryImage.src = images[currentImageIndex].src; // Set the source of the gallery image
     }
 
     function showPreviousImage() {
