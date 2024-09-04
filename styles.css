@@ -514,10 +514,9 @@ body, html {
 
 /* Mobile styles */
 @media (max-width: 768px) {
-
     .fade-in-image {
         opacity: 0;
-        transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.5 s ease-in-out;
     }
 
     .container {
@@ -636,6 +635,8 @@ body, html {
         align-items: flex-start;
         margin-bottom: 0.5rem; /* Reduce spacing between Ceramics and Artifact */
         margin-top: 2.77rem;
+        opacity: 1 !important;
+        transition: none !important;
     }
 
     .project-nav {

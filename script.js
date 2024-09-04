@@ -277,16 +277,14 @@ async function loadContent(file, title) {
             }
 
             if (isMobile()) {
-                const images = Array.from(projectContent.querySelectorAll('img'));
+                const images = Array.from(projectContent.querySelectorAll('img.fade-in-image'));
                 let currentImageIndex = 0;
-            
+
                 function loadNextImage() {
                     if (currentImageIndex < images.length) {
                         const img = images[currentImageIndex];
                         img.style.opacity = '0';
-                        img.style.transition = 'opacity 0.5s ease-in-out';
-                        img.classList.add('fade-in-image');
-            
+
                         img.onload = () => {
                             setTimeout(() => {
                                 img.style.opacity = '1';
@@ -294,19 +292,19 @@ async function loadContent(file, title) {
                                 loadNextImage();
                             }, 200);
                         };
-            
+
                         img.onerror = () => {
                             console.error('Failed to load image:', img.src);
                             currentImageIndex++;
                             loadNextImage();
                         };
-            
+
                         if (img.complete) {
                             img.onload();
                         }
                     }
                 }
-                    
+
                 loadNextImage();
             }
         }
