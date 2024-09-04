@@ -287,7 +287,7 @@ async function loadContent(file, title) {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
-                            const img = entry.target;
+                            const img = entry.target;  
                             setTimeout(() => {
                                 img.style.opacity = '1';
                             }, parseInt(img.dataset.index) * 200);
