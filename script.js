@@ -573,6 +573,11 @@ async function loadProject(projectFile) {
 
 // Main script (inside DOMContentLoaded)
 document.addEventListener('DOMContentLoaded', () => {
+    // Redirect to HTTPS if not already on HTTPS
+    if (window.location.protocol !== 'https:') {
+        window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
+    }
+
     const contentDiv = document.getElementById('content');
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
