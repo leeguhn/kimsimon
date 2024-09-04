@@ -306,6 +306,7 @@ async function loadContent(file, title) {
                         }
                     }
                 }
+                    
                 loadNextImage();
             }
         }
