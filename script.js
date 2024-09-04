@@ -98,7 +98,7 @@ function setupGallery(startIndex, images, isTrip = false) {
     gallery.className = 'project-gallery';
     
     const img = document.createElement('img');
-    img.className = 'gallery-image';
+    img.className = 'gallery-image fade-transition';
     img.src = images[startIndex].src;
     gallery.appendChild(img);
 
@@ -116,7 +116,13 @@ function setupGallery(startIndex, images, isTrip = false) {
     let currentIndex = startIndex;
 
     const updateImage = () => {
-        img.src = images[currentIndex].src;
+        img.classList.remove('show');
+        setTimeout(() => {
+            img.src = images[currentIndex].src;
+            setTimeout(() => {
+                img.classList.add('show');
+            }, 50);
+        }, 222);
     };
 
     prevBtn.addEventListener('click', () => {
@@ -268,6 +274,29 @@ async function loadContent(file, title) {
             if (text.includes('phone')) {
                 showAppropriateImage();
                 projectContent.classList.add('hide-paragraphs');
+            }
+
+            if (isMobile()) {
+                const images = projectContent.querySelectorAll('img.fade-in-image');
+                images.forEach((img, index) => {
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.5s ease-in-out';
+                    img.dataset.index = index.toString();
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            setTimeout(() => {
+                                img.style.opacity = '1';
+                            }, parseInt(img.dataset.index) * 200);
+                            observer.unobserve(img);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                images.forEach((img) => observer.observe(img));
             }
         }
     } catch (error) {

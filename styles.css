@@ -11,6 +11,15 @@ body, html {
     height: 100vh;
 }
 
+.fade-transition {
+    opacity: 0;
+    transition: opacity 0.222s ease-in-out;
+}
+
+.fade-transition.show {
+    opacity: 1;
+}
+
 .sidebar {
     width: 15vw; /* Use viewport width */
     min-width: 222px; /* Minimum width to prevent cramming */
@@ -81,6 +90,20 @@ body, html {
 .no-scrolling {
     overflow: hidden;
     height: 100vh;
+}
+
+.home-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home-content img {
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
 }
 
 .content-wrapper > * {
@@ -491,6 +514,12 @@ body, html {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+
+    .fade-in-image {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
     .container {
         flex-direction: column;
     }
