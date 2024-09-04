@@ -277,26 +277,36 @@ async function loadContent(file, title) {
             }
 
             if (isMobile()) {
-                const images = projectContent.querySelectorAll('img.fade-in-image');
-                images.forEach((img, index) => {
-                    img.style.opacity = '0';
-                    img.style.transition = 'opacity 0.5s ease-in-out';
-                    img.dataset.index = index.toString();
-                });
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;  
+                const images = Array.from(projectContent.querySelectorAll('img'));
+                let currentImageIndex = 0;
+            
+                function loadNextImage() {
+                    if (currentImageIndex < images.length) {
+                        const img = images[currentImageIndex];
+                        img.style.opacity = '0';
+                        img.style.transition = 'opacity 0.5s ease-in-out';
+                        img.classList.add('fade-in-image');
+            
+                        img.onload = () => {
                             setTimeout(() => {
                                 img.style.opacity = '1';
-                            }, parseInt(img.dataset.index) * 200);
-                            observer.unobserve(img);
+                                currentImageIndex++;
+                                loadNextImage();
+                            }, 200);
+                        };
+            
+                        img.onerror = () => {
+                            console.error('Failed to load image:', img.src);
+                            currentImageIndex++;
+                            loadNextImage();
+                        };
+            
+                        if (img.complete) {
+                            img.onload();
                         }
-                    });
-                }, { threshold: 0.1 });
-
-                images.forEach((img) => observer.observe(img));
+                    }
+                }
+                loadNextImage();
             }
         }
     } catch (error) {
