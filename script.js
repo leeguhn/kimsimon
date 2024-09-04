@@ -322,20 +322,65 @@ function setupFrames(projectContent) {
     const framesContainer = document.createElement('div');
     framesContainer.className = 'justify-row';
 
-    images.forEach((img, index) => {
-        const imageFrame = document.createElement('div');
-        imageFrame.className = 'image-frame';
-        imageFrame.appendChild(img.cloneNode(true));
-        framesContainer.appendChild(imageFrame);
+    let currentImageIndex = 0;
 
-        imageFrame.addEventListener('click', () => {
-            setupGallery(index, Array.from(images), false);
-            showImagePreview({ target: img });
-        });
-    });
+    function loadNextImage() {
+        if (currentImageIndex < images.length) {
+            const img = images[currentImageIndex];
+            const imageFrame = document.createElement('div');
+            imageFrame.className = 'image-frame';
+            imageFrame.style.opacity = '0';
+            imageFrame.style.transition = 'opacity 0.5s ease-in-out';
+
+            const imgClone = img.cloneNode(true);
+            imageFrame.appendChild(imgClone);
+            framesContainer.appendChild(imageFrame);
+
+            imgClone.onload = () => {
+                setTimeout(() => {
+                    imageFrame.style.opacity = '1';
+                    currentImageIndex++;
+                    loadNextImage();
+                }, 200);
+            };
+
+            imgClone.onerror = () => {
+                console.error('Failed to load image:', imgClone.src);
+                currentImageIndex++;
+                loadNextImage();
+            };
+
+            imageFrame.addEventListener('click', () => {
+                setupGallery(currentImageIndex, Array.from(images), false);
+                showImagePreview({ target: imgClone });
+            });
+
+            if (imgClone.complete) {
+                imgClone.onload();
+            }
+        }
+    }
 
     projectContent.innerHTML = '';
     projectContent.appendChild(framesContainer);
+
+    if (isMobile()) {
+        loadNextImage();
+    } else {
+        images.forEach((img, index) => {
+            const imageFrame = document.createElement('div');
+            imageFrame.className = 'image-frame';
+            imageFrame.appendChild(img.cloneNode(true));
+            framesContainer.appendChild(imageFrame);
+
+            imageFrame.addEventListener('click', () => {
+                setupGallery(index, Array.from(images), false);
+                showImagePreview({ target: img });
+            });
+        });
+    }
+
+    
 }
 
 function setupTripFrames(projectContent) {
