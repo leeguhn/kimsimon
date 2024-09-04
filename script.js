@@ -7,6 +7,14 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
+function showLoader() {
+    const contentDiv = document.getElementById('content');
+    const loader = document.createElement('div');
+    loader.className = 'loader';
+    contentDiv.innerHTML = '';
+    contentDiv.appendChild(loader);
+}
+
 function showAppropriateImage() {   
 
 
@@ -171,10 +179,11 @@ function setupProjectLinks(pageTitle) {
         projectNav.className = 'project-nav';
    
         if (page.projects && page.projects.length > 0) {
-            page.projects.forEach(project => {
+            page.projects.forEach((project, index) => {
                 const link = document.createElement('a');
                 link.href = `#${project.id.toLowerCase()}`; // Use the 'id' property
                 link.className = 'project-link';
+                if (index === 0) link.classList.add('active');
                 link.textContent = project.title; // Use the 'title' property
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -371,8 +380,8 @@ async function loadProject(projectFile) {
         return;
     }
 
-    // Hide content while loading
-    projectContent.style.opacity = '0';
+    // Apply fade-out only to project-content
+    projectContent.classList.add('fade-out');
 
     try {
         const adjustedProjectFile = adjustPath(projectFile);
@@ -384,10 +393,6 @@ async function loadProject(projectFile) {
         const hasFrames = markdown.includes('frames');
         const isTrip = markdown.includes('trip');
 
-
-        // Remove the keywords from the text
-        //markdown = markdown.replace(/frames|trip/g, '');
-
         // Adjust image paths in the Markdown content
         markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
             const adjustedImagePath = adjustPath(imagePath);
@@ -396,23 +401,26 @@ async function loadProject(projectFile) {
         });
 
         const html = marked.parse(markdown);
-        projectContent.innerHTML = html;
-
-        if (hasFrames) {
-            if (isTrip) {
-                setupTripFrames(projectContent);
-            } else {
-                setupFrames(projectContent);
-            }
-        } else {
-            const images = Array.from(projectContent.querySelectorAll('img'));
-            setupGallery(0, images, false);
-        }
-
-        // Show content after loading
+        // Use setTimeout to ensure the fade-out is visible before content change
         setTimeout(() => {
-            projectContent.style.opacity = '1';
-        }, 100);
+            projectContent.innerHTML = html;
+
+            if (hasFrames) {
+                if (isTrip) {
+                    setupTripFrames(projectContent);
+                } else {
+                    setupFrames(projectContent);
+                }
+            } else {
+                const images = Array.from(projectContent.querySelectorAll('img'));
+                setupGallery(0, images, false);
+            }
+
+            // Remove fade-out class after content is loaded
+            setTimeout(() => {
+                projectContent.classList.remove('fade-out');
+            }, 50);
+        }, 333); // Match this delay with the CSS transition duration
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
@@ -588,26 +596,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const page = pages[index];
 
             updateActiveLink(page.id);
+
+            const contentWrapper = document.querySelector('.content-wrapper');
             
-            // Load the main content
-            loadContent(page.file, page.title).then(() => {
-                // Set the first project link to active (red)
-                const projectLinks = document.querySelectorAll('.project-link');
-                if (projectLinks.length > 0) {
-                    projectLinks.forEach(link => link.classList.remove('active'));
-                    projectLinks[0].classList.add('active');
-                }
-                
-                // If the page has projects, load the first project without triggering a reload
-                if (page.projects && page.projects.length > 0) {
-                    loadProject(page.projects[0].file, true);
-                }
-            });
+            if (contentWrapper) {
+                contentWrapper.classList.add('fade-out');
+            }
             
+            setTimeout(() => {
+                loadContent(page.file, page.title).then(() => {
+                    setupProjectLinks(page.title);
+                    
+                    if (page.projects && page.projects.length > 0) {
+                        loadProject(page.projects[0].file, true);
+                    }
+
+                    setTimeout(() => {
+                        if (contentWrapper) {
+                            contentWrapper.classList.remove('fade-out');
+                        }
+                    }, 50);
+                });
+            }, 333); // Match this delay with the CSS transition duration
         } else {
             console.error('Invalid page index or ID');
         }
     }
+
     // Initialize
     createImagePreview();
     document.getElementById('content').addEventListener('click', showImagePreview);

@@ -75,6 +75,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
 }
 
 .no-scrolling {
@@ -446,6 +447,26 @@ body, html {
     margin: 0 auto 1.25rem auto;
     padding: 1rem;
     box-sizing: border-box;
+    opacity: 1;
+    transition: opacity 0.333s ease-in-out;
+}
+
+.content-wrapper.fade-out {
+    opacity: 0;
+}
+
+
+#project-content {
+    opacity: 1;
+    transition: opacity 0.222s ease-in-out;
+}
+
+#project-content.fade-out {
+    opacity: 0;
+}
+
+.sidebar {
+    z-index: 1000;
 }
 
 .mobile-nav-container {
@@ -570,7 +591,15 @@ body, html {
     }
 
     .content {
-        padding: 0rem;  
+        padding: 0rem; 
+    }
+
+    #project-content {
+        opacity: 1;
+    }
+
+    #project-content.fade-out {
+        opacity: 0;
     }
 
     .project-header {
@@ -635,11 +664,6 @@ body, html {
 
     .separator {
         display: none;
-    }
-
-    .rotate {
-        transform: rotate(180deg);
-        transition: transform 0.3s ease;
     }
 
     /* Remove touch highlight effect on mobile devices */
