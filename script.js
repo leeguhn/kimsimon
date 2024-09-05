@@ -70,44 +70,23 @@ async function fileExists(url) {
     }
 }
 
-function showAppropriateImage() {   
-
-
+function showAppropriateImage() {
     const images = document.querySelectorAll('#content img');
     if (images.length === 2) {
         const [image1, image2] = images;
+        const isMobileDevice = isMobile();
 
-        // Ensure images are loaded before checking aspect ratios
-        const checkAspectRatios = () => {
-            const aspectRatio1 = image1.naturalWidth / image1.naturalHeight;
-            const aspectRatio2 = image2.naturalWidth / image2.naturalHeight;
-
-            console.log('Aspect Ratios:', aspectRatio1, aspectRatio2);
-
-            if (isMobile()) {
-                if (aspectRatio1 < aspectRatio2) {
-                    image1.style.display = 'block';
-                    image2.style.display = 'none';
-                } else {
-                    image1.style.display = 'none';
-                    image2.style.display = 'block';
-                }
-            } else {
-                if (aspectRatio1 > aspectRatio2) {
-                    image1.style.display = 'block';
-                    image2.style.display = 'none';
-                } else {
-                    image1.style.display = 'none';
-                    image2.style.display = 'block';
-                }
-            }
+        const showImage = (imgToShow, imgToHide) => {
+            imgToShow.style.display = 'block';
+            imgToHide.style.display = 'none';
         };
 
-        if (image1.complete && image2.complete) {
-            checkAspectRatios();
+        if (image1.alt.includes('phone')) {
+            isMobileDevice ? showImage(image1, image2) : showImage(image2, image1);
+        } else if (image2.alt.includes('phone')) {
+            isMobileDevice ? showImage(image2, image1) : showImage(image1, image2);
         } else {
-            image1.addEventListener('load', checkAspectRatios);
-            image2.addEventListener('load', checkAspectRatios);
+            console.log('No image with "phone" tag found');
         }
     } else {
         console.log('Expected 2 images, found:', images.length);
