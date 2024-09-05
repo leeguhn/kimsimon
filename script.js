@@ -578,43 +578,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
     }
 
-    const contentDiv = document.getElementById('content');
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
-    const pageTitleElement = document.getElementById('page-title');
-    let currentPageIndex = 0;
-
     setupMobileNavigation();
-
-    function setupPageHeader(pageTitle) {
-        const page = pages.find(p => p.title === pageTitle);
-        if (!page) return;
-
-        const pageHeader = document.querySelector('.page-header');
-        const mainTitle = pageHeader.querySelector('.main-title');
-        const subPages = pageHeader.querySelector('.sub-pages');
-
-        // Set main title
-        mainTitle.textContent = page.title;
-
-        // Clear and set sub-pages
-        subPages.innerHTML = '';
-        if (page.projects && page.projects.length > 0) {
-            page.projects.forEach(project => {
-                const link = document.createElement('a');
-                link.href = `#${project.toLowerCase()}`;
-                link.className = 'sub-page-link';
-                link.textContent = project;
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loadProject(project.toLowerCase());
-                    document.querySelectorAll('.sub-page-link').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                });
-                subPages.appendChild(link);
-            });
-        }
-    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');

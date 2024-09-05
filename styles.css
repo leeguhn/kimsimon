@@ -228,15 +228,15 @@ body, html {
     display: flex;
     align-items: center;
     margin-bottom: -2rem;
-  }
+}
   
-  .project-nav {
+.project-nav {
     display: flex;
     align-items: center;
     margin: 0 0 1.25rem 1rem;
-  }
+}
   
-  .project-link {
+.project-link {
     color: #888;
     text-decoration: none;
     margin-right: 1rem;
@@ -244,15 +244,15 @@ body, html {
     font-size: 1.5625rem;
     font-weight: bold;
     line-height: 1;
-  } 
+} 
 
-  .project-link:hover {
+.project-link:hover {
     color: blue;
-  }
+}
 
-  .project-link.active {
+.project-link.active {
     color: red;
-  }
+}
 
   #page-title {
     margin: 0;
