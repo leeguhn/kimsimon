@@ -574,7 +574,7 @@ async function loadProject(projectFile) {
 // Main script (inside DOMContentLoaded)
 document.addEventListener('DOMContentLoaded', () => {
     // Redirect to HTTPS if not already on HTTPS
-    if (window.location.protocol !== 'https:') {
+    if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
         window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
     }
 
@@ -808,12 +808,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', showAppropriateImage);
 
-        // Ensure frames mode is default on mobile
-    document.addEventListener('DOMContentLoaded', () => {
-        const projectContent = document.querySelector('#content');
-        if (projectContent && window.innerWidth <= 768) {
-            setupFrames(projectContent);
-        }
-    });
-
+    // Ensure frames mode is default on mobile
+    const projectContent = document.querySelector('#content');
+    if (projectContent && window.innerWidth <= 768) {
+        setupFrames(projectContent);
+    }
 });
