@@ -537,6 +537,8 @@ body, html {
 
     .container {
         flex-direction: column;
+        height: 100%;
+        overflow: hidden;
     }
 
     .mobile-image {
@@ -550,7 +552,7 @@ body, html {
     .mobile-nav-container {
         display: block;
         padding: 1rem;
-        z-index: 1000;
+        z-index: 1001;
     }
 
    .mobile-nav-header {
@@ -561,7 +563,7 @@ body, html {
         background-color: white; 
         position: sticky; 
         top: 0; 
-        z-index: 1000; 
+        z-index: 1001; 
     }
 
     .mobile-title {
@@ -678,6 +680,8 @@ body, html {
     }
 
     .content-wrapper {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         padding: 0 1rem; 
         margin-top: -3rem;
         padding-bottom: 10rem; /* Adds 4rem of space at the bottom on mobile */
