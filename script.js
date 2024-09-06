@@ -5,7 +5,11 @@ let currentImageIndex = 0;
 
 const pages = [
     { id: 'home', file: 'content/home.md', title: '' },
-    { id: 'about', file: 'content/about.md', title: 'About' },
+    { id: 'about', file: 'content/about/index.md', title: 'About',
+        projects: [
+            { id: 'statement', file: 'content/about/statement.md', title: 'Statement'},
+        ]
+    },
     { id: 'contact', file: 'content/contact.md', title: 'Contact' },
     { id: 'ceramics', file: 'content/ceramics/index.md', title: 'Ceramics', 
         projects: [
@@ -366,8 +370,12 @@ function setupFrames(projectContent) {
     paragraphs.forEach(p => {
         if (p.querySelector('img')) {
             return; // Stop if we encounter a paragraph with an image
-    }
-        textContainer.appendChild(p.cloneNode(true));
+        }
+        const clonedP = p.cloneNode(true);
+        clonedP.textContent = clonedP.textContent.replace(/\bframes\b/gi, '');
+        if (clonedP.textContent.trim()) {
+            textContainer.appendChild(clonedP);
+        }
     });
 
     // Extract images

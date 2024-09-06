@@ -7,3 +7,5 @@ I deconstruct my perceptions and experiences into modules of lines, geometries, 
 I pay attention to the perceptual and sensorial effects that materials can have on the observer. I study topics of affect, religion, philosophy, quantum physics, and neuroaesthetics as I conceptualize my work. I look to others from various walks of life for input, and their observations merge into my work, fused with my own sensibilities in the artistic process. Technology has been a companion and friend for me since childhood, and I often find my art adopting genetic, algorithmic, and planetary themes.
 
 My works are my meditations on a world accelerating at a pace never encountered before. They are responses to the complex and multifaceted nature of the human experience as one navigates their body through relationships and environments. I hope that the work I release to the physical and digital realms of today can offer a perspective of our time to the people of tomorrow.
+
+frames

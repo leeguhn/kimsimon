@@ -1,4 +1,6 @@
-![meta2frames](../../images/digitalmedia/meta2.jpeg)
+frames
+
+![meta2](../../images/digitalmedia/meta2.jpeg)
 
 ![07012022](../../images/digitalmedia/07012022.jpeg)
 
