@@ -550,6 +550,7 @@ body, html {
     .mobile-nav-container {
         display: block;
         padding: 1rem;
+        z-index: 1000;
     }
 
    .mobile-nav-header {
@@ -679,7 +680,7 @@ body, html {
     .content-wrapper {
         padding: 0 1rem; 
         margin-top: -3rem;
-        padding-bottom: 3rem; /* Adds 4rem of space at the bottom on mobile */
+        padding-bottom: 10rem; /* Adds 4rem of space at the bottom on mobile */
     }
 
     .project-grid > div {
