@@ -506,6 +506,22 @@ body, html {
     color: white;
 }
 
+.project-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+.text-container {
+    margin-bottom: 1rem;
+    margin-top: -1.4rem;
+    text-align: justify;
+}
+
+.text-container p {
+    margin-bottom: 1rem;
+}
+
 @media (min-width: 769px) {
     .desktop-image {
         display: none;
@@ -699,5 +715,10 @@ body, html {
     /* Remove touch highlight effect on mobile devices */
     * {
         -webkit-tap-highlight-color: none;
+    }
+
+    .text-container {
+        margin-top: -3rem;
+        margin-bottom: 1rem;
     }
 }

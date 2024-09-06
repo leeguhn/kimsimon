@@ -353,10 +353,25 @@ async function loadContent(file, title) {
 }
 
 function setupFrames(projectContent) {
-    const images = projectContent.querySelectorAll('img');
+    const projectContainer = document.createElement('div');
+    projectContainer.className = 'project-container';
+
+    const textContainer = document.createElement('div');
+    textContainer.className = 'text-container';
+
     const framesContainer = document.createElement('div');
     framesContainer.className = 'justify-row';
 
+    const paragraphs = projectContent.querySelectorAll('p');
+    paragraphs.forEach(p => {
+        if (p.querySelector('img')) {
+            return; // Stop if we encounter a paragraph with an image
+    }
+        textContainer.appendChild(p.cloneNode(true));
+    });
+
+    // Extract images
+    const images = projectContent.querySelectorAll('img');
     let currentImageIndex = 0;
 
     function loadNextImage() {
@@ -398,8 +413,11 @@ function setupFrames(projectContent) {
         }
     }
 
+    projectContainer.appendChild(textContainer);
+    projectContainer.appendChild(framesContainer);
+
     projectContent.innerHTML = '';
-    projectContent.appendChild(framesContainer);
+    projectContent.appendChild(projectContainer);
 
     if (isMobile()) {
         loadNextImage();
