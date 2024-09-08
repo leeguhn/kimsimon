@@ -1,10 +1,14 @@
+![11282023](../../images/painting/11282023.jpeg)
+
 ![leftover](../../images/painting/leftover.jpeg)
 
 ![hansel](../../images/painting/hansel.jpg)
 
-![1017_1](../../images/painting/1017_1.jpeg)
+![hansel2](../../images/painting/hansel2.JPG)
 
-![11282023](../../images/painting/11282023.jpeg)
+![hansel3](../../images/painting/hansel3.JPG)
+
+
 
 ![doubt](../../images/painting/doubt.jpeg)
 
