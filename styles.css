@@ -514,7 +514,7 @@ body, html {
 
 .text-container {
     margin-bottom: 1rem;
-    margin-top: -1.4rem;
+    margin-top: -1rem;
     text-align: justify;
 }
 
@@ -728,4 +728,16 @@ body, html {
         margin-bottom: 1rem;
         text-align: left;
     }
+}
+
+#project-content em {
+    font-style: italic;
+}
+
+#project-content strong {
+    font-weight: bold;
+}
+
+#project-content u {
+    text-decoration: underline;
 }

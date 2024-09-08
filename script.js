@@ -8,6 +8,7 @@ const pages = [
     { id: 'about', file: 'content/about/index.md', title: 'About',
         projects: [
             { id: 'statement', file: 'content/about/statement.md', title: 'Statement'},
+            { id: 'cv', file: 'content/about/cv.md', title: 'C.V.'},
         ]
     },
     { id: 'contact', file: 'content/contact.md', title: 'Contact' },
@@ -544,7 +545,14 @@ async function loadProject(projectFile) {
             return `![${altText}](${adjustedImagePath})`;
         });
 
-        const html = marked.parse(markdown);
+        // Use marked.js to parse the markdown, preserving italics, bold, and underline
+        const html = marked.parse(markdown, {
+            gfm: true,
+            breaks: true,
+            smartLists: true,
+            smartypants: true
+        });
+        
         // Use setTimeout to ensure the fade-out is visible before content change
         setTimeout(() => {
             projectContent.innerHTML = html;
