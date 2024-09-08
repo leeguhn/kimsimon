@@ -6,7 +6,7 @@ Education
 
 **2022** BA in Studio Art, Grinnell College (Honors)
 
-Exhibition Record:
+Exhibition Record
 
 **2024** Wrong & Strong (MFA Thesis), Logan Center for the Arts, University of Chicago, IL
 
@@ -20,7 +20,7 @@ Exhibition Record:
 
 **2021** Bachelor of Arts Exhibition (group), Grinnell College Museum of Art, IA
 
-Publication & Talks:
+Publication & Talks
 
 **2024** Chat About, Cochrane Woods Art Center, University of Chicago, IA
 
