@@ -40,6 +40,7 @@ const pages = [
         projects: [
             { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
             { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
+            { id: 'freemeditation', file: 'content/performance/freemeditation.md', title: 'freemeditation' },
         ]
     },
     { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
@@ -373,7 +374,7 @@ function setupFrames(projectContent) {
             return; // Stop if we encounter a paragraph with an image
         }
         const clonedP = p.cloneNode(true);
-        clonedP.textContent = clonedP.textContent.replace(/\bframes\b/gi, '');
+        clonedP.innerHTML = clonedP.innerHTML.replace(/\bframes\b/gi, '');
         if (clonedP.textContent.trim()) {
             textContainer.appendChild(clonedP);
         }

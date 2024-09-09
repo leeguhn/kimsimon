@@ -1,12 +1,12 @@
 frames
 
-Education
+<u>Education</u>
 
 **2024** MFA, Department of Visual Arts, University of Chicago 
 
-**2022** BA in Studio Art, Grinnell College (Honors)
+**2022** BA, Studio Art (Honors), Grinnell College 
 
-Exhibition Record
+<u>Exhibition Record</u>
 
 **2024** Wrong & Strong (MFA Thesis), Logan Center for the Arts, University of Chicago, IL
 
@@ -20,7 +20,7 @@ Exhibition Record
 
 **2021** Bachelor of Arts Exhibition (group), Grinnell College Museum of Art, IA
 
-Publication & Talks
+<u>Publication & Talks</u>
 
 **2024** Chat About, Cochrane Woods Art Center, University of Chicago, IA
 
@@ -28,7 +28,7 @@ Publication & Talks
 
 **2021** 108, Grinnell College Press, Grinnell College, IA
 
-Honors
+<u>Honors</u>
 
 **2022** The 4th Year Studio Art Prize, Grinnell College, IA 
 
