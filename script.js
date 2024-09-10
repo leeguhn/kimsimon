@@ -45,7 +45,8 @@ const pages = [
     },
     { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
         projects: [
-            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' }
+            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' },
+            { id: 'hansel', file: 'content/digitalmedia/hansel.md', title: 'Hansel' },
         ]
     },
 ];
