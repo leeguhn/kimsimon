@@ -4,8 +4,6 @@
 
 ![hansel](../../images/painting/hansel.jpg)
 
-![hansel2](../../images/painting/hansel2.JPG)
-
 ![hansel3](../../images/painting/hansel3.JPG)
 
 

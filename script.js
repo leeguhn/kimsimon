@@ -177,9 +177,10 @@ function setupGallery(startIndex, images, isTrip = false) {
 
     img.addEventListener('click', () => {
         projectContent.innerHTML = originalContent;
-        if (isTrip) {
-            setupTripFrames(projectContent);
-        } else {
+        // if (isTrip) {
+        //     setupTripFrames(projectContent);
+        // } else 
+        {
             setupFrames(projectContent);
         }
     });
@@ -560,9 +561,10 @@ async function loadProject(projectFile) {
             projectContent.innerHTML = html;
 
             if (hasFrames) {
-                if (isTrip) {
-                    setupTripFrames(projectContent);
-                } else {
+                // if (isTrip) {
+                //     setupTripFrames(projectContent);
+                // } else 
+                {
                     setupFrames(projectContent);
                 }
             } else {
