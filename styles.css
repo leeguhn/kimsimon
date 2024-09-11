@@ -530,6 +530,7 @@ body, html {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+
     .fade-in-image {
         opacity: 0;
         transition: opacity 0.5 s ease-in-out;
@@ -727,6 +728,12 @@ body, html {
         margin-top: -3rem;
         margin-bottom: 1rem;
         text-align: left;
+    }
+
+    .image-wrapper {
+        margin: 20px 0;
+        margin-right: 0rem;
+        text-align: center;
     }
 }
 
