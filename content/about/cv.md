@@ -1,44 +1,30 @@
 frames
 
-<u>Education</u>
+**Education**
 
-**2024** MFA, Department of Visual Arts, University of Chicago 
+**2024** MFA, Department of Visual Arts, University of Chicago <br>**2022** BA, Studio Art (Honors), Grinnell College 
 
-**2022** BA, Studio Art (Honors), Grinnell College 
+**Exhibition Record**
 
-<u>Exhibition Record</u>
+**2024** *Internationales Digitalkunst Festival (IDKF)*, Stuttgart, DE<br>**2024** *Chicago Architecture Biennial 5*, Chicago Cultural Center, IL<br>**2024** *Jessica Stockholder: For Events*, University of Chicago, IL<br>**2024** *Wrong & Strong (MFA Thesis)*, Logan Center for the Arts, University of Chicago, IL<br>**2024** *Chat About*, Cochrane-Woods Art Center, University of Chicago, IL<br>**2022** *Solo Exhibit*, Grinnell Area Arts Council, IA<br>**2022** *Bachelor of Arts Exhibition* (Group), Grinnell College Museum of Art, IA <br>**2021** *Bachelor of Arts Exhibition* (Group), Grinnell College Museum of Art, IA
 
-**2024** Wrong & Strong (MFA Thesis), Logan Center for the Arts, University of Chicago, IL
+**Press**
 
-**2024** meeting (performance-for-one), Chicago Architecture Biennial 5, Chicago Cultural Center, IL
+**2024** [*Mustard on the Foot*](https://art.newcity.com/2024/04/30/mustard-on-the-foot-a-review-of-jessica-stockholder-for-events-at-hutchinson-courtyard/) by Nicki Ni, New City Art Magazine, Chicago, IL
 
-**2024** freemeditation (durational performance), Jessica Stockholder: For Events, University of Chicago, IL
+**Publication & Talks**
 
-**2022** untitled (solo), Grinnell Area Arts Council, IA
+**2024** [*Portable Gray Vol. 7 No. 1 (essay)*](https://primaryinformation.org/pi/wp-content/uploads/2024/05/20240528_PI_Portable_Gray_Sia.pdf), Gray Center for Arts and Inquiry, University of Chicago<br>**2024** *Chat About*, Cochrane Woods Art Center, University of Chicago, IA<br>**2023** *Chat About*, Logan Center for the Arts, University of Chicago, IA<br>**2021** *108*, Grinnell College Press, Grinnell College, IA
 
-**2022** Bachelor of Arts Exhibition (group), Grinnell College Museum of Art, IA 
+**Honors**
 
-**2021** Bachelor of Arts Exhibition (group), Grinnell College Museum of Art, IA
+**2022** The 4th Year Studio Art Prize, Grinnell College, IA <br>**2021** The 3rd Year Studio Art Prize, Grinnell College, IA<br>**2021** Tammy Zywicki Memorial Prize for Photography, Grinnell College Museum of Art, IA
 
-<u>Publication & Talks</u>
+**Teaching Experience** 
 
-**2024** Chat About, Cochrane Woods Art Center, University of Chicago, IA
+**2022 - 24** Teaching Assistant at the Department of Visual Arts, University of Chicago<br>
 
-**2023** Chat About, Logan Center for the Arts, University of Chicago, IA
-
-**2021** 108, Grinnell College Press, Grinnell College, IA
-
-<u>Honors</u>
-
-**2022** The 4th Year Studio Art Prize, Grinnell College, IA 
-
-**2021** The 3rd Year Studio Art Prize, Grinnell College, IA
-
-**2021** Tammy Zywicki Memorial Prize for Photography, Grinnell College Museum of Art, IA
-
-
-
-
+*Ceramics: Adaptive Practices*<br>*Performing Tableware*<br>*Porcelain*<br>*Introduction to Sculpture*<br>*Visual Language: On Objects*<br>*Visual Language: On Images*<br>*Video Game Music Production and Sound Design*
 
 
 
