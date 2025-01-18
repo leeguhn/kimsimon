@@ -2,7 +2,7 @@ A key component of my works in ceramics is a small handmade ball the size of an 
 
  The texture is a marker for the presence needed to form the object and a reference to the sensitivities of a living body. What the ball is and holds vary depending on the context in which it is used, as well as the persons involved. Its presence activates larger sculptures that serve as metaphors for my personal experiences in navigating physical and emotional spaces.
 
-![landscapeframes](../../images/ceramics/habitat/landscape.jpeg)
+![landscape](../../images/ceramics/habitat/landscape.jpeg)
 
 ![landscape2](../../images/ceramics/habitat/landscape2.jpeg)
 
