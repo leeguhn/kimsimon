@@ -27,7 +27,7 @@ const pages = [
     },
     { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
         projects: [
-            { id: 'now', file: 'content/painting/itdoesntmatterwhatipaint.md', title: 'Now' },
+            { id: 'now', file: 'content/painting/now.md', title: 'Now' },
         ]
      },
     { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 

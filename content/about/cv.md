@@ -14,7 +14,7 @@ frames
 
 **Publication & Talks**
 
-**2024** [*Portable Gray Vol. 7 No. 1 (essay)*](https://primaryinformation.org/pi/wp-content/uploads/2024/05/20240528_PI_Portable_Gray_Sia.pdf), Gray Center for Arts and Inquiry, University of Chicago<br>**2024** *Chat About*, Cochrane Woods Art Center, University of Chicago, IA<br>**2023** *Chat About*, Logan Center for the Arts, University of Chicago, IA<br>**2021** *108*, Grinnell College Press, Grinnell College, IA
+**2024** [*Portable Gray Vol. 7 No. 1 (essay)*](https://primaryinformation.org/pi/wp-content/uploads/2024/05/20240528_PI_Portable_Gray_Sia.pdf), Gray Center for Arts and Inquiry, University of Chicago<br>**2024** *Chat About*, Cochrane Woods Art Center, University of Chicago, IL<br>**2023** *Chat About*, Logan Center for the Arts, University of Chicago, IL<br>**2021** *108*, Grinnell College Press, Grinnell College, IA
 
 **Honors**
 
