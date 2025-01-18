@@ -11,4 +11,3 @@ I am interested in reassembling my observations within the context of three-dime
 ![coffin2](../../images/ceramics/artifact/coffin2.jpeg)
 
 ![relation](../../images/ceramics/artifact/relation.jpg)
-
