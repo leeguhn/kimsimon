@@ -205,9 +205,6 @@ body, html {
 .content img,
 .content img[src$=".gif"] {
     max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 1rem;
     object-fit: contain;
 }
 
@@ -360,7 +357,7 @@ body, html {
 
 .image-frame img {
     display: block;
-    width: 100%; /* Ensures image fills the frame */
+    max-width: 100%; /* Ensures image fills the frame */
     height: 100%; /* Maintain aspect ratio */
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
@@ -482,7 +479,7 @@ body, html {
 
 #project-content {
     opacity: 1;
-    transition: opacity 1s ease;
+    transition: opacity .222s ease-in-out;
 }
 
 #project-content.fade-out {
@@ -698,6 +695,7 @@ body, html {
 
     .image-frame {
         max-width: 100%;
+        
     }
 
     .trip-gallery {
