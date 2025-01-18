@@ -14,4 +14,3 @@ This approach allows for different creative applications, such as the potential 
 
 ![algo](../../images/digitalmedia/hansel/algo.png)
 
-frames
