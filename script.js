@@ -51,6 +51,20 @@ const pages = [
     },
 ];
 
+function updateURL(pageId, projectId = null) {
+    let newURL = 'https://simonkim.nyc';
+
+    if (pageId && pageId !== 'home') {
+        newURL += `/${pageId}`;
+    }
+
+    if (projectId) {
+        newURL += `/${projectId}`;
+    }
+
+    history.pushState(null, '', newURL);
+}
+
 // Utility functions (outside DOMContentLoaded)
 function isGitHubPages() {
     return window.location.hostname.endsWith('github.io');
@@ -66,40 +80,6 @@ function showLoader() {
     loader.className = 'loader';
     contentDiv.innerHTML = '';
     contentDiv.appendChild(loader);
-}
-
-// function updateUrl(pageId, projectId) {
-//     if (window.location.hostname !== 'localhost') {
-//         const newUrl = projectId ? `/${pageId}/${projectId}` : `/${pageId}`;
-//         history.pushState(null, '', newUrl);
-//     }
-// }
-
-// filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
-function loadFromUrl() {
-    const pathParts = window.location.pathname.split('/').filter(Boolean).map(decodeURIComponent);
-    const pageId = pathParts[0];
-    const projectId = pathParts[1];
-
-    if (pageId) {
-        const page = pages.find(page => page.id === pageId);
-        if (page) {
-            if (projectId) {
-                const project = page.projects.find(proj => proj.id === projectId);
-                if (project) {
-                    loadProject(project.file);
-                } else {
-                    console.error('Project not found');
-                }
-            } else {
-                loadPage(pageId);
-            }
-        } else {
-            console.error('Page not found');
-        }
-    } else {
-        loadPage(pages.find(page => page.id === 'home'));
-    }
 }
 
 async function fileExists(url) {
@@ -615,13 +595,14 @@ async function loadProject(projectFile) {
             setTimeout(() => {
                 projectContent.classList.remove('fade-out');
             }, 50);
+
+            updateURL(page.id);
+
         }, 222); // Match this delay with the CSS transition duration
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
     }
-    // updateUrl(currentPage.id, projectFile.split('/').pop().replace('.md', ''));
-
 }
 
 // Main script (inside DOMContentLoaded)
@@ -634,15 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
     setupMobileNavigation();
-
-    // Load content based on URL if not on localhost
-    if (window.location.hostname !== 'localhost') {
-        loadFromUrl();
-    } else {
-        // Load default content
-        loadPage(pages.find(page => page.id === 'home'));
-        updateActiveLink('home');
-    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
@@ -707,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    function loadPage(pageIdOrIndex, projectId) {
+    function loadPage(pageIdOrIndex) {
         let index;
 
         if (typeof pageIdOrIndex === 'number') {
@@ -732,12 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadContent(page.file, page.title).then(() => {
                     setupProjectLinks(page.title);
                     
-                    if (projectId) {
-                        const project = page.projects.find(proj => proj.id === projectId);
-                        if (project) {
-                            loadProject(project.file);
-                        }
-                    } else if (page.projects && page.projects.length > 0) {
+                    if (page.projects && page.projects.length > 0) {
                         loadProject(page.projects[0].file, true);
                     }
 
@@ -747,11 +714,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }, 50);
                 });
+                updateURL(page.id);
             }, 333); // Match this delay with the CSS transition duration
         } else {
             console.error('Invalid page index or ID');
         }
-        // updateUrl(page.id);
     }
 
     // Initialize
