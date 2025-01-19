@@ -82,12 +82,23 @@ function loadFromUrl() {
     const projectId = pathParts[1];
 
     if (pageId) {
-        const pageIndex = pages.findIndex(page => page.id === pageId);
-        if (pageIndex !== -1) {
-            loadPage(pageIndex, projectId);
+        const page = pages.find(page => page.id === pageId);
+        if (page) {
+            if (projectId) {
+                const project = page.projects.find(proj => proj.id === projectId);
+                if (project) {
+                    loadProject(project.file);
+                } else {
+                    console.error('Project not found');
+                }
+            } else {
+                loadPage(pageId);
+            }
+        } else {
+            console.error('Page not found');
         }
     } else {
-        loadPage(pages.findIndex(page => page.id === 'home'));
+        loadPage(pages.find(page => page.id === 'home'));
     }
 }
 
@@ -627,6 +638,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load content based on URL if not on localhost
     if (window.location.hostname !== 'localhost') {
         loadFromUrl();
+    } else {
+        // Load default content
+        loadPage(pages.find(page => page.id === 'home'));
+        updateActiveLink('home');
     }
 
     function createImagePreview() {
