@@ -631,10 +631,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupMobileNavigation();
 
-    // // Load content based on URL if not on localhost
-    // if (window.location.hostname !== 'localhost') {
-    //     loadFromUrl();
-    // }
+    // Load content based on URL if not on localhost
+    if (window.location.hostname !== 'localhost') {
+        loadFromUrl();
+    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
