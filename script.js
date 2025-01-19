@@ -82,19 +82,19 @@ function loadFromUrl() {
     const projectId = pathParts[1];
 
     if (pageId) {
-        const pageIndex = pages.findIndex(page => page.id === pageId);
-        if (pageIndex !== -1) {
-            loadPage(pageIndex).then(() => {
-                if (projectId) {
-                    const project = pages[pageIndex].projects.find(proj => proj.id === projectId);
+        loadPage(pageId).then(() => {
+            if (projectId) {
+                const page = pages.find(page => page.id === pageId);
+                if (page) {
+                    const project = page.projects.find(proj => proj.id === projectId);
                     if (project) {
                         loadProject(project.file);
                     }
                 }
-            });
-        }
+            }
+        });
     } else {
-        loadPage(pages.findIndex(page => page.id === 'home'));
+        loadPage(pages.find(page => page.id === 'home'));
     }
 }
 
