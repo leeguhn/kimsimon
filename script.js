@@ -630,15 +630,15 @@ document.addEventListener('DOMContentLoaded', () => {
     createImagePreview();
 
     // Navigate to the correct page based on the URL
-    navigateToPageFromURL();
-        
-    document.getElementById('content').addEventListener('click', showImagePreview);
+    // navigateToPageFromURL();
     
+    document.getElementById('content').addEventListener('click', showImagePreview);
+
     // Load default content if no specific page is specified
-    if (!window.location.pathname.replace('/', '')) {
+    // if (!window.location.pathname.replace('/', '')) {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
-    }
+    // }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
