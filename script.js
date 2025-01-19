@@ -68,6 +68,36 @@ function showLoader() {
     contentDiv.appendChild(loader);
 }
 
+function updateUrl(pageId, projectId) {
+    if (window.location.hostname !== 'localhost') {
+        const newUrl = projectId ? `/${pageId}/${projectId}` : `/${pageId}`;
+        history.pushState(null, '', newUrl);
+    }
+}
+
+// filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
+function loadFromUrl() {
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const pageId = pathParts[0];
+    const projectId = pathParts[1];
+
+    if (pageId) {
+        const pageIndex = pages.findIndex(page => page.id === pageId);
+        if (pageIndex !== -1) {
+            loadPage(pageIndex).then(() => {
+                if (projectId) {
+                    const project = pages[pageIndex].projects.find(proj => proj.id === projectId);
+                    if (project) {
+                        loadProject(project.file);
+                    }
+                }
+            });
+        }
+    } else {
+        loadPage(pages.findIndex(page => page.id === 'home'));
+    }
+}
+
 async function fileExists(url) {
     try {
         const response = await fetch(url, { method: 'HEAD' });
@@ -586,6 +616,7 @@ async function loadProject(projectFile) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
     }
+    updateUrl(currentPage.id, projectFile.split('/').pop().replace('.md', ''));
 }
 
 // Main script (inside DOMContentLoaded)
@@ -598,6 +629,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
     setupMobileNavigation();
+
+    // Load content based on URL if not on localhost
+    if (window.location.hostname !== 'localhost') {
+        loadFromUrl();
+    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
@@ -701,6 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Invalid page index or ID');
         }
+        updateUrl(page.id);
     }
 
     // Initialize
