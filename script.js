@@ -52,7 +52,7 @@ const pages = [
 ];
 
 function updateURL(pageId, projectId = null) {
-    let newURL = 'https://www.simonkim.nyc';
+    let newURL = 'https://simonkim.nyc';
 
     if (pageId && pageId !== 'home') {
         newURL += `/${pageId}`;
@@ -597,7 +597,7 @@ async function loadProject(projectFile) {
             }, 50);
 
             updateURL(page.id);
-
+            
         }, 222); // Match this delay with the CSS transition duration
     } catch (error) {
         console.error('Error loading project:', error);
