@@ -68,12 +68,12 @@ function showLoader() {
     contentDiv.appendChild(loader);
 }
 
-function updateUrl(pageId, projectId) {
-    if (window.location.hostname !== 'localhost') {
-        const newUrl = projectId ? `/${pageId}/${projectId}` : `/${pageId}`;
-        history.pushState(null, '', newUrl);
-    }
-}
+// function updateUrl(pageId, projectId) {
+//     if (window.location.hostname !== 'localhost') {
+//         const newUrl = projectId ? `/${pageId}/${projectId}` : `/${pageId}`;
+//         history.pushState(null, '', newUrl);
+//     }
+// }
 
 // filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
 function loadFromUrl() {
@@ -616,7 +616,8 @@ async function loadProject(projectFile) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
     }
-    updateUrl(currentPage.id, projectFile.split('/').pop().replace('.md', ''));
+    // updateUrl(currentPage.id, projectFile.split('/').pop().replace('.md', ''));
+
 }
 
 // Main script (inside DOMContentLoaded)
@@ -737,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Invalid page index or ID');
         }
-        updateUrl(page.id);
+        // updateUrl(page.id);
     }
 
     // Initialize
