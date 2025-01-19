@@ -553,7 +553,6 @@ async function loadProject(projectFile) {
 
         // Check for the frames keyword
         const hasFrames = markdown.includes('frames');
-        const isTrip = markdown.includes('trip');
 
         // Adjust image paths in the Markdown content
         markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, altText, imagePath) => {
@@ -596,7 +595,9 @@ async function loadProject(projectFile) {
                 projectContent.classList.remove('fade-out');
             }, 50);
 
-            updateURL(page.id);
+            // Update URL
+            const projectId = projectFile.split('/').pop().replace('.md', '');
+            updateURL(currentPage.id, projectId);
 
         }, 222); // Match this delay with the CSS transition duration
     } catch (error) {
