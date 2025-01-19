@@ -77,24 +77,17 @@ function showLoader() {
 
 // filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
 function loadFromUrl() {
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const pathParts = window.location.pathname.split('/').filter(Boolean).map(decodeURIComponent);
     const pageId = pathParts[0];
     const projectId = pathParts[1];
 
     if (pageId) {
-        loadPage(pageId).then(() => {
-            if (projectId) {
-                const page = pages.find(page => page.id === pageId);
-                if (page) {
-                    const project = page.projects.find(proj => proj.id === projectId);
-                    if (project) {
-                        loadPage(pages.find(page => page.id === 'home'));
-                    }
-                }
-            }
-        });
+        const pageIndex = pages.findIndex(page => page.id === pageId);
+        if (pageIndex !== -1) {
+            loadPage(pageIndex, projectId);
+        }
     } else {
-        loadPage(pages.find(page => page.id === 'home'));
+        loadPage(pages.findIndex(page => page.id === 'home'));
     }
 }
 
@@ -699,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    function loadPage(pageIdOrIndex) {
+    function loadPage(pageIdOrIndex, projectId) {
         let index;
 
         if (typeof pageIdOrIndex === 'number') {
@@ -724,7 +717,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadContent(page.file, page.title).then(() => {
                     setupProjectLinks(page.title);
                     
-                    if (page.projects && page.projects.length > 0) {
+                    if (projectId) {
+                        const project = page.projects.find(proj => proj.id === projectId);
+                        if (project) {
+                            loadProject(project.file);
+                        }
+                    } else if (page.projects && page.projects.length > 0) {
                         loadProject(page.projects[0].file, true);
                     }
 
