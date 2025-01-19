@@ -88,7 +88,7 @@ function loadFromUrl() {
                 if (page) {
                     const project = page.projects.find(proj => proj.id === projectId);
                     if (project) {
-                        loadProject(project.file);
+                        loadPage(pages.find(page => page.id === 'home'));
                     }
                 }
             }
