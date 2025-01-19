@@ -75,28 +75,28 @@ function showLoader() {
 //     }
 // }
 
-// // filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
-// function loadFromUrl() {
-//     const pathParts = window.location.pathname.split('/').filter(Boolean);
-//     const pageId = pathParts[0];
-//     const projectId = pathParts[1];
+// filepath: /C:/Users/billpop/Documents/GitHub/kimsimon/script.js
+function loadFromUrl() {
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const pageId = pathParts[0];
+    const projectId = pathParts[1];
 
-//     if (pageId) {
-//         loadPage(pageId).then(() => {
-//             if (projectId) {
-//                 const page = pages.find(page => page.id === pageId);
-//                 if (page) {
-//                     const project = page.projects.find(proj => proj.id === projectId);
-//                     if (project) {
-//                         loadProject(project.file);
-//                     }
-//                 }
-//             }
-//         });
-//     } else {
-//         loadPage(pages.find(page => page.id === 'home'));
-//     }
-// }
+    if (pageId) {
+        loadPage(pageId).then(() => {
+            if (projectId) {
+                const page = pages.find(page => page.id === pageId);
+                if (page) {
+                    const project = page.projects.find(proj => proj.id === projectId);
+                    if (project) {
+                        loadProject(project.file);
+                    }
+                }
+            }
+        });
+    } else {
+        loadPage(pages.find(page => page.id === 'home'));
+    }
+}
 
 async function fileExists(url) {
     try {
