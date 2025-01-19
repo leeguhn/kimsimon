@@ -65,6 +65,18 @@ function updateURL(pageId, projectId = null) {
     history.pushState(null, '', newURL);
 }
 
+function navigateToPageFromURL() {
+    const path = window.location.pathname.replace('/', '');
+    const page = pages.find(p => p.id === path);
+
+    if (page) {
+        loadPage(page.id);
+    } else {
+        // Default to home page if no matching page is found
+        loadPage('home');
+    }
+}
+
 // Utility functions (outside DOMContentLoaded)
 function isGitHubPages() {
     return window.location.hostname.endsWith('github.io');
@@ -615,6 +627,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
     setupMobileNavigation();
+    createImagePreview();
+
+    // Navigate to the correct page based on the URL
+    navigateToPageFromURL();
+        
+    document.getElementById('content').addEventListener('click', showImagePreview);
+    
+    // Load default content if no specific page is specified
+    if (!window.location.pathname.replace('/', '')) {
+        loadPage(pages.findIndex(page => page.id === 'home'));
+        updateActiveLink('home');
+    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
@@ -721,14 +745,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize
-    createImagePreview();
-    document.getElementById('content').addEventListener('click', showImagePreview);
-
-    // Load default content
-    loadPage(pages.findIndex(page => page.id === 'home'));
-    updateActiveLink('home');
-
     function setupMobileNavigation() {
         console.log('setupMobileNavigation function called');
     
@@ -794,8 +810,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('One or more required elements not found');
         }
     }
-
-
 
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
