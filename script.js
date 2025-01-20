@@ -841,9 +841,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectContent && window.innerWidth <= 768) {
         setupFrames(projectContent);
     }
-
-    // Handle browser navigation (back/forward)
-    window.addEventListener('popstate', () => {
-        navigateToPageFromURL();
-    });
 });
