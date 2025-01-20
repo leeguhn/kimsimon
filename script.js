@@ -651,16 +651,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateToPageFromURL();
     }
     
-    if (!(window.location.hostname === 'localhost' && window.location.port === '3000')) {
-        navigateToPageFromURL();
-    }
     document.getElementById('content').addEventListener('click', showImagePreview);
 
     // Load default content if no specific page is specified
-    // if (!window.location.pathname.replace('/', '')) {
+    if (!window.location.pathname.replace('/', '')) {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
-    // }
+    }
 
     function createImagePreview() {
         const overlay = document.createElement('div');
