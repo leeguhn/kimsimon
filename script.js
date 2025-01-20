@@ -65,14 +65,28 @@ function updateURL(pageId, projectId = null) {
     history.pushState(null, '', newURL);
 }
 
-function navigateToPageFromURL() {
-    let path = window.location.pathname;
-    // Strip leading slash and ".html"
-    path = path.replace('/', '').replace('.html', '');
-    const page = pages.find(p => p.id === path);
+// Function to simulate a click on a nav link
+function simulateNavLinkClick(pageId) {
+    const link = Array.from(document.querySelectorAll('nav a, h1 a')).find(l => l.getAttribute('href').replace('/', '') === pageId);
+    if (link) {
+        link.click();
+    } else {
+        console.error(`Nav link for pageId "${pageId}" not found.`);
+    }
+}
 
+function navigateToPageFromURL() {
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    const page = pages.find(p => p.id === path);
+    
     if (page) {
-        loadPage(page.id);
+        loadPage('home'); // Load home page first
+        // Use a short timeout to ensure home is loaded before navigating to the desired page
+        setTimeout(() => {
+            simulateNavLinkClick(page.id);
+            // Update the URL without reloading the page
+            history.replaceState(null, '', `/${page.id}`);
+        }, 500); // Adjust the delay as needed
     } else {
         loadPage('home');
     }
@@ -623,21 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Redirect to HTTPS if not already on HTTPS
     if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
         window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
-    }
-
-    // Handle "?redirect=/something" from 404.html
-    const params = new URLSearchParams(window.location.search);
-    const redirectPath = params.get('redirect');
-    if (redirectPath) {
-        const cleanPath = decodeURIComponent(redirectPath);
-        const pageId = redirectPath.replace('/', '');
-        const page = pages.find(p => p.id === pageId);
-        if (page) {
-            loadPage(pageId);
-            // Update URL to remove ?redirect=...
-            history.replaceState({}, '', cleanPath);
-            return;
-        }
+        return; // Ensure no further execution during redirect
     }
 
     const navLinks = document.querySelectorAll('nav a, h1 a');
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateActiveLink(pageId) {
         navLinks.forEach(link => {
-            const linkPageId = link.getAttribute('href').replace('.html', '');
+            const linkPageId = link.getAttribute('href').replace('/', ''); // Adjusted to remove leading '/'
             if (linkPageId === pageId) {
                 link.classList.add('active');
             } else {
@@ -847,4 +847,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectContent && window.innerWidth <= 768) {
         setupFrames(projectContent);
     }
+
+    // Handle browser navigation (back/forward)
+    window.addEventListener('popstate', () => {
+        navigateToPageFromURL();
+    });
 });

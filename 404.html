@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <script>
-    let path = window.location.pathname.replace('.html','');
-    // e.g. /performance.html => /performance
-    path = encodeURIComponent(path);
-    window.location.replace(`/?redirect=${path}`);
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Kim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro">
 </head>
 <body>
-  <p>Redirecting…</p>
+    <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+            <h1 class="mobile-title"><a href="/home">Simon Kim</a></h1>
+            <div class="mobile-nav-toggle">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+        <nav class="mobile-sidebar">
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/ceramics">Ceramics</a></li>
+                <li><a href="/drawing">Drawing</a></li>
+                <li><a href="/painting">Painting</a></li>
+                <li><a href="/digitalmedia">Digital Media</a></li>
+                <li><a href="/performance">Performance</a></li>
+                <li><a href="/photography">Photography</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <nav class="sidebar">
+            <h1><a href="/home">Simon Kim</a></h1>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/ceramics">Ceramics</a></li>
+                <li><a href="/drawing">Drawing</a></li>
+                <li><a href="/painting">Painting</a></li>
+                <li><a href="/digitalmedia">Digital Media</a></li>
+                <li><a href="/performance">Performance</a></li>
+                <li><a href="/photography">Photography</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="content-wrapper">
+                <h2 id="page-title"></h2>
+                <div id="content">
+                    <!-- Content will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
