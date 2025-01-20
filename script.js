@@ -630,8 +630,14 @@ document.addEventListener('DOMContentLoaded', () => {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
     } else {
-        // if there is a page is specified
-        const parsedPage = getTextAfterDomain();
+        // if there is a page specified
+        let parsedPage = getTextAfterDomain().toLowerCase(); // Convert to lowercase
+        const pageExists = pages.some(page => page.id === parsedPage);
+        
+        if (!pageExists) {
+            parsedPage = 'home'; // Redirect to home if page doesn't exist
+        }
+        
         loadPage(pages.findIndex(page => page.id === parsedPage));
         updateActiveLink(parsedPage);
     }
