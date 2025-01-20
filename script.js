@@ -66,13 +66,14 @@ function updateURL(pageId, projectId = null) {
 }
 
 function navigateToPageFromURL() {
-    const path = window.location.pathname.replace('/', '');
+    let path = window.location.pathname;
+    // Strip leading slash and ".html"
+    path = path.replace('/', '').replace('.html', '');
     const page = pages.find(p => p.id === path);
 
     if (page) {
         loadPage(page.id);
     } else {
-        // Default to home page if no matching page is found
         loadPage('home');
     }
 }
@@ -628,10 +629,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const redirectPath = params.get('redirect');
     if (redirectPath) {
+        const cleanPath = decodeURIComponent(redirectPath);
         const pageId = redirectPath.replace('/', '');
         const page = pages.find(p => p.id === pageId);
         if (page) {
             loadPage(pageId);
+            // Update URL to remove ?redirect=...
+            history.replaceState({}, '', cleanPath);
             return;
         }
     }
