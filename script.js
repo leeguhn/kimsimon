@@ -680,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateActiveLink(pageId) {
         navLinks.forEach(link => {
-            const linkPageId = link.getAttribute('href').replace('/', ''); // Adjusted to remove leading '/'
+            const linkPageId = link.getAttribute('href').replace('/', '').replace('.html', ''); // Adjusted to remove leading '/' and '.html'
             if (linkPageId === pageId) {
                 link.classList.add('active');
             } else {
