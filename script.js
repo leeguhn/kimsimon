@@ -605,6 +605,11 @@ async function loadProject(projectFile) {
     }
 }
 
+function getTextAfterDomain() {
+    const path = window.location.pathname;
+    return path.replace('/', '');
+}
+
 // Main script (inside DOMContentLoaded)
 document.addEventListener('DOMContentLoaded', () => {
     // Redirect to HTTPS if not already on HTTPS
@@ -626,8 +631,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveLink('home');
     } else {
         // if there is a page is specified
-        loadPage(pages.findIndex(page => page.id === 'about'));
-        updateActiveLink('about');
+        const parsedPage = getTextAfterDomain();
+        loadPage(pages.findIndex(page => page.id === parsedPage));
+        updateActiveLink(parsedPage);
     }
 
     function createImagePreview() {
