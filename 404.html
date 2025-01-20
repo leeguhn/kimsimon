@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <script>
-    const path = window.location.pathname;
-    // Redirect to index.html with a query or hash
-    window.location.replace(`/?redirect=${encodeURIComponent(path)}`);
+    let path = window.location.pathname.replace('.html','');
+    // e.g. /performance.html => /performance
+    path = encodeURIComponent(path);
+    window.location.replace(`/?redirect=${path}`);
   </script>
 </head>
 <body>
