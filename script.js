@@ -624,6 +624,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
     }
 
+    // Handle "?redirect=/something" from 404.html
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('redirect');
+    if (redirectPath) {
+        const pageId = redirectPath.replace('/', '');
+        const page = pages.find(p => p.id === pageId);
+        if (page) {
+            loadPage(pageId);
+            return;
+        }
+    }
+
     const navLinks = document.querySelectorAll('nav a, h1 a');
 
     setupMobileNavigation();
@@ -635,6 +647,9 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateToPageFromURL();
     }
     
+    if (!(window.location.hostname === 'localhost' && window.location.port === '3000')) {
+        navigateToPageFromURL();
+    }
     document.getElementById('content').addEventListener('click', showImagePreview);
 
     // Load default content if no specific page is specified
