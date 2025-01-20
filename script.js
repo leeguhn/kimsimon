@@ -21,8 +21,8 @@ const pages = [
     },
     { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
         projects: [ 
-            { id: '108', file: 'content/drawing/108.md', title: '108' },
             { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
+            { id: '108', file: 'content/drawing/108.md', title: '108' },
         ]
     },
     { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
