@@ -65,33 +65,6 @@ function updateURL(pageId, projectId = null) {
     history.pushState(null, '', newURL);
 }
 
-// Function to simulate a click on a nav link
-function simulateNavLinkClick(pageId) {
-    const link = Array.from(document.querySelectorAll('nav a, h1 a')).find(l => l.getAttribute('href').replace('/', '') === pageId);
-    if (link) {
-        link.click();
-    } else {
-        console.error(`Nav link for pageId "${pageId}" not found.`);
-    }
-}
-
-function navigateToPageFromURL() {
-    const path = window.location.pathname.replace(/^\/|\/$/g, '');
-    const page = pages.find(p => p.id === path);
-    
-    if (page) {
-        loadPage('home'); // Load home page first
-        // Use a short timeout to ensure home is loaded before navigating to the desired page
-        setTimeout(() => {
-            simulateNavLinkClick(page.id);
-            // Update the URL without reloading the page
-            history.replaceState(null, '', `/${page.id}`);
-        }, 500); // Adjust the delay as needed
-    } else {
-        loadPage('home');
-    }
-}
-
 // Utility functions (outside DOMContentLoaded)
 function isGitHubPages() {
     return window.location.hostname.endsWith('github.io');
@@ -651,6 +624,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.location.pathname.replace('/', '')) {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
+    } else {
+        // if there is a page is specified
+        loadPage(pages.findIndex(page => page.id === 'about'));
+        updateActiveLink('about');
     }
 
     function createImagePreview() {
