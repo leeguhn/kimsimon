@@ -644,12 +644,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupMobileNavigation();
     createImagePreview();
-
-    // Navigate to the correct page based on the URL
-    // Only run navigateToPageFromURL if not on localhost:3000
-    if (!(window.location.hostname === 'localhost' && window.location.port === '3000')) {
-        navigateToPageFromURL();
-    }
     
     document.getElementById('content').addEventListener('click', showImagePreview);
 
