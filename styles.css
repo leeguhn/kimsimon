@@ -13,7 +13,7 @@ body, html {
 
 .fade-transition {
     opacity: 0;
-    transition: opacity 0.222s ease-in-out;
+    transition: opacity .333s ease-in-out;
 }
 
 .fade-transition.show {
@@ -344,6 +344,7 @@ body, html {
     justify-content: flex-start; /* Distributes space evenly */
     flex-wrap: wrap; /* Allows wrapping to the next line */
     margin: 0 -0.5rem; /* Adjusts margin for spacing */
+
 } 
 
 .image-frame {
@@ -362,6 +363,10 @@ body, html {
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
     transition: opacity 0.4s ease;
+}
+
+.image-frame img.loaded {
+    opacity: 1;
 }
 
 /* Subtle hover effect */
@@ -696,7 +701,7 @@ body, html {
 
     .image-frame {
         max-width: 100%;
-        
+
     }
 
     .trip-gallery {

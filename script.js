@@ -405,8 +405,6 @@ function setupFrames(projectContent) {
             const img = images[currentImageIndex];
             const imageFrame = document.createElement('div');
             imageFrame.className = 'image-frame';
-            imageFrame.style.opacity = '0';
-            imageFrame.style.transition = 'opacity 0.5s ease-in-out';
 
             const imgClone = img.cloneNode(true);
             imageFrame.appendChild(imgClone);
@@ -598,7 +596,7 @@ async function loadProject(projectFile) {
 
             updateURL(page.id);
             
-        }, 222); // Match this delay with the CSS transition duration
+        }, 555); // Match this delay with the CSS transition duration
     } catch (error) {
         console.error('Error loading project:', error);
         projectContent.innerHTML = '<p>Error loading content. Please try again.</p>';
