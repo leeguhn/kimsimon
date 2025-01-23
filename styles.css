@@ -344,7 +344,7 @@ body, html {
     justify-content: flex-start; /* Distributes space evenly */
     flex-wrap: wrap; /* Allows wrapping to the next line */
     margin: 0 -0.5rem; /* Adjusts margin for spacing */
-}
+} 
 
 .image-frame {
     position: relative;
@@ -361,6 +361,7 @@ body, html {
     max-height: 100%; /* Maintain aspect ratio */
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
+    transition: opacity 0.4s ease;
 }
 
 /* Subtle hover effect */
