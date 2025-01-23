@@ -20,14 +20,12 @@ frames
 
 ![meta2](../../images/digitalmedia/meta2.jpeg)
 
+![sticks](../../images/digitalmedia/sticks.jpeg)
+
 ![frag6](../../images/digitalmedia/frag6.png)
 
 ![07012022](../../images/digitalmedia/07012022.jpeg)
 
 ![crawler](../../images/digitalmedia/crawler.jpg)
 
-
-
 ![04012022_1](../../images/digitalmedia/04012022_1.jpg)
-
-![ziggurat](../../images/digitalmedia/ziggurat.jpg)
