@@ -6,8 +6,4 @@ I am interested in reassembling my observations within the context of three-dime
 
 ![shelter](../../images/ceramics/artifact/shelter.jpg)
 
-![coffin](../../images/ceramics/artifact/coffin.jpeg)
-
-![coffin2](../../images/ceramics/artifact/coffin2.jpeg)
-
 ![relation](../../images/ceramics/artifact/relation.jpg)
