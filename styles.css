@@ -345,7 +345,7 @@ body, html {
     flex-wrap: wrap; /* Allows wrapping to the next line */
     margin: 0 -0.5rem; /* Adjusts margin for spacing */
     animation: fadeIn;
-    animation-duration: 1s;
+    animation-duration: 1.11s;
 } 
 
 .image-frame {
