@@ -472,7 +472,7 @@ function setupFrames(projectContent) {
             imgClone.onload = () => {
                 setTimeout(() => {
                     imgClone.classList.add('show'); // Trigger fade-in
-                }, 50);
+                }, 555);
             }
 
             imageFrame.appendChild(imgClone);
