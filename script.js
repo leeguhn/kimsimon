@@ -417,16 +417,19 @@ function setupFrames(projectContent) {
             const img = images[currentImageIndex];
             const imageFrame = document.createElement('div');
             imageFrame.className = 'image-frame';
-            imageFrame.style.opacity = '0';
-            imageFrame.style.transition = 'opacity 0.5s ease-in-out';
+
+            // imageFrame.style.opacity = '0';
+            // imageFrame.style.transition = 'opacity 0.5s ease-in-out';
 
             const imgClone = img.cloneNode(true);
+            imgClone.classList.add('fade-transition'); // Add fade class
             imageFrame.appendChild(imgClone);
             framesContainer.appendChild(imageFrame);
 
             imgClone.onload = () => {
                 setTimeout(() => {
-                    imageFrame.style.opacity = '1';
+                    imgClone.classList.add('show');
+                    // imageFrame.style.opacity = '1';
                     currentImageIndex++;
                     loadNextImage();
                 }, 200);
@@ -463,7 +466,16 @@ function setupFrames(projectContent) {
         images.forEach((img, index) => {
             const imageFrame = document.createElement('div');
             imageFrame.className = 'image-frame';
-            imageFrame.appendChild(img.cloneNode(true));
+            const imgClone = img.cloneNode(true);
+            imgClone.classList.add('fade-transition'); // Add fade class
+
+            imgClone.onload = () => {
+                setTimeout(() => {
+                    imgClone.classList.add('show'); // Trigger fade-in
+                }, 50);
+            }
+
+            imageFrame.appendChild(imgClone);
             framesContainer.appendChild(imageFrame);
 
             imageFrame.addEventListener('click', () => {
