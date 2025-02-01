@@ -1,5 +1,3 @@
-![1010](../../images/painting/1010.jpeg)
-
 ![hansel](../../images/painting/hansel.jpg)
 
 ![hansel3](../../images/painting/hansel3.JPG)
@@ -8,10 +6,10 @@
 
 ![1017_0](../../images/painting/1017_0.jpg)
 
+![1010](../../images/painting/1010.jpeg)
+
 ![doubt](../../images/painting/doubt.jpeg)
 
-![procedure](../../images/painting/procedure.jpg)
-
-![shadow](../../images/painting/shadow.jpg)
+![resurrection](../../images/painting/resurrected_red.jpeg)
 
 ![leftover](../../images/painting/leftover.jpeg)
