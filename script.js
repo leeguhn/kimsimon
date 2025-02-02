@@ -46,7 +46,7 @@ const pages = [
     { id: 'documents', file: 'content/documents/index.md', title: 'Documents', 
         projects: [
             { id: 'compositions', file: 'content/documents/compositions.md', title: 'Compositions' },
-            { id: 'notes', file: 'content/photography/notes.md', title: 'Notes' },
+            { id: 'notes', file: 'content/documents/paperwork.md', title: 'Paperwork' },
         ]
     },
     { id: 'archive', file: 'content/archive/index.md', title: 'Archive', 
