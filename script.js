@@ -30,12 +30,6 @@ const pages = [
             { id: 'now', file: 'content/painting/now.md', title: 'Now' },
         ]
      },
-    { id: 'photography', file: 'content/photography/index.md', title: 'Photography', 
-        projects: [
-            { id: '2020-22', file: 'content/photography/2020-22.md', title: '2020 - 22' },
-            //{ id: '2024-', file: 'content/photography/2024-.md', title: '2024 - ?' },
-        ]
-    },
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
         projects: [
             { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
@@ -47,6 +41,18 @@ const pages = [
         projects: [
             { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' },
             { id: 'hansel', file: 'content/digitalmedia/hansel.md', title: 'Hansel' },
+        ]
+    },
+    { id: 'documents', file: 'content/documents/index.md', title: 'Documents', 
+        projects: [
+            { id: 'compositions', file: 'content/documents/compositions.md', title: 'Compositions' },
+            { id: 'notes', file: 'content/photography/notes.md', title: 'Notes' },
+        ]
+    },
+    { id: 'archive', file: 'content/archive/index.md', title: 'Archive', 
+        projects: [
+            { id: 'photos', file: 'content/archive/photos.md', title: 'Photos' },
+            { id: 'objects', file: 'content/archive/objects.md', title: 'Objects' },
         ]
     },
 ];
