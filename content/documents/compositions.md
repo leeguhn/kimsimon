@@ -32,11 +32,11 @@ frames
 
 ![crit3](../../images/documents/compositions/crit3.jpg)
 
+![step](../../images/documents/compositions/step.jpg)
+
 ![index](../../images/documents/compositions/index.jpg)
 
 ![singularity](../../images/documents/compositions/singularity.jpg)
-
-![higher](../../images/documents/compositions/higher.jpg)
 
 ![meal](../../images/documents/compositions/meal.jpg)
 
