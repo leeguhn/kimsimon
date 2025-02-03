@@ -12,7 +12,9 @@ frames
 
 ![statement6](../../images/documents/compositions/statement6.jpg)
 
-![ribbon.jpg](../../images/documents/compositions/ribbon.jpg)
+![report](../../images/documents/compositions/report.jpg)
+
+![ribbon](../../images/documents/compositions/ribbon.jpg)
 
 ![tanguy1](../../images/documents/compositions/tanguy1.jpg)
 
@@ -23,8 +25,6 @@ frames
 ![mirror2](../../images/documents/compositions/mirror2.jpg)
 
 ![performance](../../images/documents/compositions/performance.jpg)
-
-![report](../../images/documents/compositions/report.jpg)
 
 ![crit1](../../images/documents/compositions/crit1.jpg)
 
