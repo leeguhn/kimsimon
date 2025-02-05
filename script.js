@@ -51,8 +51,8 @@ const pages = [
     },
     { id: 'archive', file: 'content/archive/index.md', title: 'Archive', 
         projects: [
-            { id: 'photos', file: 'content/archive/photos.md', title: 'Photos' },
             { id: 'objects', file: 'content/archive/objects.md', title: 'Objects' },
+            { id: 'photos', file: 'content/archive/photos.md', title: 'Photos' },
             { id: 'studio', file: 'content/archive/studio.md', title: 'Studio' },
         ]
     },
