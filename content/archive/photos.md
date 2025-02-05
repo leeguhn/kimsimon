@@ -1,23 +1,32 @@
-frames
+![dichotomy](../../images/archive/photos/dichotomy.jpg)
 
-![love](../../images/photography/202022/love.jpg)
+![love](../../images/archive/photos/love.jpg)
 
-![setting](../../images/photography/202022/setting.jpeg)
+![pheasant](../../images/archive/photos/pheasant.jpg)
 
-![documentation](../../images/photography/202022/documentation.jpg)
 
-![rushour](../../images/photography/202022/rushour.jpg)
+![labyrinth](../../images/archive/photos/labyrinth.jpg)
 
-![coffee](../../images/photography/202022/coffee.jpg)
+![coffee](../../images/archive/photos/coffee.jpg)
 
-![1018](../../images/photography/202022/1018.jpg)
+![kundalini](../../images/archive/photos/kundalini.jpg)
 
-![treefiddy](../../images/photography/202022/treefiddy.jpg)	
+![omen](../../images/archive/photos/omen.jpg)
 
-![cherries](../../images/photography/202022/cherries.jpg)
+![documentation](../../images/archive/photos/documentation.jpg)
 
-![slit](../../images/photography/202022/slit.jpg)
+![clairvoyance](../../images/archive/photos/clairvoyance.jpg)
 
-![coincidence2](../../images/photography/202022/coincidence2.jpg)
+![hanok](../../images/archive/photos/hanok.jpg)
 
-![rip](../../images/photography/202022/rip.jpeg)
+![kingdom](../../images/archive/photos/kingdom.jpg)
+
+![render](../../images/archive/photos/render.jpg)
+
+![desolation](../../images/archive/photos/desolation.jpg)
+
+![occurrence](../../images/archive/photos/occurrence.jpg)
+
+![wreckage](../../images/archive/photos/wreckage.jpg)
+
+![1018](../../images/archive/photos/1018.jpg)

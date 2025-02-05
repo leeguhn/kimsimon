@@ -6,9 +6,11 @@
 
 ![melatonin](../../images/archive/studio/melatonin.jpg)
 
-![being](../../images/archive/studio/being.jpg)
-
 ![contagion](../../images/archive/studio/contagion.jpg)
+
+![sauce](../../images/archive/studio/sauce.jpg)
+
+![being](../../images/archive/studio/being.jpg) 
 
 ![poser](../../images/archive/studio/poser.jpg)
 
@@ -18,7 +20,7 @@
 
 ![wall](../../images/archive/studio/wall.jpg)
 
-![sauce](../../images/archive/studio/sauce.jpg)
+
 
 ![rocks](../../images/archive/studio/rocks.jpg)
 
