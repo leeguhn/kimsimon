@@ -53,6 +53,7 @@ const pages = [
         projects: [
             { id: 'photos', file: 'content/archive/photos.md', title: 'Photos' },
             { id: 'objects', file: 'content/archive/objects.md', title: 'Objects' },
+            { id: 'studio', file: 'content/archive/studio.md', title: 'Studio' },
         ]
     },
 ];

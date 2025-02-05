@@ -1,63 +1,23 @@
-frames
+![cd](../../images/archive/objects/cd.jpg)
 
-![IMG_0130](../../images/photography/2024-/IMG_0130.JPG)
+![asmr](../../images/archive/objects/asmr.jpg)
 
-![IMG_0132](../../images/photography/2024-/IMG_0132.JPG)
+![meal](../../images/archive/objects/meal.jpg)
 
-![IMG_0140](../../images/photography/2024-/IMG_0140.JPG)
+![wallet](../../images/archive/objects/wallet.jpg)
 
-![IMG_0166](../../images/photography/2024-/IMG_0166.JPG)
+![redd](../../images/archive/objects/redd.jpg)
 
-![IMG_0178](../../images/photography/2024-/IMG_0178.JPG)
+![splat](../../images/archive/objects/splat.jpg)
 
-![IMG_0216](../../images/photography/2024-/IMG_0216.JPG)
+![fingerbones](../../images/archive/objects/fingerbones.jpg)
 
-![IMG_0225](../../images/photography/2024-/IMG_0225.JPG)
+![tape](../../images/archive/objects/tape.jpg)
 
-![IMG_0245](../../images/photography/2024-/IMG_0245.JPG)
+![reading](../../images/archive/objects/reading.jpg)
 
-![IMG_0246](../../images/photography/2024-/IMG_0246.JPG)
+![hhkb](../../images/archive/objects/hhkb.jpg)
 
-![IMG_0251](../../images/photography/2024-/IMG_0251.JPG)
+![airstrike](../../images/archive/objects/airstrike.jpg)
 
-![IMG_0253](../../images/photography/2024-/IMG_0253.JPG)
-
-![IMG_0261](../../images/photography/2024-/IMG_0261.JPG)
-
-![IMG_0272](../../images/photography/2024-/IMG_0272.JPG)
-
-![IMG_0305](../../images/photography/2024-/IMG_0305.JPG)
-
-![IMG_0331](../../images/photography/2024-/IMG_0331.JPG)
-
-![IMG_0359](../../images/photography/2024-/IMG_0359.JPG)
-
-![IMG_0360](../../images/photography/2024-/IMG_0360.JPG)
-
-![IMG_0364](../../images/photography/2024-/IMG_0364.JPG)
-
-![IMG_0367](../../images/photography/2024-/IMG_0367.JPG)
-
-![IMG_0372](../../images/photography/2024-/IMG_0372.JPG)
-
-![IMG_0377](../../images/photography/2024-/IMG_0377.JPG)
-
-![IMG_0389](../../images/photography/2024-/IMG_0389.JPG)
-
-![IMG_0390](../../images/photography/2024-/IMG_0390.JPG)
-
-![IMG_0411](../../images/photography/2024-/IMG_0411.JPG)
-
-![IMG_0412](../../images/photography/2024-/IMG_0412.JPG)
-
-![IMG_0414](../../images/photography/2024-/IMG_0414.JPG)
-
-![IMG_0421](../../images/photography/2024-/IMG_0421.JPG)
-
-![IMG_0431](../../images/photography/2024-/IMG_0431.JPG)
-
-![IMG_0437](../../images/photography/2024-/IMG_0437.JPG)
-
-![IMG_0462](../../images/photography/2024-/IMG_0462.JPG)
-
-![IMG_0466](../../images/photography/2024-/IMG_0466.JPG)
+![stake](../../images/archive/objects/stake.jpg)
