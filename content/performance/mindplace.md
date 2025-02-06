@@ -6,8 +6,6 @@ Guest performers were given white masks, blindfolds, and nitrile gloves. They we
 
 The photos here were also taken by a performer who was blindfolded. 
 
-frames
-
 ![henry](../../images/performance/themindisaplace/henry.jpg)
 
 ![momimeg](../../images/performance/themindisaplace/momimeg.jpg)
