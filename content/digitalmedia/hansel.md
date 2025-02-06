@@ -1,10 +1,12 @@
-*Hansel* is a generative art program that operates on two stages:
+*Hansel* is a generative art program developed to explore new ways of working with visual elements. It operates in two distinct stages:
 
-**Asset Extraction**: It analyzes a source image and extracts individual visual elements, converting them into reusable assets.
+**Asset Extraction**: The program analyzes a source image and breaks it down into individual visual elements, like lines, shapes, or textures. These elements are then turned into reusable assets.
 
-**Composition Generation**: Using a second input image as a guide, the program arranges the extracted assets to create new compositions that follow the contours and shapes of this second image.
+**Composition Generation**: The second step takes a new input image as a guide and arranges the extracted assets to follow the shapes and contours of that image, creating a new composition.
 
-This approach allows for different creative applications, such as the potential to generate sequences of images that could be used for animation or stop-motion-like effects.
+The main goal of Hansel is to experiment with how digital tools can shape the creative process. It is about breaking things down and rearranging visual components to experience an image differently. Elements of lines and edges are more than just basic structures; they are essential to how we perceive and organize visual information.
+
+The program's graphical user interface (GUI) lets users adjust various parameters and experiment with the process themselves. This gives people more control and allows for different creative outcomes, such as the potential to generate sequences of images that could be used for animation or stop-motion-like effects. 
 
 ![gov](../../images/digitalmedia/hansel/gov.gif) 
 
