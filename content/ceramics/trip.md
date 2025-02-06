@@ -4,12 +4,22 @@ I extend my thanks to everyone who has taken the time to participate in this pro
 
 frames
 
+![urology](../../images/ceramics/trip/urology.jpeg)
+
+![travel_17](../../images/ceramics/trip/travel_17.jpeg)
+
+
+
+![travel_15](../../images/ceramics/trip/travel_15.jpeg)
+
+![travel_13](../../images/ceramics/trip/travel_13.jpeg)
+
+
 ![travel_11](../../images/ceramics/trip/travel_11.jpeg)
 
 ![travel_9](../../images/ceramics/trip/travel_9.jpg)
 
 ![IMG_1067](../../images/ceramics/trip/IMG_1067.jpg)
-
 
 
 ![travel_23](../../images/ceramics/trip/travel_23.jpeg)
@@ -30,6 +40,11 @@ frames
 
 ![travel_19](../../images/ceramics/trip/travel_19.jpeg)
 
+![igloo](../../images/ceramics/trip/igloo.jpg)
+
+![dogg](../../images/ceramics/trip/dogg.jpg)
+
+![halloffame](../../images/ceramics/trip/halloffame.jpg)
 
 
 ![travel_1](../../images/ceramics/trip/travel_1.jpg)
@@ -66,30 +81,20 @@ frames
 
 ![travel_20](../../images/ceramics/trip/travel_20.jpeg)
 
+
 ![slick](../../images/ceramics/trip/slick.PNG)
 
-![urology](../../images/ceramics/trip/urology.jpeg)
-
-![travel_17](../../images/ceramics/trip/travel_17.jpeg)
-
-
-
-![travel_15](../../images/ceramics/trip/travel_15.jpeg)
-
-![travel_13](../../images/ceramics/trip/travel_13.jpeg)
+![travel_27](../../images/ceramics/trip/travel_27.jpeg)
 
 ![shaman](../../images/ceramics/trip/shaman.jpeg)
 
 ![ba](../../images/ceramics/trip/ba.jpg)
 
+![napoli](../../images/ceramics/trip/napoli.png)
+
 ![travel_2](../../images/ceramics/trip/travel_2.jpg)
 
 ![travel_10](../../images/ceramics/trip/travel_10.jpeg)
 
-
-
 ![travel_7](../../images/ceramics/trip/travel_7.jpeg)
 
-![napoli](../../images/ceramics/trip/napoli.png)
-
-![travel_27](../../images/ceramics/trip/travel_27.jpeg)
