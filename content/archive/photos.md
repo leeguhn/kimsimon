@@ -4,7 +4,6 @@
 
 ![pheasant](../../images/archive/photos/pheasant.jpg)
 
-
 ![labyrinth](../../images/archive/photos/labyrinth.jpg)
 
 ![coffee](../../images/archive/photos/coffee.jpg)

@@ -6,26 +6,26 @@ As time stretches between me and that initial vision, I find myself paradoxicall
 
 Some of these forms have been 3D printed in plastic and resin. It is a strange feeling to know objects from my computer screen are pulled into physical existence somewhere in the world - is this how a mother feels, waiting for her child in the incubator? 
 
-![set2](../../images/digitalmedia/set2.jpg)
+![set2](../../images/digitalmedia/renderings/set2.jpg)
 
-![10312022](../../images/digitalmedia/10312022.jpeg)
+![10312022](../../images/digitalmedia/renderings/10312022.jpeg)
 
-![object2](../../images/digitalmedia/object2.jpeg)
+![object2](../../images/digitalmedia/renderings/object2.jpeg)
 
-![object1](../../images/digitalmedia/object1.jpeg)
+![object1](../../images/digitalmedia/renderings/object1.jpeg)
 
-![04052022](../../images/digitalmedia/04052022.jpeg)
+![04052022](../../images/digitalmedia/renderings/04052022.jpeg)
 
-![meta2](../../images/digitalmedia/meta2.jpeg)
+![meta2](../../images/digitalmedia/renderings/meta2.jpeg)
 
-![sticks](../../images/digitalmedia/sticks.jpeg)
+![sticks](../../images/digitalmedia/renderings/sticks.jpeg)
 
-![frag6](../../images/digitalmedia/frag6.png)
+![frag6](../../images/digitalmedia/renderings/frag6.png)
 
-![07012022](../../images/digitalmedia/07012022.jpeg)
+![07012022](../../images/digitalmedia/renderings/07012022.jpeg)
 
-![extruder](../../images/digitalmedia/extruder.jpeg)
+![extruder](../../images/digitalmedia/renderings/extruder.jpeg)
 
-![crawler](../../images/digitalmedia/crawler.jpg)
+![crawler](../../images/digitalmedia/renderings/crawler.jpg)
 
-![04012022_1](../../images/digitalmedia/04012022_1.jpg)
+![04012022_1](../../images/digitalmedia/renderings/04012022_1.jpg)
