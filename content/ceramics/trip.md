@@ -32,47 +32,45 @@ frames
 
 ![travel_5](../../images/ceramics/trip/travel_5.jpg)
 
+
+![travel_27](../../images/ceramics/trip/travel_27.jpeg)
+![shaman](../../images/ceramics/trip/shaman.jpeg)
+![ba](../../images/ceramics/trip/ba.jpg)
+![napoli](../../images/ceramics/trip/napoli.png)
+
 ![travel_24](../../images/ceramics/trip/travel_24.jpeg)
-
 ![travel_21](../../images/ceramics/trip/travel_21.JPG)
-
 ![travel_22](../../images/ceramics/trip/travel_22.JPG)
-
 ![travel_19](../../images/ceramics/trip/travel_19.jpeg)
 
+
 ![igloo](../../images/ceramics/trip/igloo.jpg)
-
 ![dogg](../../images/ceramics/trip/dogg.jpg)
-
 ![halloffame](../../images/ceramics/trip/halloffame.jpg)
-
-
 ![travel_1](../../images/ceramics/trip/travel_1.jpg)
 
+![slick](../../images/ceramics/trip/slick.PNG)
+![travel_2](../../images/ceramics/trip/travel_2.jpg)
+![travel_10](../../images/ceramics/trip/travel_10.jpeg)
+![travel_7](../../images/ceramics/trip/travel_7.jpeg)
+
 ![travel_14](../../images/ceramics/trip/travel_14.JPG)
-
-
-
-![travel_3](../../images/ceramics/trip/travel_3.jpeg)
-
+![rivergrove](../../images/ceramics/trip/rivergrove.jpg)
 ![travel_4](../../images/ceramics/trip/travel_4.jpeg)
-
 ![travel_16](../../images/ceramics/trip/travel_16.jpeg)
 
-![travel_6](../../images/ceramics/trip/travel_6.jpg)
 
+![travel_6](../../images/ceramics/trip/travel_6.jpg)
+![michigan](../../images/ceramics/trip/michigan.jpg)
 ![travel_8](../../images/ceramics/trip/travel_8.jpg)
 
 ![travel_26](../../images/ceramics/trip/travel_26.jpeg)
 
-![rivergrove](../../images/ceramics/trip/rivergrove.jpg)
+![travel_3](../../images/ceramics/trip/travel_3.jpeg)
 
 ![ramen](../../images/ceramics/trip/ramen.jpg)
 
-![michigan](../../images/ceramics/trip/michigan.jpg)
-
 ![travel_18](../../images/ceramics/trip/travel_18.JPG)
-
 ![penthouse](../../images/ceramics/trip/penthouse.jpg)
 
 ![rocky](../../images/ceramics/trip/rocky.jpg)
@@ -82,19 +80,5 @@ frames
 ![travel_20](../../images/ceramics/trip/travel_20.jpeg)
 
 
-![slick](../../images/ceramics/trip/slick.PNG)
 
-![travel_27](../../images/ceramics/trip/travel_27.jpeg)
-
-![shaman](../../images/ceramics/trip/shaman.jpeg)
-
-![ba](../../images/ceramics/trip/ba.jpg)
-
-![napoli](../../images/ceramics/trip/napoli.png)
-
-![travel_2](../../images/ceramics/trip/travel_2.jpg)
-
-![travel_10](../../images/ceramics/trip/travel_10.jpeg)
-
-![travel_7](../../images/ceramics/trip/travel_7.jpeg)
 
