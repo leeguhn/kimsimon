@@ -2,6 +2,6 @@
 
 ![aigo2](../images/aigo2.gif)
 
-![phone](../images/note.jpeg)
+![phone](../images/mochi.jpg)
 
  
