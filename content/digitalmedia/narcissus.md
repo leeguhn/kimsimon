@@ -9,18 +9,24 @@ This work has been developed via Unreal Engine 5 and Blender and is ongoing.
 Demo: https://www.youtube.com/watch?v=IyYgfdAIDmA
 
 ![white](../../images/digitalmedia/narcissus/white.jpeg)
-
 ![bigger](../../images/digitalmedia/narcissus/bigger.jpeg)
-
 ![normal](../../images/digitalmedia/narcissus/normal.jpeg)
-
 ![far](../../images/digitalmedia/narcissus/far.jpeg)
 
-![maze](../../images/digitalmedia/narcissus/maze.jpeg)
-
+![side](../../images/digitalmedia/narcissus/side.jpg)
+![crossroads](../../images/digitalmedia/narcissus/crossroads.jpg)
+![collapse](../../images/digitalmedia/narcissus/collapse.jpg)
+![6stack](../../images/digitalmedia/narcissus/6stack.jpg)
+![jump](../../images/digitalmedia/narcissus/jump.jpg)
 
 ![downstairs2](../../images/digitalmedia/narcissus/downstairs_1.jpeg)
-
 ![tiny](../../images/digitalmedia/narcissus/tiny.jpeg)
+![mega](../../images/digitalmedia/narcissus/mega.jpg)
+
+
+
+
+
+
 
 
