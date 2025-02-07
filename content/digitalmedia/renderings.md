@@ -14,10 +14,10 @@ Some of these forms have been 3D printed in plastic and resin. It is a strange f
 ![intro](../../images/digitalmedia/renderings/intro.jpg)
 ![gadget](../../images/digitalmedia/renderings/gadget.jpg)
 ![handheld](../../images/digitalmedia/renderings/handheld.jpeg)
-![set2](../../images/digitalmedia/renderings/set2.jpg)
+![object2](../../images/digitalmedia/renderings/object2.jpeg)
 
 ![collection](../../images/digitalmedia/renderings/collection.jpg)
-![object2](../../images/digitalmedia/renderings/object2.jpeg)
+![set2](../../images/digitalmedia/renderings/set2.jpg)
 ![04052022](../../images/digitalmedia/renderings/04052022.jpeg)  
 ![guhn](../../images/digitalmedia/renderings/guhn.jpg)
 ![meta2](../../images/digitalmedia/renderings/meta.jpeg) 
