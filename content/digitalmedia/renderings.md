@@ -6,26 +6,25 @@ As time stretches between me and that initial vision, I find myself paradoxicall
 
 Some of these forms have been 3D printed in plastic and resin. It is a strange feeling to know objects from my computer screen are pulled into physical existence somewhere in the world - is this how a mother feels, waiting for her child in the incubator? 
 
+![instrument](../../images/digitalmedia/renderings/instrument.jpg)
+![frag](../../images/digitalmedia/renderings/frag.jpg)
+![sticks](../../images/digitalmedia/renderings/sticks.jpg)
+![frag_d](../../images/digitalmedia/renderings/frag_d.jpeg)
+
+![intro](../../images/digitalmedia/renderings/intro.jpg)
+![gadget](../../images/digitalmedia/renderings/gadget.jpg)
+![handheld](../../images/digitalmedia/renderings/handheld.jpeg)
 ![set2](../../images/digitalmedia/renderings/set2.jpg)
 
-![10312022](../../images/digitalmedia/renderings/10312022.jpeg)
-
+![collection](../../images/digitalmedia/renderings/collection.jpg)
 ![object2](../../images/digitalmedia/renderings/object2.jpeg)
+![04052022](../../images/digitalmedia/renderings/04052022.jpeg)  
+![guhn](../../images/digitalmedia/renderings/guhn.jpg)
+![meta2](../../images/digitalmedia/renderings/meta.jpeg) 
 
-![object1](../../images/digitalmedia/renderings/object1.jpeg)
 
-![04052022](../../images/digitalmedia/renderings/04052022.jpeg)
-
-![meta2](../../images/digitalmedia/renderings/meta2.jpeg)
-
-![sticks](../../images/digitalmedia/renderings/sticks.jpeg)
-
-![frag6](../../images/digitalmedia/renderings/frag6.png)
-
+ 
 ![07012022](../../images/digitalmedia/renderings/07012022.jpeg)
+![extruder](../../images/digitalmedia/renderings/extruder.jpg)
 
-![extruder](../../images/digitalmedia/renderings/extruder.jpeg)
-
-![crawler](../../images/digitalmedia/renderings/crawler.jpg)
-
-![04012022_1](../../images/digitalmedia/renderings/04012022_1.jpg)
+![2022](../../images/digitalmedia/renderings/2022.jpg)
