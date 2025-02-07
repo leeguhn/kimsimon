@@ -8,4 +8,4 @@ Relic is a spatial collage: part ruin, part monument, part imagined environment.
 ![distance](../../images/digitalmedia/relic/distance.jpg)
 ![cinema](../../images/digitalmedia/relic/cinema.jpg)
 ![seats](../../images/digitalmedia/relic/seats.jpg)
-![inframe](../../images/digitalmedia/relic/inframe.jpg)
+
