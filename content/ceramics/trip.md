@@ -71,6 +71,7 @@ frames
 ![ramen](../../images/ceramics/trip/ramen.jpg)
 
 ![travel_18](../../images/ceramics/trip/travel_18.JPG)
+![travel_12](../../images/ceramics/trip/travel_12.jpeg)
 ![penthouse](../../images/ceramics/trip/penthouse.jpg)
 
 ![rocky](../../images/ceramics/trip/rocky.jpg)

@@ -10,5 +10,4 @@
 
 ![resurrection](../../images/painting/resurrected_red.jpeg)
 
-
 ![leftover](../../images/painting/leftover.jpeg)
