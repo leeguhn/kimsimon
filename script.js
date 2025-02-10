@@ -624,8 +624,8 @@ async function loadProject(projectFile) {
 }
 
 function getTextAfterDomain() {
-    const path = window.location.pathname;
-    return path.replace('/', '');
+    const path = window.location.pathname.split('/').filter(Boolean);
+    return path[0] || 'home';
 }
 
 // Main script (inside DOMContentLoaded)
@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => {
             const linkPageId = link.getAttribute('href').replace('/', '').replace('.html', ''); // Adjusted to remove leading '/' and '.html'
             if (linkPageId === pageId) {
-                link.classList.add('active');
+                link.classList.add('active');   
             } else {
                 link.classList.remove('active');
             }

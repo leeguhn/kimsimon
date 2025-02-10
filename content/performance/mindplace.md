@@ -20,3 +20,5 @@ The photos here were also taken by a performer who was blindfolded.
 ![portrait](../../images/performance/themindisaplace/portrait.jpeg)
 ![dance](../../images/performance/themindisaplace/dance.jpeg)
 ![freeze](../../images/performance/themindisaplace/freeze.jpeg)
+
+frames
