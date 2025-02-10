@@ -6,10 +6,17 @@ Guest performers were given white masks, blindfolds, and nitrile gloves. They we
 
 The photos here were also taken by a performer who was blindfolded. 
 
+![butter](../../images/performance/themindisaplace/butter.jpeg)
 ![henry](../../images/performance/themindisaplace/henry.jpg)
-
 ![momimeg](../../images/performance/themindisaplace/momimeg.jpg)
+![mero](../../images/performance/themindisaplace/mero.jpeg)
 
-![quentin](../../images/performance/themindisaplace/quentin.jpg)
-
+![mel](../../images/performance/themindisaplace/mel.jpeg)
+![drums](../../images/performance/themindisaplace/drums.jpeg)
 ![cowles](../../images/performance/themindisaplace/cowles.jpg)
+![bloc](../../images/performance/themindisaplace/bloc.jpeg)
+
+![runner](../../images/performance/themindisaplace/runner.jpeg)
+![portrait](../../images/performance/themindisaplace/portrait.jpeg)
+![dance](../../images/performance/themindisaplace/dance.jpeg)
+![freeze](../../images/performance/themindisaplace/freeze.jpeg)
