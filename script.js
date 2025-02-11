@@ -551,7 +551,7 @@ function organizeFrames(container, frames) {
     }
 }
 
-async function loadProject(projectFile) {
+async function loadProject(projectFile, project = null) {
     if (!currentPage) return;
 
     const projectContent = document.getElementById('project-content');
@@ -614,7 +614,10 @@ async function loadProject(projectFile) {
                 projectContent.classList.remove('fade-out');
             }, 50);
 
-            updateURL(page.id);
+                // Replace the old updateURL call
+                if (project) {
+                    updateURL(currentPage.id, project.id);
+                }
             
         }, 555); // Match this delay with the CSS transition duration
     } catch (error) {
@@ -651,33 +654,25 @@ document.addEventListener('DOMContentLoaded', () => {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
     } else {
-        // Replace the existing initial load code with:
-        const { page: parsedPage, project: parsedProject } = getTextAfterDomain();
-        const pageExists = pages.some(p => p.id === parsedPage);
+        // Replace the existing path parsing logic
+        const { page, project } = getTextAfterDomain();
 
-        if (!pageExists) {
-            // Redirect to home if page doesn't exist
-            window.location.href = '/';
+        // Load the main page
+        const pageObj = pages.find(p => p.id === page);
+        if (!pageObj) {
+            window.location.href = '/'; // Redirect to home if invalid page
         } else {
-            loadPage(parsedPage).then(() => {
-                if (parsedProject) {
-                    // Find the project under the current page
-                    const pageObj = pages.find(p => p.id === parsedPage);
-                    if (pageObj?.projects) {
-                        const project = pageObj.projects.find(p => p.id === parsedProject);
-                        if (project) {
-                            loadProject(project.file);
-                            // Activate the project link
-                            document.querySelectorAll('.project-link').forEach(link => {
-                                if (link.getAttribute('href').includes(parsedProject)) {
-                                    link.classList.add('active');
-                                }
-                            });
-                        }
+            loadPage(page).then(() => {
+                // After loading the page, check for a project
+                if (project && pageObj.projects) {
+                    const projectObj = pageObj.projects.find(p => p.id === project);
+                    if (projectObj) {
+                        loadProject(projectObj.file);
+                        // Update URL to reflect project
+                        updateURL(page, project);
                     }
                 }
             });
-            updateActiveLink(parsedPage);
         }
     }
 
