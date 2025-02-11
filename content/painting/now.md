@@ -6,10 +6,13 @@
 
 ![1010](../../images/painting/1010.jpeg)
 
+![splizz](../../images/painting/splizz.jpg)
+
+![synesthesia](../../images/painting/synesthesia.jpeg)
+
 ![1017_0](../../images/painting/1017_0.jpg)
 
-![splizz](../../images/painting/splizz.jpg)
+![leftover](../../images/painting/leftover.jpeg)
 
 ![resurrection](../../images/painting/resurrected_red.jpeg)
 
-![leftover](../../images/painting/leftover.jpeg)
