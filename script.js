@@ -625,7 +625,10 @@ async function loadProject(projectFile) {
 
 function getTextAfterDomain() {
     const path = window.location.pathname.split('/').filter(Boolean);
-    return 'home';
+    return {
+        page: path[0] || 'home',
+        project: path[1] || null
+    };
 }
 
 // Main script (inside DOMContentLoaded)
@@ -648,16 +651,34 @@ document.addEventListener('DOMContentLoaded', () => {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
     } else {
-        // if there is a page specified
-        let parsedPage = getTextAfterDomain().toLowerCase(); // Convert to lowercase
-        const pageExists = pages.some(page => page.id === parsedPage);
-        
+        // Replace the existing initial load code with:
+        const { page: parsedPage, project: parsedProject } = getTextAfterDomain();
+        const pageExists = pages.some(p => p.id === parsedPage);
+
         if (!pageExists) {
-            parsedPage = 'home'; // Redirect to home if page doesn't exist
+            // Redirect to home if page doesn't exist
+            window.location.href = '/';
+        } else {
+            loadPage(parsedPage).then(() => {
+                if (parsedProject) {
+                    // Find the project under the current page
+                    const pageObj = pages.find(p => p.id === parsedPage);
+                    if (pageObj?.projects) {
+                        const project = pageObj.projects.find(p => p.id === parsedProject);
+                        if (project) {
+                            loadProject(project.file);
+                            // Activate the project link
+                            document.querySelectorAll('.project-link').forEach(link => {
+                                if (link.getAttribute('href').includes(parsedProject)) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+            updateActiveLink(parsedPage);
         }
-        
-        loadPage(pages.findIndex(page => page.id === parsedPage));
-        updateActiveLink(parsedPage);
     }
 
     function createImagePreview() {
