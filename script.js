@@ -654,7 +654,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!pageExists) {
             parsedPage = 'home'; // Redirect to home if page doesn't exist
-        } 
+        } else {
+            const path = window.location.pathname.split('/').filter(Boolean);
+            if (path.length > 1) {
+                window.history.replaceState({}, '', `/${parsedPage}`);
+            }
+        }          
 
         loadPage(pages.findIndex(page => page.id === parsedPage));
         updateActiveLink(parsedPage);
