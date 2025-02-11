@@ -71,7 +71,7 @@ function updateURL(pageId, projectId = null) {
         newURL += `/${projectId}`;
     }
 
-    history.pushState(null, '', newURL);
+    history.replaceState(null, '', newURL);
 }
 
 // Utility functions (outside DOMContentLoaded)
@@ -655,10 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!pageExists) {
             parsedPage = 'home'; // Redirect to home if page doesn't exist
         } else {
-            const path = window.location.pathname.split('/').filter(Boolean);
-            if (path.length > 1) {
-                updateActiveLink('home');
-            }
+            updateURL(parsedPage);
         }          
 
         loadPage(pages.findIndex(page => page.id === parsedPage));
