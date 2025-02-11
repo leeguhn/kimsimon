@@ -657,7 +657,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const path = window.location.pathname.split('/').filter(Boolean);
             if (path.length > 1) {
-                window.history.replaceState({}, '', `/${parsedPage}`);
+                updateActiveLink('home');
             }
         }          
 
