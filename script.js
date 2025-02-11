@@ -58,6 +58,11 @@ const pages = [
             { id: 'studio', file: 'content/archive/studio.md', title: 'Studio' },
         ]
     },
+    { id: 'trip', file: 'content/trip/index.md', title: 'Trip',
+        projects: [
+            { id: 'gallery', file: 'content/ceramics/trip.md', title: 'Gallery' },            
+        ]
+    },
 ];
 
 function updateURL(pageId, projectId = null) {
