@@ -1,3 +1,5 @@
+![standin](../../images/archive/studio/standin.jpg)
+
 ![spirit](../../images/archive/studio/spirit.jpg)
 
 ![start](../../images/archive/studio/start.jpg)
@@ -7,8 +9,6 @@
 ![melatonin](../../images/archive/studio/melatonin.jpg)
 
 ![package](../../images/archive/studio/package.jpg)
-
-![standin](../../images/archive/studio/standin.jpg)
 
 ![pot](../../images/archive/studio/pot.jpg)
 
