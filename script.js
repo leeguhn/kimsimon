@@ -625,7 +625,7 @@ async function loadProject(projectFile) {
 
 function getTextAfterDomain() {
     const path = window.location.pathname.split('/').filter(Boolean);
-    return path[0] || 'home';
+    return 'home';
 }
 
 // Main script (inside DOMContentLoaded)
