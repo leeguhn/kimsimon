@@ -1,4 +1,4 @@
-![standin](../../images/archive/studio/standin.jpg)
+![surrogate](../../images/archive/studio/surrogate.jpg)
 
 ![spirit](../../images/archive/studio/spirit.jpg)
 
