@@ -6,29 +6,27 @@
 
 ![melatonin](../../images/archive/studio/melatonin.jpg)
 
+![package](../../images/archive/studio/package.jpg)
+
+![standin](../../images/archive/studio/standin.jpg)
+
+![pot](../../images/archive/studio/pot.jpg)
+
 ![contagion](../../images/archive/studio/contagion.jpg)
 
 ![sauce](../../images/archive/studio/sauce.jpg)
 
+![beyblade](../../images/archive/studio/beyblade.jpg)
+
 ![being](../../images/archive/studio/being.jpg) 
+
+![decker](../../images/archive/studio/decker.jpg)
 
 ![poser](../../images/archive/studio/poser.jpg)
 
-![chair](../../images/archive/studio/chair.jpg)
-
 ![free](../../images/archive/studio/free.jpg)
 
-![wall](../../images/archive/studio/wall.jpg)
-
-
-
-![rocks](../../images/archive/studio/rocks.jpg)
-
-![schutter](../../images/archive/studio/schutter.jpg)
-
-![snakes](../../images/archive/studio/snakes.jpg)
-
-![pathetique](../../images/archive/studio/pathetique.jpg)
+![souvenir](../../images/archive/studio/souvenir.jpg)
 
 ![imissyouverymuch](../../images/archive/studio/imissyouverymuch.jpg)
 
