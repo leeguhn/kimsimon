@@ -1,5 +1,7 @@
 frames
 
+![ribbon](../../images/documents/compositions/ribbon.jpg)
+
 ![statement1](../../images/documents/compositions/statement1.jpg)
 
 ![statement2](../../images/documents/compositions/statement2.jpg)
@@ -13,8 +15,6 @@ frames
 ![statement6](../../images/documents/compositions/statement6.jpg)
 
 ![report](../../images/documents/compositions/report.jpg)
-
-![ribbon](../../images/documents/compositions/ribbon.jpg)
 
 ![tanguy1](../../images/documents/compositions/tanguy1.jpg)
 

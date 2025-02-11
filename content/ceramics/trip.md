@@ -1,4 +1,4 @@
-The ball also travels. For this ongoing project, *trip*, I offer the ball to people of various distances in my life. “You can keep this ball forever. If you want, can you send me a photo of the ball at a place you want to show me?” is my tagline, an excuse to begin, renew, or strengthen a relationship with another human. 
+For this ongoing project, *trip*, I offer a porcelain ball to people of various distances in my life. “You can keep this ball forever. If you want, can you send me a photo of the ball at a place you want to show me?” is my tagline, an excuse to begin, renew, or strengthen a relationship with another human. 
 
 I extend my thanks to everyone who has taken the time to participate in this project. I intend for *trip* to continue throughout my life. If anyone would like to be a participant, please feel free to send me a message.
 
@@ -71,7 +71,7 @@ frames
 ![ramen](../../images/ceramics/trip/ramen.jpg)
 
 ![travel_18](../../images/ceramics/trip/travel_18.JPG)
-![travel_12](../../images/ceramics/trip/travel_12.jpeg)
+
 ![penthouse](../../images/ceramics/trip/penthouse.jpg)
 
 ![rocky](../../images/ceramics/trip/rocky.jpg)
@@ -79,6 +79,8 @@ frames
 ![travel_25](../../images/ceramics/trip/travel_25.jpeg)
 
 ![travel_20](../../images/ceramics/trip/travel_20.jpeg)
+
+![travel_12](../../images/ceramics/trip/travel_12.jpeg)
 
 
 

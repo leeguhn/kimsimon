@@ -16,7 +16,6 @@ const pages = [
         projects: [
             { id: 'artifact', file: 'content/ceramics/artifact.md', title: 'Artifact' },
             { id: 'habitat', file: 'content/ceramics/habitat.md', title: 'Habitat' },
-            { id: 'trip', file: 'content/ceramics/trip.md', title: 'Trip' },
         ]
     },
     { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
@@ -47,8 +46,8 @@ const pages = [
     },
     { id: 'documents', file: 'content/documents/index.md', title: 'Documents', 
         projects: [
-            { id: 'compositions', file: 'content/documents/compositions.md', title: 'Compositions' },
             { id: 'paperwork', file: 'content/documents/paperwork.md', title: 'Paperwork' },
+            { id: 'compositions', file: 'content/documents/compositions.md', title: 'Compositions' },
         ]
     },
     { id: 'archive', file: 'content/archive/index.md', title: 'Archive', 
