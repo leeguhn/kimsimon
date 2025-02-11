@@ -8,6 +8,8 @@
 
 ![1017_0](../../images/painting/1017_0.jpg)
 
+![splizz](../../images/painting/splizz.jpg)
+
 ![resurrection](../../images/painting/resurrected_red.jpeg)
 
 ![leftover](../../images/painting/leftover.jpeg)
