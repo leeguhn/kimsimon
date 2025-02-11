@@ -551,7 +551,7 @@ function organizeFrames(container, frames) {
     }
 }
 
-async function loadProject(projectFile, project = null) {
+async function loadProject(projectFile) {
     if (!currentPage) return;
 
     const projectContent = document.getElementById('project-content');
@@ -614,10 +614,7 @@ async function loadProject(projectFile, project = null) {
                 projectContent.classList.remove('fade-out');
             }, 50);
 
-                // Replace the old updateURL call
-                if (project) {
-                    updateURL(currentPage.id, project.id);
-                }
+            updateURL(page.id);
             
         }, 555); // Match this delay with the CSS transition duration
     } catch (error) {
@@ -628,10 +625,7 @@ async function loadProject(projectFile, project = null) {
 
 function getTextAfterDomain() {
     const path = window.location.pathname.split('/').filter(Boolean);
-    return {
-        page: path[0] || 'home',
-        project: path[1] || null
-    };
+    return path[0] || 'home';
 }
 
 // Main script (inside DOMContentLoaded)
@@ -654,26 +648,16 @@ document.addEventListener('DOMContentLoaded', () => {
         loadPage(pages.findIndex(page => page.id === 'home'));
         updateActiveLink('home');
     } else {
-        // Replace the existing path parsing logic
-        const { page, project } = getTextAfterDomain();
+        // if there is a page specified
+        let parsedPage = getTextAfterDomain().toLowerCase(); // Convert to lowercase
+        const pageExists = pages.some(page => page.id === parsedPage);
+        
+        if (!pageExists) {
+            parsedPage = 'home'; // Redirect to home if page doesn't exist
+        } 
 
-        // Load the main page
-        const pageObj = pages.find(p => p.id === page);
-        if (!pageObj) {
-            window.location.href = '/'; // Redirect to home if invalid page
-        } else {
-            loadPage(page).then(() => {
-                // After loading the page, check for a project
-                if (project && pageObj.projects) {
-                    const projectObj = pageObj.projects.find(p => p.id === project);
-                    if (projectObj) {
-                        loadProject(projectObj.file);
-                        // Update URL to reflect project
-                        updateURL(page, project);
-                    }
-                }
-            });
-        }
+        loadPage(pages.findIndex(page => page.id === parsedPage));
+        updateActiveLink(parsedPage);
     }
 
     function createImagePreview() {
