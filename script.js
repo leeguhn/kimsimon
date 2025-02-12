@@ -38,8 +38,8 @@ const pages = [
     },
     { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
         projects: [
-            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' },
             { id: 'narcissus', file: 'content/digitalmedia/narcissus.md', title: 'Narcissus' },
+            { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' },
             { id: 'relic', file: 'content/digitalmedia/relic.md', title: 'Relic' },
             { id: 'hansel', file: 'content/digitalmedia/hansel.md', title: 'Hansel' },
         ]
