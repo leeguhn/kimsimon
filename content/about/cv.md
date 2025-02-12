@@ -26,5 +26,13 @@ frames
 
 *Ceramics: Adaptive Practices*<br>*Performing Tableware*<br>*Porcelain*<br>*Introduction to Sculpture*<br>*Visual Language: On Objects*<br>*Visual Language: On Images*<br>*Video Game Music Production and Sound Design*
 
+**Project Contributions**
+
+
+**2025** *IMMAI (Immersive AI)*, UI/UX, Asset Designer
+**2024** [*Chat About (2023) Publication*](https://writeabout.info/), Web Designer + Developer
+**2023** [*TODEM (Tapestry of Decadent Meritocracy)*](https://latentculture.com/todem/) at Jason Salavon Studio, Web Designer + Developer
+**2022** [*MOSAIC Publication*](https://www.grinnell.edu/sites/default/files/docs/2023-10/MOSAIC%202022%20-%20A.pdf) for Office of International Student Affairs at Grinnell College, Artist
+**2021** [*Grinnell Community Mural*](https://maps.app.goo.gl/t4HF81f8FY3qcd4K7), Lead Designer + Artist
 
 
