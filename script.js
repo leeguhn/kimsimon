@@ -31,7 +31,7 @@ const pages = [
      },
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
         projects: [
-            { id: 'the mind is a place', file: 'content/performance/mindplace.md', title: 'themindisaplace' },
+            { id: 'themindisaplace', file: 'content/performance/mindplace.md', title: 'limbo' },
             { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
             { id: 'freemeditation', file: 'content/performance/freemeditation.md', title: 'freemeditation' },
         ]
