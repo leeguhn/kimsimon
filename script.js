@@ -31,15 +31,15 @@ const pages = [
      },
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
         projects: [
-            { id: 'themindisaplace', file: 'content/performance/mindplace.md', title: 'limbo' },
             { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
+            { id: 'themindisaplace', file: 'content/performance/mindplace.md', title: 'limbo' },
             { id: 'freemeditation', file: 'content/performance/freemeditation.md', title: 'freemeditation' },
         ]
     },
     { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
         projects: [
-            { id: 'narcissus', file: 'content/digitalmedia/narcissus.md', title: 'Narcissus' },
             { id: 'renderings', file: 'content/digitalmedia/renderings.md', title: 'Renderings' },
+            { id: 'narcissus', file: 'content/digitalmedia/narcissus.md', title: 'Narcissus' },
             { id: 'relic', file: 'content/digitalmedia/relic.md', title: 'Relic' },
             { id: 'hansel', file: 'content/digitalmedia/hansel.md', title: 'Hansel' },
         ]
