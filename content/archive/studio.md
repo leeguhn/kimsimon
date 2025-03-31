@@ -8,6 +8,8 @@
 
 ![melatonin](../../images/archive/studio/melatonin.jpg)
 
+![2012](../../images/archive/studio/2012.jpeg)
+
 ![package](../../images/archive/studio/package.jpg)
 
 ![pot](../../images/archive/studio/pot.jpg)
@@ -29,7 +31,6 @@
 ![souvenir](../../images/archive/studio/souvenir.jpg)
 
 ![imissyouverymuch](../../images/archive/studio/imissyouverymuch.jpg)
-
 
 
 
