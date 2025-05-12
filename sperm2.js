@@ -38,7 +38,7 @@ function simulationSketch(p) {
   
   p.preload = function() {
     for (let i = 1; i <= assetCount; i++) {
-      let assetPath = adjustPath('algo_compressed/line_' + i + '.PNG');
+      let assetPath = adjustPath('algo_compressed/line_' + i + '.png');
       assets.push(p.loadImage(
         assetPath,
         () => {}, // success callback 
