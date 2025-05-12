@@ -3,6 +3,9 @@ let currentPage = null;
 let images = [];
 let currentImageIndex = 0;
 
+// Global variable to hold the current simulation instance
+let simulationInstance = null;
+
 const pages = [
     { id: 'home', file: 'content/home.md', title: '' },
     { id: 'about', file: 'content/about/index.md', title: 'About',
@@ -743,6 +746,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const page = pages[index];
 
             updateActiveLink(page.id);
+     
+            // If leaving home and a simulation exists, remove it.
+            if (page.id !== 'home' && simulationInstance) {
+                simulationInstance.remove();
+                simulationInstance = null;
+            }
+
+            // In loadPage() for home (if not mobile):
+            if (page.id === 'home' && !isMobile()) {
+                const contentDiv = document.getElementById('content');
+                contentDiv.innerHTML = '<div id="sperm-simulation" class="fade-transition"></div>';
+                // Remove any old simulation instance if it exists:
+                if (simulationInstance) {
+                simulationInstance.remove();
+                }
+                // Wait for a brief moment, then create the simulation instance and trigger the fade in:
+                setTimeout(() => {
+                simulationInstance = new p5(simulationSketch, 'sperm-simulation');
+                document.getElementById('sperm-simulation').classList.add('show');
+                }, 333); // Adjust delay as needed to match your CSS transition duration
+                return;
+            }
 
             const contentWrapper = document.querySelector('.content-wrapper');
             

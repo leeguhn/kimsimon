@@ -21,7 +21,7 @@ body, html {
 }
 
 .sidebar {
-    width: 15vw; /* Use viewport width */
+    width: 10vw; /* Use viewport width */
     min-width: 222px; /* Minimum width to prevent cramming */
     height: 100vh; /* Use viewport height */
     overflow-y: auto;
@@ -85,6 +85,15 @@ body, html {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+}
+
+#sperm-simulation {
+    width: 100%;
+    min-height: 93vh;
+    max-height: 93vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative; 
 }
 
 .no-scrolling {
