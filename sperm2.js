@@ -1,3 +1,28 @@
+function adjustPath(path) {
+    console.log('Original path:', path);
+    if (isGitHubPages()) {
+        // Remove leading '../' or '../../'
+        let cleanPath = path.replace(/^(?:\.\.\/)+/, '');
+        
+        // Prepend the repository name for GitHub Pages
+        const adjustedPath = `/kimsimon/${cleanPath}`;
+        
+        // Append ?raw=true for image files
+        if (adjustedPath.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+            const finalPath = adjustedPath + '?raw=true';
+            console.log('Adjusted path for GitHub Pages:', finalPath);
+            return finalPath;
+        }
+        console.log('Adjusted path for GitHub Pages:', adjustedPath);
+        return adjustedPath;
+    } else {
+        // For local development, just remove any leading '../'
+        const localPath = path.replace(/^(?:\.\.\/)+/, '');
+        console.log('Adjusted path for local:', localPath);
+        return localPath;
+    }
+}
+
 function simulationSketch(p) {
   
   // Global variables for the simulation
@@ -13,10 +38,11 @@ function simulationSketch(p) {
   
   p.preload = function() {
     for (let i = 1; i <= assetCount; i++) {
+      let assetPath = adjustPath('algo_compressed/line_' + i + '.PNG');
       assets.push(p.loadImage(
-        '/kimsimon/algo_compressed/line_' + i + '.PNG',
-        () => {}, // success callback
-        () => { p.print('Failed to load: algo_compressed/line_' + i + '.png'); }
+        assetPath,
+        () => {}, // success callback 
+        () => { console.error('Failed to load:', assetPath); }
       ));
     }
   };
