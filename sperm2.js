@@ -14,7 +14,7 @@ function simulationSketch(p) {
   p.preload = function() {
     for (let i = 1; i <= assetCount; i++) {
       assets.push(p.loadImage(
-        'algo_compressed/line_' + i + '.PNG',
+        '/kimsimon/algo_compressed/line_' + i + '.PNG',
         () => {}, // success callback
         () => { p.print('Failed to load: algo_compressed/line_' + i + '.png'); }
       ));
