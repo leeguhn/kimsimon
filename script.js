@@ -757,10 +757,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (page.id === 'home' && !isMobile()) {
                 const contentDiv = document.getElementById('content');
                 contentDiv.innerHTML = '<div id="sperm-simulation" class="fade-transition"></div>';
+                updateURL(page.id);
                 // Remove any old simulation instance if it exists:
                 if (simulationInstance) {
                 simulationInstance.remove();
-                updateURL(page.id);
                 }
                 // Wait for a brief moment, then create the simulation instance and trigger the fade in:
                 setTimeout(() => {
