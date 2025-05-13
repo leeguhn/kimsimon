@@ -760,6 +760,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Remove any old simulation instance if it exists:
                 if (simulationInstance) {
                 simulationInstance.remove();
+                updateURL('home');
                 }
                 // Wait for a brief moment, then create the simulation instance and trigger the fade in:
                 setTimeout(() => {

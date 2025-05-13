@@ -279,7 +279,10 @@ function simulationSketch(p) {
   p.keyReleased = function() {
     let k = p.key.toLowerCase();
     if (k in keyToNode) {
-      nodes[keyToNode[k]].force = 0;
+      let idx = keyToNode[k];
+      nodes[idx].force = 0;
+      nodes[idx].holding = false;
+      nodes[idx].pullRadius = 180;  // Reset pull radius immediately
     }
   };
 }

@@ -1,12 +1,12 @@
+![11282023](../../images/painting/11282023.jpg)
+
 ![hansel](../../images/painting/hansel.jpg)
 
-![hansel3](../../images/painting/hansel3.JPG)
-
-![11282023](../../images/painting/11282023.jpg)
+![splizz](../../images/painting/splizz.jpg)
 
 ![1010](../../images/painting/1010.jpeg)
 
-![splizz](../../images/painting/splizz.jpg)
+
 
 ![synesthesia](../../images/painting/synesthesia.jpeg)
 
@@ -14,5 +14,4 @@
 
 ![leftover](../../images/painting/leftover.jpeg)
 
-![resurrection](../../images/painting/resurrected_red.jpeg)
 
