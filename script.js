@@ -68,6 +68,11 @@ const pages = [
 ];
 
 function updateURL(pageId, projectId = null) {
+    // Only update the URL if you're not on localhost
+    if (window.location.hostname === 'localhost') {
+        return;
+    }
+  
     let newURL = 'https://simonkim.nyc';
 
     if (pageId && pageId !== 'home') {
@@ -757,6 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (page.id === 'home' && !isMobile()) {
                 const contentDiv = document.getElementById('content');
                 contentDiv.innerHTML = '<div id="sperm-simulation" class="fade-transition"></div>';
+
                 updateURL(page.id);
                 // Remove any old simulation instance if it exists:
                 if (simulationInstance) {
@@ -764,8 +770,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Wait for a brief moment, then create the simulation instance and trigger the fade in:
                 setTimeout(() => {
-                simulationInstance = new p5(simulationSketch, 'sperm-simulation');
-                document.getElementById('sperm-simulation').classList.add('show');
+                    simulationInstance = new p5(simulationSketch, 'sperm-simulation');
+                    document.getElementById('sperm-simulation').classList.add('show');
+                    // Ensure no button remains focused on home load:
+                    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                        document.activeElement.blur();
+                    }
                 }, 333); // Adjust delay as needed to match your CSS transition duration
                 return;
             }
