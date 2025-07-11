@@ -6,7 +6,7 @@ frames
 
 **Exhibition Record**
 
-**2025** 다 빈치, *Shanghai Seminary*, Chicago, IL<br>**2024** *Internationales Digitalkunst Festival (IDKF)*, Stuttgart, DE<br>**2024** *Chicago Architecture Biennial 5*, Chicago Cultural Center, IL<br>**2024** *Jessica Stockholder: For Events*, University of Chicago, IL<br>**2024** *Wrong & Strong*, Logan Center for the Arts, University of Chicago, IL<br>**2024** *Chat About*, Cochrane-Woods Art Center, University of Chicago, IL<br>**2022** *Solo Exhibit*, Grinnell Area Arts Council, IA<br>**2022** *Bachelor of Arts Exhibition*, Grinnell College Museum of Art, IA <br>**2021** *Bachelor of Arts Exhibition*, Grinnell College Museum of Art, IA
+**2025 (Upcoming)** *Visionnaire*, Hōnenin Temple, Kyoto, JP<br>**2025 (Upcoming)** *Corpus*, The Store Namsan, Seoul, KR<br>**2025** *다 빈치 (Da Vinci)*, Shanghai Seminary, Chicago, IL<br>**2024** *Internationales Digitalkunst Festival (IDKF)*, Stuttgart, DE<br>**2024** *Chicago Architecture Biennial 5*, Chicago Cultural Center, IL<br>**2024** *Jessica Stockholder: For Events*, University of Chicago, IL<br>**2024** *Wrong & Strong*, Logan Center for the Arts, University of Chicago, IL<br>**2024** *Chat About*, Cochrane-Woods Art Center, University of Chicago, IL<br>**2022** *Solo Exhibit*, Grinnell Area Arts Council, IA<br>**2022** *Bachelor of Arts Exhibition*, Grinnell College Museum of Art, IA <br>**2021** *Bachelor of Arts Exhibition*, Grinnell College Museum of Art, IA
 
 **Press**
 

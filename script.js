@@ -23,8 +23,9 @@ const pages = [
     },
     { id: 'drawing', file: 'content/drawing/index.md', title: 'Drawing',
         projects: [ 
-            { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
             { id: '108', file: 'content/drawing/108.md', title: '108' },
+            { id: 'corpus', file: 'content/drawing/corpus.md', title: 'Corpus'},
+            { id: 'derivatives', file: 'content/drawing/derivatives.md', title: 'Derivatives' },
         ]
     },
     { id: 'painting', file: 'content/painting/index.md', title: 'Painting',
@@ -35,8 +36,8 @@ const pages = [
     { id: 'performance', file: 'content/performance/index.md', title: 'Performance',
         projects: [
             { id: 'meeting', file: 'content/performance/meeting.md', title: 'meeting' },
-            { id: 'themindisaplace', file: 'content/performance/mindplace.md', title: 'limbo' },
             { id: 'freemeditation', file: 'content/performance/freemeditation.md', title: 'freemeditation' },
+            { id: 'themindisaplace', file: 'content/performance/mindplace.md', title: 'limbo' },
         ]
     },
     { id: 'digitalmedia', file: 'content/digitalmedia/index.md', title: 'Digital Media',
