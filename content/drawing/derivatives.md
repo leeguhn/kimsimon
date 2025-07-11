@@ -18,19 +18,15 @@ To which institution I am not sure."
 
 — M.J.B.
 
-https://shanghaiseminary.com/050225/
+https://shanghaiseminary.com
 
 ![morgan_frontframes](../../images/drawing/derivatives/morgan_front.jpg)
-
-![morgan_0](../../images/drawing/derivatives/morgan_0.jpg)
 
 ![morgan_1](../../images/drawing/derivatives/morgan_1.jpg)
 
 ![morgan_2](../../images/drawing/derivatives/morgan_2.jpg)
 
 ![morgan_3](../../images/drawing/derivatives/morgan_3.jpg)
-
-![morgan_4](../../images/drawing/derivatives/morgan_4.jpg)
 
 ![morgan_5](../../images/drawing/derivatives/morgan_5.jpg)
 
